@@ -10,6 +10,8 @@ public class PlayerControl : MonoBehaviour
 
     private float directionX;
     private float directionY;
+    Vector2 lookDirection = new Vector2(1, 0);
+
 
     // Start is called before the first frame update
     void Start()
@@ -24,8 +26,17 @@ public class PlayerControl : MonoBehaviour
         directionX = Input.GetAxis("Horizontal");
         directionY = Input.GetAxis("Vertical");
 
-        animator.SetFloat("MoveX", directionX);
-        animator.SetFloat("MoveY", directionY);
+        Vector2 move = new Vector2(directionX, directionY);
+
+        if (!Mathf.Approximately(move.x, 0.0f) || !Mathf.Approximately(move.y, 0.0f))
+        {
+            lookDirection.Set(move.x, move.y);
+            lookDirection.Normalize();
+        }
+
+        animator.SetFloat("MoveX", lookDirection.x);
+        animator.SetFloat("MoveY", lookDirection.y);
+        animator.SetFloat("Speed", move.magnitude);
     }
 
 
