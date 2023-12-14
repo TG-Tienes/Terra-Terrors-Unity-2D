@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1170872601061900004}
   - component: {fileID: 339918008661458318}
   - component: {fileID: 5900991689573393259}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ares
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1044222165
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 1980788600, guid: 2824309ec43df0c4189b4c5e0e091e80, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

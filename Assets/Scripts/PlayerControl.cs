@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
@@ -12,6 +14,8 @@ public class PlayerControl : MonoBehaviour
     private float directionY;
     Vector2 lookDirection = new Vector2(1, 0);
 
+    public Canvas playerInventoryCanvas;
+    private bool playerInventoryCanvas_isActive = false;
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +41,12 @@ public class PlayerControl : MonoBehaviour
         animator.SetFloat("MoveX", lookDirection.x);
         animator.SetFloat("MoveY", lookDirection.y);
         animator.SetFloat("Speed", move.magnitude);
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            playerInventoryCanvas_isActive = !playerInventoryCanvas_isActive;
+            playerInventoryCanvas.gameObject.SetActive(playerInventoryCanvas_isActive);
+        }
     }
 
 
