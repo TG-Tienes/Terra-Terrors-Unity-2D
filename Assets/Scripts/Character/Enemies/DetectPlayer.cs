@@ -5,20 +5,22 @@ using UnityEngine.EventSystems;
 
 public class DetectPlayer : MonoBehaviour
 {
-    public float _moveSpeed = 0.5f;
+    private float _moveSpeed;
 
     private Rigidbody2D _rb2d;
     private Vector2 _moveDirection;
     private Animator _animator;
     private GameObject _mainCharacter;
+    public BasicEnemyStats _enemyCharacterStats;
     private bool _isDetected;
 
     // Start is called before the first frame update
     IEnumerator Start()
     {
-        _animator = GetComponent<Animator>();
         _rb2d = GetComponent<Rigidbody2D>();
         _isDetected = false;
+        _moveSpeed = _enemyCharacterStats._speed;
+        _animator = _enemyCharacterStats._animator;
 
         while (true)
         {

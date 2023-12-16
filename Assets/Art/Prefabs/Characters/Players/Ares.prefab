@@ -413,4 +413,4 @@ MonoBehaviour:
   bullet: {fileID: 6779735563423073004, guid: b7e3286ac94033344b1fb304bd754480, type: 3}
   bulletTransform: {fileID: 6591029376547071010}
   canFire: 1
-  fireRate: 0
+  fireRate: 0.5
