@@ -1,0 +1,853 @@
+fileFormatVersion: 2
+guid: 0c396637e27f1fa46ba1aeddec2b05b8
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: GoblinScout-Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 2000
+        width: 390
+        height: 454
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a4101a8127be97469869e0e5a57d04c
+      internalID: 2110856578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GoblinScout-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 661
+        y: 2000
+        width: 390
+        height: 454
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06c0e3dea816eec459339ee8ac02eb88
+      internalID: -1475581503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GoblinScout-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 1262
+        y: 2000
+        width: 374
+        height: 440
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1cee4593bc1eff74aa39d4bfcc09e0c2
+      internalID: -944867368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GoblinScout-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 1860
+        y: 2000
+        width: 375
+        height: 440
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3c195f126dcae14aa687bbaacb4a7c1
+      internalID: 631686013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GoblinScout-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 2461
+        y: 2000
+        width: 391
+        height: 454
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a458c2f1d6a65b04db71b62843f4ec64
+      internalID: 1017196658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GoblinScout-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 3060
+        y: 2000
+        width: 390
+        height: 454
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ebf7a45988854b4eaf79db978828a31
+      internalID: 2078401309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GoblinScout-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 3661
+        y: 2000
+        width: 406
+        height: 440
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad09f5b6bd870f547b986c6b4d1ee358
+      internalID: -716496178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GoblinScout-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 4260
+        y: 2000
+        width: 406
+        height: 440
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4c13e50015c67f498bec7ccfbf891d7
+      internalID: 412000217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GoblinScout-Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 1502
+        width: 408
+        height: 438
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05de18ff0cef6014a88b8f9340a3f8b2
+      internalID: 1862186838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GoblinScout-Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 661
+        y: 1502
+        width: 406
+        height: 438
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6be05c386c4ce2458b3fe8188e4aa0b
+      internalID: 719592000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GoblinScout-Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 1262
+        y: 1502
+        width: 469
+        height: 438
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30a6d911592b3e946ba004c87a6c8071
+      internalID: 944110251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GoblinScout-Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 1860
+        y: 1502
+        width: 406
+        height: 438
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22ada94fe57706544a71b58ab7cf6a5f
+      internalID: 1894089483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GoblinScout-Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 2461
+        y: 1502
+        width: 406
+        height: 438
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3988f7d0971941f47b8fc46d9dbefc94
+      internalID: 1456770516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GoblinScout-Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 3060
+        y: 1502
+        width: 406
+        height: 438
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd3d61edc0ab0044cbb621b5eee8cbd0
+      internalID: -115936569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GoblinScout-Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 1001
+        width: 376
+        height: 438
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ba667af0c836914a81396922ed089b2
+      internalID: -1459593707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GoblinScout-Sheet_15
+      rect:
+        serializedVersion: 2
+        x: 661
+        y: 1001
+        width: 374
+        height: 438
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9adb67857428e04fb536f2cd631a4ce
+      internalID: -522820839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GoblinScout-Sheet_16
+      rect:
+        serializedVersion: 2
+        x: 1262
+        y: 1001
+        width: 374
+        height: 438
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d81fa0275bc041418292e2d5126eb3f
+      internalID: -794905365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GoblinScout-Sheet_17
+      rect:
+        serializedVersion: 2
+        x: 1860
+        y: 1001
+        width: 375
+        height: 438
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd45af795b4d4e74f91a7255ddaf75d7
+      internalID: 2086166724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GoblinScout-Sheet_18
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 500
+        width: 392
+        height: 456
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8808c2d3144821499d0a6c416f39759
+      internalID: -690709389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GoblinScout-Sheet_19
+      rect:
+        serializedVersion: 2
+        x: 692
+        y: 500
+        width: 375
+        height: 440
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e4a9104a9ecbf04d9d0f81450b1b51e
+      internalID: -1269710475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GoblinScout-Sheet_20
+      rect:
+        serializedVersion: 2
+        x: 1293
+        y: 500
+        width: 375
+        height: 440
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 664cd7b1a23383144bb5ccce559e12e9
+      internalID: 276522965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GoblinScout-Sheet_21
+      rect:
+        serializedVersion: 2
+        x: 1908
+        y: 500
+        width: 392
+        height: 440
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24a42bf503777574b9cee8ccdc1a2305
+      internalID: 1956167912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GoblinScout-Sheet_22
+      rect:
+        serializedVersion: 2
+        x: 2525
+        y: 500
+        width: 406
+        height: 440
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 012e334c339713e41b9b29598303e355
+      internalID: 221325318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GoblinScout-Sheet_23
+      rect:
+        serializedVersion: 2
+        x: 3126
+        y: 500
+        width: 390
+        height: 456
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 545979cc154cf994aa33193f069bc6cc
+      internalID: 1312743954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GoblinScout-Sheet_24
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 1
+        width: 390
+        height: 454
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f26192dba2f38e43abde85378a3e1f1
+      internalID: 1672604452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GoblinScout-Sheet_25
+      rect:
+        serializedVersion: 2
+        x: 661
+        y: 1
+        width: 374
+        height: 438
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: edc1e627ecb76324fb5027e3ee7b4d4e
+      internalID: -2102972155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GoblinScout-Sheet_26
+      rect:
+        serializedVersion: 2
+        x: 1262
+        y: 1
+        width: 374
+        height: 438
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c2b7e55e91795e42b38793c607290e7
+      internalID: 2044530431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GoblinScout-Sheet_27
+      rect:
+        serializedVersion: 2
+        x: 1860
+        y: 1
+        width: 390
+        height: 406
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dedc0132a3866d347a36cf50771ad6a7
+      internalID: -221423353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GoblinScout-Sheet_28
+      rect:
+        serializedVersion: 2
+        x: 2461
+        y: 1
+        width: 406
+        height: 375
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a2a648aec870af4b8464cc6b407521b
+      internalID: -1998046130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GoblinScout-Sheet_29
+      rect:
+        serializedVersion: 2
+        x: 3060
+        y: 1
+        width: 472
+        height: 277
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5577fc46bce50a64a9f7ca8977e4bc20
+      internalID: 1495801695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GoblinScout-Sheet_30
+      rect:
+        serializedVersion: 2
+        x: 3661
+        y: 1
+        width: 501
+        height: 151
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e341ac64d721314d89b3d27947834c7
+      internalID: -1924479324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GoblinScout-Sheet_31
+      rect:
+        serializedVersion: 2
+        x: 4260
+        y: 1
+        width: 503
+        height: 151
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75659ebd4794e7e42854d9bf878b234b
+      internalID: 834401317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GoblinScout-Sheet_32
+      rect:
+        serializedVersion: 2
+        x: 4861
+        y: 1
+        width: 501
+        height: 151
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90e2b6f231c8759448e0978716515e86
+      internalID: -1507646653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      GoblinScout-Sheet_0: 2110856578
+      GoblinScout-Sheet_1: -1475581503
+      GoblinScout-Sheet_10: 944110251
+      GoblinScout-Sheet_11: 1894089483
+      GoblinScout-Sheet_12: 1456770516
+      GoblinScout-Sheet_13: -115936569
+      GoblinScout-Sheet_14: -1459593707
+      GoblinScout-Sheet_15: -522820839
+      GoblinScout-Sheet_16: -794905365
+      GoblinScout-Sheet_17: 2086166724
+      GoblinScout-Sheet_18: -690709389
+      GoblinScout-Sheet_19: -1269710475
+      GoblinScout-Sheet_2: -944867368
+      GoblinScout-Sheet_20: 276522965
+      GoblinScout-Sheet_21: 1956167912
+      GoblinScout-Sheet_22: 221325318
+      GoblinScout-Sheet_23: 1312743954
+      GoblinScout-Sheet_24: 1672604452
+      GoblinScout-Sheet_25: -2102972155
+      GoblinScout-Sheet_26: 2044530431
+      GoblinScout-Sheet_27: -221423353
+      GoblinScout-Sheet_28: -1998046130
+      GoblinScout-Sheet_29: 1495801695
+      GoblinScout-Sheet_3: 631686013
+      GoblinScout-Sheet_30: -1924479324
+      GoblinScout-Sheet_31: 834401317
+      GoblinScout-Sheet_32: -1507646653
+      GoblinScout-Sheet_4: 1017196658
+      GoblinScout-Sheet_5: 2078401309
+      GoblinScout-Sheet_6: -716496178
+      GoblinScout-Sheet_7: 412000217
+      GoblinScout-Sheet_8: 1862186838
+      GoblinScout-Sheet_9: 719592000
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
