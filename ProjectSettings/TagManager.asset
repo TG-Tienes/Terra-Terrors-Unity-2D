@@ -3,9 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Main Character
-  - Player Projectile
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -13,9 +11,9 @@ TagManager:
   - 
   - Water
   - UI
-  - Minimap
-  - Player
-  - Enemy
+  - 
+  - 
+  - 
   - 
   - 
   - 
@@ -42,13 +40,4 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Background
-    uniqueID: 1105569545
-    locked: 0
-  - name: Foreground
-    uniqueID: 3250745131
-    locked: 0
-  - name: Character
-    uniqueID: 3691086997
     locked: 0
