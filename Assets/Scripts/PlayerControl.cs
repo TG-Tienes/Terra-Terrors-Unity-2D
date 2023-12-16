@@ -14,14 +14,16 @@ public class PlayerControl : MonoBehaviour
     private float directionY;
     Vector2 lookDirection = new Vector2(1, 0);
 
+    public Canvas miniMapCanvas;
     public Canvas playerInventoryCanvas;
-    private bool playerInventoryCanvas_isActive = false;
+    private bool playerInventoryCanvas_isActive;
 
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        playerInventoryCanvas_isActive = playerInventoryCanvas.isActiveAndEnabled;
     }
 
     // Update is called once per frame
@@ -46,6 +48,7 @@ public class PlayerControl : MonoBehaviour
         {
             playerInventoryCanvas_isActive = !playerInventoryCanvas_isActive;
             playerInventoryCanvas.gameObject.SetActive(playerInventoryCanvas_isActive);
+            miniMapCanvas.gameObject.SetActive(!playerInventoryCanvas_isActive);
         }
     }
 
