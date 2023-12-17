@@ -28,23 +28,25 @@ public class BasicEnemyStats : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-        if(health < 0 && timer > _showDeadBodyTime)
+        if(health < 0 )
         {
-            Destroy(gameObject);
+            if (timer > _showDeadBodyTime)
+                Destroy(gameObject);
         }
     }
 
     void takeDamage(float damageAmount)
     {
-        // formula base on LOL physical armor
-        float realDamageAmountTaken = damageAmount * 100 / (100 + _armorStat);
+        if(health > 0)
+        {
+            // formula base on LOL physical armor
+            float realDamageAmountTaken = damageAmount * 100 / (100 + _armorStat);
 
-        health -= realDamageAmountTaken;
-        healthBar.updateHealthBar(health, maxHealth);
+            health -= realDamageAmountTaken;
+            healthBar.updateHealthBar(health, maxHealth);
+        }
 
-        _animator.SetTrigger("Hit");
-
-        if(health < 0)
+        if(health <= 0)
         {
             _animator.SetTrigger("Dead");
             timer = 0;
@@ -56,6 +58,8 @@ public class BasicEnemyStats : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Player Projectile"))
         {
+            _animator.SetTrigger("Hit");
+            
             takeDamage(15);
         }
     }
