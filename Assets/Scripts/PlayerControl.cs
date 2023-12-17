@@ -61,7 +61,7 @@ public class PlayerControl : MonoBehaviour
         ExpBar.instance.SetValue(0);
 
         manaCurrent = manaMax;
-
+        bloodCurrent = bloodMax;
         // playerInventoryCanvas_isActive = playerInventoryCanvas.isActiveAndEnabled;
     }
 
@@ -128,11 +128,12 @@ public class PlayerControl : MonoBehaviour
 
     public void handleBlood(int dataBlood)
     {
+        Debug.Log(bloodCurrent);
         bloodCurrent += dataBlood;
         //Set data mana
         if (bloodCurrent > -1 && bloodCurrent < bloodMax + 1)
         {
-            ManaBar.instance.SetValue(bloodCurrent / (float)bloodMax);
+            BloodBar.instance.SetValue(bloodCurrent / (float)bloodMax);
         }
     }
 
