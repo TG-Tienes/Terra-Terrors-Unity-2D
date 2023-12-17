@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
 {
-    Animator animator;
+    public Animator animator;
     public float speed = 1.5f;
     private Rigidbody2D rb;
 
@@ -128,7 +128,8 @@ public class PlayerControl : MonoBehaviour
 
     public void handleBlood(int dataBlood)
     {
-        Debug.Log(bloodCurrent);
+        if (dataBlood < 0)
+            animator.SetTrigger("Hit");
         bloodCurrent += dataBlood;
         //Set data mana
         if (bloodCurrent > -1 && bloodCurrent < bloodMax + 1)

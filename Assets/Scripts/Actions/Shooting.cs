@@ -45,6 +45,7 @@ public class Shooting : MonoBehaviour
             Instantiate(bullet, bulletTransform.position, bulletTransform.rotation);
 
             _mainCharacter.GetComponent<PlayerControl>().handleMana(-1);
+            _mainCharacter.GetComponent<PlayerControl>().animator.SetTrigger("Attack");
         }
     }
 }
