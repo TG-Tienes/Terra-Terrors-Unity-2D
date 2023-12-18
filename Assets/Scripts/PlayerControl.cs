@@ -131,6 +131,13 @@ public class PlayerControl : MonoBehaviour
         if (dataBlood < 0)
             animator.SetTrigger("Hit");
         bloodCurrent += dataBlood;
+
+        if (bloodCurrent <= 0)
+        {
+            BloodBar.instance.SetValue(0);
+            animator.SetTrigger("Dead");
+        }
+
         //Set data mana
         if (bloodCurrent > -1 && bloodCurrent < bloodMax + 1)
         {
