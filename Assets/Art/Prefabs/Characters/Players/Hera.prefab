@@ -74,9 +74,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1044222165
+  m_SortingLayerID: -282933095
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 240142336, guid: 7808024bee291c245ba58ab17752a995, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -172,7 +172,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e137b767711d8d34492cd8a87b9f3558, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
   speed: 2.5
+  miniMapCanvas: {fileID: 0}
+  playerInventoryCanvas: {fileID: 0}
+  invincibleTime: 10
+  manaMax: 50
+  bloodMax: 100
 --- !u!95 &6799799313171338713
 Animator:
   serializedVersion: 5
