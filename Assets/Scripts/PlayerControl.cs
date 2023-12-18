@@ -1,12 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
 {
-    Animator animator;
+    public Animator animator;
     public float speed = 1.5f;
     private Rigidbody2D rb;
 
@@ -18,13 +19,52 @@ public class PlayerControl : MonoBehaviour
     public Canvas playerInventoryCanvas;
     private bool playerInventoryCanvas_isActive;
 
+    //Handle EXP Bar
+    private int level = 1;
+    private int[] levelList = { 100, 200, 300 };
+    public float invincibleTime = 10.0f;
+    private float currentTime;
+    int expCurrent = 0;
+    public int exp
+    {
+        get { return expCurrent; }
+        set { expCurrent = value; }
+    }
+
+    //Handle Mana Bar
+    public int manaMax = 50;
+    int manaCurrent;
+
+    public int mana
+    {
+        get { return manaCurrent; }
+        set { manaCurrent = value; }
+    }
+
+    //Handle Blood Bar 
+    public int bloodMax = 100;
+    int bloodCurrent;
+
+    public int blood
+    {
+        get { return bloodCurrent; }
+        set { bloodCurrent = value; }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
-        playerInventoryCanvas_isActive = playerInventoryCanvas.isActiveAndEnabled;
+
+        currentTime = invincibleTime;
+        ExpBar.instance.SetValue(0);
+
+        manaCurrent = manaMax;
+        bloodCurrent = bloodMax;
+        // playerInventoryCanvas_isActive = playerInventoryCanvas.isActiveAndEnabled;
     }
+
 
     // Update is called once per frame
     void Update()
@@ -50,6 +90,8 @@ public class PlayerControl : MonoBehaviour
             playerInventoryCanvas.gameObject.SetActive(playerInventoryCanvas_isActive);
             miniMapCanvas.gameObject.SetActive(!playerInventoryCanvas_isActive);
         }
+
+        recoverInTimeRange();
     }
 
 
@@ -61,4 +103,68 @@ public class PlayerControl : MonoBehaviour
         rb.MovePosition(pos);
     }
 
+    public void handleExp(int dataRxp)
+    {
+        expCurrent += dataRxp;
+        if (expCurrent <= levelList[level - 1])
+        {
+            Debug.Log(expCurrent);
+            Debug.Log(levelList[level - 1]);
+
+            ExpBar.instance.SetValue(expCurrent / (float)levelList[level - 1]);
+        }
+
+        else if (level - 1 < levelList.Length)
+        {
+
+            if (expCurrent > levelList[level - 1])
+            {
+                level += 1;
+                ExpBar.instance.SetLevel(level);
+                expCurrent = 0;
+            }
+        }
+    }
+
+    public void handleBlood(int dataBlood)
+    {
+        if (dataBlood < 0)
+            animator.SetTrigger("Hit");
+        bloodCurrent += dataBlood;
+
+        if (bloodCurrent <= 0)
+        {
+            BloodBar.instance.SetValue(0);
+            animator.SetTrigger("Dead");
+        }
+
+        //Set data mana
+        if (bloodCurrent > -1 && bloodCurrent < bloodMax + 1)
+        {
+            BloodBar.instance.SetValue(bloodCurrent / (float)bloodMax);
+        }
+    }
+
+    public void handleMana(int dataMana)
+    {
+        manaCurrent += dataMana;
+        //Set data mana
+        if (manaCurrent > -1 && manaCurrent < manaMax + 1)
+        {
+            ManaBar.instance.SetValue(manaCurrent / (float)manaMax);
+        }
+    }
+
+    void recoverInTimeRange()
+    {
+        //Handle add exp in time range;
+        currentTime -= Time.deltaTime;
+        if (currentTime < 0 && manaCurrent < manaMax)
+        {
+            manaCurrent += 1;
+            if (manaCurrent <= manaMax)
+                ManaBar.instance.SetValue(manaCurrent / (float)manaMax);
+            currentTime = invincibleTime;
+        }
+    }
 }

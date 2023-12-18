@@ -15,39 +15,49 @@ public class BasicEnemyStats : MonoBehaviour
     [SerializeField] float _armorStat;
     [SerializeField] float health, maxHealth;
     [SerializeField] float _showDeadBodyTime;
+    private GameObject _mainCharacter;
 
     // Start is called before the first frame update
     void Start()
     {
         health = maxHealth;
-        healthBar =  gameObject.GetComponentInChildren<BasicHealthBar>();
+        healthBar = gameObject.GetComponentInChildren<BasicHealthBar>();
         healthBar.updateHealthBar(health, maxHealth);
+
+        _mainCharacter = GameObject.FindWithTag("Main Character");
     }
 
     // Update is called once per frame
     void Update()
     {
         timer += Time.deltaTime;
-        if(health < 0 && timer > _showDeadBodyTime)
+        if (health < 0 && timer > _showDeadBodyTime)
         {
-            Destroy(gameObject);
+            if (timer > _showDeadBodyTime)
+                Destroy(gameObject);
         }
     }
 
     void takeDamage(float damageAmount)
     {
-        // formula base on LOL physical armor
-        float realDamageAmountTaken = damageAmount * 100 / (100 + _armorStat);
+        if (health > 0)
+        {
+            // formula base on LOL physical armor
+            float realDamageAmountTaken = damageAmount * 100 / (100 + _armorStat);
 
-        health -= realDamageAmountTaken;
-        healthBar.updateHealthBar(health, maxHealth);
+            health -= realDamageAmountTaken;
+            healthBar.updateHealthBar(health, maxHealth);
+        }
 
         _animator.SetTrigger("Hit");
 
-        if(health < 0)
+        if (health < 0)
         {
             _animator.SetTrigger("Dead");
             timer = 0;
+
+            //Add exp for main character
+            _mainCharacter.GetComponent<PlayerControl>().handleExp(15);
         }
     }
 
@@ -56,7 +66,12 @@ public class BasicEnemyStats : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Player Projectile"))
         {
+            _animator.SetTrigger("Hit");
             takeDamage(15);
+        }
+        if (collision.gameObject.tag.Equals("Main Character"))
+        {
+            _mainCharacter.GetComponent<PlayerControl>().handleBlood(-15);
         }
     }
 }
