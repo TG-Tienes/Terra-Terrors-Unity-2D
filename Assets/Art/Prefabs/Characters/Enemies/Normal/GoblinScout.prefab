@@ -95,8 +95,8 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: -1044222165
-  m_SortingOrder: 22
+  m_SortingLayerID: -282933095
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!114 &7588520733700942124
 MonoBehaviour:
@@ -148,7 +148,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8908577149776715982}
   - component: {fileID: 9001286003116757246}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: MinimapIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -208,9 +208,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1044222165
-  m_SortingLayer: 0
-  m_SortingOrder: 19
+  m_SortingLayerID: -282933095
+  m_SortingLayer: 2
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 6f0be4d9d0c08c3438de6c01c1df0b88, type: 3}
   m_Color: {r: 0.8584906, g: 0.2713154, b: 0.2713154, a: 1}
   m_FlipX: 0
@@ -302,7 +302,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -282933095
   m_SortingLayer: 2
-  m_SortingOrder: 20
+  m_SortingOrder: 1
   m_Sprite: {fileID: 2110856578, guid: 0c396637e27f1fa46ba1aeddec2b05b8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
