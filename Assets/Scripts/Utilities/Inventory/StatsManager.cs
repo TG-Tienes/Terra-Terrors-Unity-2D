@@ -9,10 +9,10 @@ public class StatsManager : MonoBehaviour
     public OnStatusChangedCallback onStatusChangedCallback;
 
     public PlayerStats playerStats;
- 
+
     #region Singleton
     public static StatsManager instance;
- 
+
     void Awake()
     {
         if (instance == null)
@@ -25,17 +25,17 @@ public class StatsManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
- 
+
     #endregion
- 
+
     public void UpdateCharacterStatus(Equipment newItem, Equipment oldItem)
     {
-        if(oldItem != null)
+        if (oldItem != null)
         {
             playerStats.attack -= oldItem.attackModifier;
             playerStats.defense -= oldItem.defenseModifier;
-        } 
-            
+        }
+
         playerStats.attack = playerStats.baseAttack + newItem.attackModifier;
         playerStats.defense = playerStats.baseDefense + newItem.defenseModifier;
 
