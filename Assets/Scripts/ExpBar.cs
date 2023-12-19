@@ -29,6 +29,7 @@ public class ExpBar : MonoBehaviour
 
     public void SetValue(float value)
     {
+        Debug.Log("exp: " + value.ToString());
         mask.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, originalSize * value);
     }
 
