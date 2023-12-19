@@ -12,9 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
   m_Name: Water
   m_EditorClassIdentifier: 
-  m_AnimatedSprites: []
-  m_MinSpeed: 1
-  m_MaxSpeed: 1
+  m_AnimatedSprites:
+  - {fileID: -18599173, guid: dcced7074d219184280a2497cec870da, type: 3}
+  - {fileID: 1397458293, guid: dcced7074d219184280a2497cec870da, type: 3}
+  - {fileID: 557151583, guid: dcced7074d219184280a2497cec870da, type: 3}
+  - {fileID: 1743640230, guid: dcced7074d219184280a2497cec870da, type: 3}
+  - {fileID: -2109397366, guid: dcced7074d219184280a2497cec870da, type: 3}
+  - {fileID: 1048900189, guid: dcced7074d219184280a2497cec870da, type: 3}
+  - {fileID: -1211527778, guid: dcced7074d219184280a2497cec870da, type: 3}
+  - {fileID: -2142334616, guid: dcced7074d219184280a2497cec870da, type: 3}
+  m_MinSpeed: 6
+  m_MaxSpeed: 10
   m_AnimationStartTime: 0
   m_AnimationStartFrame: 0
   m_TileColliderType: 0
