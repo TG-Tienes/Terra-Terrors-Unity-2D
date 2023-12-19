@@ -15,7 +15,9 @@ public class BasicEnemyStats : MonoBehaviour
     [SerializeField] float _armorStat;
     [SerializeField] float health, maxHealth;
     [SerializeField] float _showDeadBodyTime;
+    [SerializeField] bool _isRangeType = false;
     private GameObject _mainCharacter;
+
 
     // Start is called before the first frame update
     void Start()

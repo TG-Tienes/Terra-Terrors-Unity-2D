@@ -8,6 +8,7 @@ TagManager:
   - Player Projectile
   - Tree
   - Minimap Slider
+  - Enemy Projectile
   layers:
   - Default
   - TransparentFX
@@ -32,7 +33,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Enemy Projectile
   - 
   - 
   - 

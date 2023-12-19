@@ -14,6 +14,7 @@ public class DetectPlayer : MonoBehaviour
     public BasicEnemyStats _enemyCharacterStats;
     private bool _isDetected;
     private bool _isCollided;
+    [SerializeField] private bool _isRangeType = false;
 
     // Start is called before the first frame update
     IEnumerator Start()
@@ -23,7 +24,7 @@ public class DetectPlayer : MonoBehaviour
         _isCollided = false;
         _moveSpeed = _enemyCharacterStats._speed;
         _animator = _enemyCharacterStats._animator;
-
+        
         while (true)
         {
             _mainCharacter = GameObject.FindWithTag("Main Character");
