@@ -13,12 +13,14 @@ public class DetectPlayer : MonoBehaviour
     private GameObject _mainCharacter;
     public BasicEnemyStats _enemyCharacterStats;
     private bool _isDetected;
+    private bool _isCollided;
 
     // Start is called before the first frame update
     IEnumerator Start()
     {
         _rb2d = GetComponent<Rigidbody2D>();
         _isDetected = false;
+        _isCollided = false;
         _moveSpeed = _enemyCharacterStats._speed;
         _animator = _enemyCharacterStats._animator;
 
@@ -47,7 +49,7 @@ public class DetectPlayer : MonoBehaviour
     {
         _animator.SetFloat("Speed", _moveDirection.magnitude);
 
-        if (_isDetected)
+        if (_isDetected && !_isCollided)
         {
             // move
             _rb2d.velocity = new Vector2(_moveDirection.x, _moveDirection.y) * _moveSpeed;
@@ -57,12 +59,17 @@ public class DetectPlayer : MonoBehaviour
 
             // change animation base on movement
             _animator.SetFloat("LOOK X", _moveDirection.x);
-            //_animator.SetFloat("Look Y", _moveDirection.y);
         }
         else // stop moving if not detect player
         {
             _rb2d.velocity = Vector2.zero;
             _moveDirection = Vector2.zero;
+        }
+
+
+        if (_isCollided)
+        {
+            _animator.SetTrigger("Attack");
         }
     }
 
@@ -79,4 +86,18 @@ public class DetectPlayer : MonoBehaviour
         if (collision.tag.Equals("Main Character"))
             _isDetected = false;
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag.Equals("Main Character"))
+        {
+            _isCollided = true;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        _isCollided = false;
+    }
+
 }
