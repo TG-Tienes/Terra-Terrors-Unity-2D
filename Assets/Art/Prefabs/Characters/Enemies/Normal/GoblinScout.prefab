@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 39696938133091519}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 4650518314737901664}
   - component: {fileID: 7588520733700942124}
   - component: {fileID: 4703590763707846408}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -238,7 +238,7 @@ GameObject:
   - component: {fileID: 9108190635089404303}
   - component: {fileID: 6391054053757275166}
   - component: {fileID: 1964593152454986885}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: GoblinScout
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -300,8 +300,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1044222165
-  m_SortingLayer: 0
+  m_SortingLayerID: -282933095
+  m_SortingLayer: 2
   m_SortingOrder: 20
   m_Sprite: {fileID: 2110856578, guid: 0c396637e27f1fa46ba1aeddec2b05b8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -532,7 +532,7 @@ GameObject:
   - component: {fileID: 2323903167205525393}
   - component: {fileID: 3445033599430796311}
   - component: {fileID: 6145700522340554992}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: Health Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -635,7 +635,7 @@ GameObject:
   - component: {fileID: 1039758357411944905}
   - component: {fileID: 5495709590896022382}
   - component: {fileID: 227724068083994216}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -710,7 +710,7 @@ GameObject:
   - component: {fileID: 1832571195973037549}
   - component: {fileID: 6267864467615638812}
   - component: {fileID: 4163734561941153495}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
