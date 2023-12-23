@@ -7,6 +7,7 @@ public class PlayerStats : ScriptableObject
     public string charName = "name";
 
     // Base stats
+    public int level          = 1;
     public int baseHealth     = 0;
     public int baseAttack     = 0;
     public int baseDefense    = 0;

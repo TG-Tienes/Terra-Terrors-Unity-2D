@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0af41c0f9830c2499d262f0e779931d, type: 3}
+  m_Name: Golden Chestplate
+  m_EditorClassIdentifier: 
+  ID: 2001
+  name: Golden Chestplate
+  quantity: 1
+  sprite: {fileID: -338566035, guid: 2804f4f7799ccd24aa62eaa9e8f12ea0, type: 3}
+  description: 
+  type: 1
+  equipType: 1
+  attackModifier: 0
+  defenseModifier: 40
