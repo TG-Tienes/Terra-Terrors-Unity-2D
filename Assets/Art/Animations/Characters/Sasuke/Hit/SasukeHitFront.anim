@@ -31,7 +31,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 1
+        time: 0.5
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -52,11 +52,11 @@ AnimationClip:
     curve:
     - time: 0
       value: {fileID: 1287980625, guid: 83dddc733592ab143859dafd7791cd8d, type: 3}
-    - time: 0.25
+    - time: 0
       value: {fileID: 1673318613, guid: 83dddc733592ab143859dafd7791cd8d, type: 3}
-    - time: 0.5
+    - time: 0.25
       value: {fileID: 1467341509, guid: 83dddc733592ab143859dafd7791cd8d, type: 3}
-    - time: 0.75
+    - time: 0.5
       value: {fileID: 1951211864, guid: 83dddc733592ab143859dafd7791cd8d, type: 3}
     attribute: m_Sprite
     path: 
@@ -98,7 +98,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1
+    m_StopTime: 0.75
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -128,7 +128,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 1
+        time: 0.5
         value: 1
         inSlope: Infinity
         outSlope: Infinity

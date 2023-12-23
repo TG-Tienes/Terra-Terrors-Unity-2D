@@ -327,7 +327,8 @@ GameObject:
   - component: {fileID: 1436506959704136692}
   - component: {fileID: 5705555876704714004}
   - component: {fileID: 4998102194987709715}
-  m_Layer: 0
+  - component: {fileID: 4975698202922407017}
+  m_Layer: 9
   m_Name: GoblinArcher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -342,9 +343,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6777694529011414369}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 117.736, y: 0.979, z: 0}
-  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
+  m_LocalScale: {x: 0.04, y: 0.04, z: 0.04}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2946214161471428873}
@@ -629,6 +630,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 1660521917134526425, guid: 522ee9c182f4723469b0e71e14465037, type: 3}
   bulletPos: {fileID: 2946214161471428873}
+  _animator: {fileID: 5705555876704714004}
+  _animationName: Attack
+--- !u!114 &4975698202922407017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6777694529011414369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edeefb575f90ae34889aaaab770e0a89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemyCharacterStats: {fileID: 1436506959704136692}
+  _distanceBetweenPlayer: 1
+  _isRangeType: 1
+  _isBoss: 0
+  _attackEffect1: {fileID: 0}
 --- !u!1 &8022563221061643315
 GameObject:
   m_ObjectHideFlags: 0

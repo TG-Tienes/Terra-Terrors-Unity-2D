@@ -255,7 +255,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
+  m_LocalScale: {x: 0.04, y: 0.04, z: 0.04}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8908577149776715982}
@@ -502,6 +502,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyCharacterStats: {fileID: 1964593152454986885}
+  _distanceBetweenPlayer: 0
+  _isRangeType: 0
 --- !u!114 &1964593152454986885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -521,6 +523,7 @@ MonoBehaviour:
   health: 0
   maxHealth: 100
   _showDeadBodyTime: 1
+  _isRangeType: 0
 --- !u!1 &7529529819707797584
 GameObject:
   m_ObjectHideFlags: 0

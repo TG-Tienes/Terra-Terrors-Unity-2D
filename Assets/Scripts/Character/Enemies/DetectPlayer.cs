@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class DetectPlayer : MonoBehaviour
 {
@@ -14,7 +15,11 @@ public class DetectPlayer : MonoBehaviour
     public BasicEnemyStats _enemyCharacterStats;
     private bool _isDetected;
     private bool _isCollided;
+    public float _distanceBetweenPlayer = 0;
     [SerializeField] private bool _isRangeType = false;
+    public bool _isBoss;
+    public GameObject _attackEffect1;
+    private bool _isStop = false;
 
     // Start is called before the first frame update
     IEnumerator Start()
@@ -36,10 +41,10 @@ public class DetectPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_isDetected)
+        if (_isDetected && !_isStop)
         {
-            Vector2 direction = (_mainCharacter.transform.position - transform.position).normalized;
-            float angle = Mathf.Atan2(direction.x, direction.y);
+            Vector2 direction = (_mainCharacter.transform.position - transform.position ).normalized;
+            float angle = Mathf.Atan2(direction.x, direction.y + _distanceBetweenPlayer);
 
             _rb2d.rotation = angle;
             _moveDirection = direction;
@@ -49,13 +54,23 @@ public class DetectPlayer : MonoBehaviour
     private void FixedUpdate()
     {
         _animator.SetFloat("Speed", _moveDirection.magnitude);
+        float distanceVal = Vector2.Distance(transform.position, _mainCharacter.transform.position);
 
-        if (_isDetected && !_isCollided)
+        if (_distanceBetweenPlayer >= distanceVal)
+        {
+            _isStop = true;
+        }
+        else
+        {
+            _isStop = false;
+        }
+
+
+        if (_isDetected && !_isCollided && !_isStop)
         {
             // move
             _rb2d.velocity = new Vector2(_moveDirection.x, _moveDirection.y) * _moveSpeed;
 
-            // play moving audio
             //playAudioSource(footStepAudio);
 
             // change animation base on movement
@@ -68,10 +83,11 @@ public class DetectPlayer : MonoBehaviour
         }
 
 
-        if (_isCollided)
+        if (_isCollided && !_isRangeType && !_isBoss)
         {
             _animator.SetTrigger("Attack");
         }
+
     }
 
     // Detect main character enter detect radius of collider trigger
@@ -99,6 +115,7 @@ public class DetectPlayer : MonoBehaviour
     private void OnCollisionExit2D(Collision2D collision)
     {
         _isCollided = false;
+        
     }
 
 }
