@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
+  m_Name: Water Border 4
+  m_EditorClassIdentifier: 
+  m_AnimatedSprites:
+  - {fileID: 471896375, guid: 6711ce3befcc5954491a85f11de7fd2d, type: 3}
+  - {fileID: -1363920488, guid: 6711ce3befcc5954491a85f11de7fd2d, type: 3}
+  - {fileID: 1103688828, guid: 6711ce3befcc5954491a85f11de7fd2d, type: 3}
+  - {fileID: 2012318404, guid: 6711ce3befcc5954491a85f11de7fd2d, type: 3}
+  - {fileID: 412748341, guid: 6711ce3befcc5954491a85f11de7fd2d, type: 3}
+  - {fileID: 1773154797, guid: 6711ce3befcc5954491a85f11de7fd2d, type: 3}
+  - {fileID: 1597837927, guid: 6711ce3befcc5954491a85f11de7fd2d, type: 3}
+  - {fileID: -1707337845, guid: 6711ce3befcc5954491a85f11de7fd2d, type: 3}
+  m_MinSpeed: 3
+  m_MaxSpeed: 3
+  m_AnimationStartTime: 0
+  m_AnimationStartFrame: 0
+  m_TileColliderType: 1
+  m_TileAnimationFlags: 0
