@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3527396983878890667}
   - component: {fileID: -7959283808548356620}
   - component: {fileID: -4449290628277707312}
-  m_Layer: 0
+  m_Layer: 22
   m_Name: kunai_bullet
   m_TagString: Player Projectile
   m_Icon: {fileID: 0}
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 5
-  disappearTime: 0.5
+  disappearTime: 0.2
 --- !u!50 &-7959283808548356620
 Rigidbody2D:
   serializedVersion: 4

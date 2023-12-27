@@ -556,7 +556,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6777694529011414369}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -574,7 +574,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &1436506959704136692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -632,6 +632,8 @@ MonoBehaviour:
   bulletPos: {fileID: 2946214161471428873}
   _animator: {fileID: 5705555876704714004}
   _animationName: Attack
+  _shootDistance: 3
+  _spaceDistance: 0
 --- !u!114 &4975698202922407017
 MonoBehaviour:
   m_ObjectHideFlags: 0
