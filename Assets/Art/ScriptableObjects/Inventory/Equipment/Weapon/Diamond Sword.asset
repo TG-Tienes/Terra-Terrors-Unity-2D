@@ -15,7 +15,7 @@ MonoBehaviour:
   ID: 1
   name: Diamond Sword
   quantity: 1
-  sprite: {fileID: -78747022, guid: 577953ff403fe7b44bcfea38724816af, type: 3}
+  sprite: {fileID: -1690134769, guid: bec99060a4a80f6428006e482d8e8e38, type: 3}
   description: 
   rarity: 2
   type: 1

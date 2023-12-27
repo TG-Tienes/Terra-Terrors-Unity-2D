@@ -6,6 +6,7 @@ public enum ItemAction { USE, EQUIP, DROP }
 [DefaultExecutionOrder(-100)]
 public class Inventory : MonoBehaviour
 {
+    public List<Item> defaultItems = new List<Item>();
     public List<Item> items = new List<Item>();
     public int capacity = 20;
     public int stackSize = 5;
@@ -22,6 +23,8 @@ public class Inventory : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(this);
+            Reset();
+            AddTestData();
         }
         else
         {
@@ -33,6 +36,16 @@ public class Inventory : MonoBehaviour
     public void Reset()
     {
         instance.items.Clear();
+    }
+
+    public void AddTestData()
+    {
+        foreach (Item defaultItem in defaultItems)
+        {
+            Item item = Instantiate(defaultItem);
+            item.quantity = 1;
+            items.Add(item);
+        }
     }
  
     public void AddItem(Item item)
