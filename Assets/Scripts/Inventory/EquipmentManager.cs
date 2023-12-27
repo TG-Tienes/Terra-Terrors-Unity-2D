@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
  
 public class EquipmentManager : MonoBehaviour
@@ -34,20 +32,20 @@ public class EquipmentManager : MonoBehaviour
 
     public void Equip(Equipment newItem)
     {
-        int equipSlot = (int) newItem.equipType;
+        // int equipSlot = (int) newItem.equipType;
     
-        Equipment oldItem = null;
+        // Equipment oldItem = null;
     
-        if(currentEquipment[equipSlot] != null)
-        {
-            oldItem = currentEquipment[equipSlot];
-            Inventory.instance.AddItem(oldItem);
-        }
+        // if(currentEquipment[equipSlot] != null)
+        // {
+        //     oldItem = currentEquipment[equipSlot];
+        //     Inventory.instance.AddItem(oldItem);
+        // }
     
-        currentEquipment[equipSlot] = newItem;
+        // currentEquipment[equipSlot] = newItem;
     
-        StatsManager.instance.UpdateCharacterStatus(newItem, oldItem);
+        // StatsManager.instance.UpdateCharacterStatus(newItem, oldItem);
     
-        onEquipmentChangedCallback.Invoke();    
+        // onEquipmentChangedCallback.Invoke();    
     }
 }

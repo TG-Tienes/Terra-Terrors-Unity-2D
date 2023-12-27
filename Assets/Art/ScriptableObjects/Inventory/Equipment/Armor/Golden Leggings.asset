@@ -17,6 +17,7 @@ MonoBehaviour:
   quantity: 1
   sprite: {fileID: 753543669, guid: 2804f4f7799ccd24aa62eaa9e8f12ea0, type: 3}
   description: 
+  rarity: 1
   type: 1
   equipType: 2
   attackModifier: 0

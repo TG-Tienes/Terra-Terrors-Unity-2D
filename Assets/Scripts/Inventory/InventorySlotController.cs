@@ -1,10 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using System;
-using UnityEditor.Build.Content;
-using UnityEngine.UI;
+using UnityEngine.UI;  
 
 [DefaultExecutionOrder(-50)]
 public class InventorySlotController : MonoBehaviour
@@ -19,7 +16,6 @@ public class InventorySlotController : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log(Inventory.instance.items.Count.ToString());
         UpdateAllSlots();
     }
 
@@ -61,10 +57,5 @@ public class InventorySlotController : MonoBehaviour
                 index++;
             }
         }
-    }
-
-    void ClearAllSlots()
-    {
-        
     }
 }

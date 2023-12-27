@@ -8,6 +8,14 @@ public enum ItemType
     EQUIPMENT
 }
 
+public enum ItemRarity
+{
+    COMMON,
+    RARE,
+    EPIC,
+    LEGENDARY
+}
+
 [CreateAssetMenu(fileName = "New Item", menuName = "Inventory/Item", order = 1)]
 
 public class Item : ScriptableObject
@@ -17,6 +25,7 @@ public class Item : ScriptableObject
     public int quantity;
     public Sprite sprite;
     public string description;
+    public ItemRarity rarity;
     public ItemType type;
 
     public virtual void Use() {}
