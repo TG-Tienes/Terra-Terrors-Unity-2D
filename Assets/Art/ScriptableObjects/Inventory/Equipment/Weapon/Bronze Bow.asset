@@ -18,6 +18,7 @@ MonoBehaviour:
   sprite: {fileID: -1305239994, guid: 577953ff403fe7b44bcfea38724816af, type: 3}
   description: 
   type: 1
+  price: 12345
   equipType: 3
   attackModifier: 2
   defenseModifier: 0

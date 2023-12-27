@@ -15,10 +15,19 @@ public class ExpBar : MonoBehaviour
     private TMP_Text levelTitle;
 
 
-    // Start is called before the first frame update
     void Awake()
     {
-        instance = this;
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(this);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+
+        originalSize = mask.rectTransform.rect.width;
     }
 
     private void Start()

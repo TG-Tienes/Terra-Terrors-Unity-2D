@@ -28,8 +28,9 @@ public class Item : ScriptableObject
     public ItemRarity rarity;
     public ItemType type;
 
-    public virtual void Use() {}
- 
+    public int price;
+    public virtual void Use() { }
+
     public virtual void Drop()
     {
         Inventory.instance.RemoveItem(this);

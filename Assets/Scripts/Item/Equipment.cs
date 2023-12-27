@@ -13,7 +13,7 @@ public enum EquipType
 public class Equipment : Item
 {
     public EquipType equipType;
- 
+
     public int attackModifier;
     public int defenseModifier;
 

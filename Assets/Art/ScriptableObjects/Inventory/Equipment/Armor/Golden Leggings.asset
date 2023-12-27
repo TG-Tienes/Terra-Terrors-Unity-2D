@@ -19,6 +19,7 @@ MonoBehaviour:
   description: 
   rarity: 1
   type: 1
+  price: 3000
   equipType: 2
   attackModifier: 0
   defenseModifier: 30

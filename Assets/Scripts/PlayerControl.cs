@@ -5,7 +5,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class PlayerControl : MonoBehaviour
+public class PlayerControl : MonoBehaviour, IDataPersistence
 {
     public Animator animator;
     public float speed = 1.5f;
@@ -24,6 +24,8 @@ public class PlayerControl : MonoBehaviour
     private int[] levelList = { 100, 200, 300 };
     public float invincibleTime = 10.0f;
     private float currentTime;
+
+    //Handl Exp Current
     int expCurrent = 0;
     public int exp
     {
@@ -51,18 +53,76 @@ public class PlayerControl : MonoBehaviour
         set { bloodCurrent = value; }
     }
 
+
+    //Handle Blood Bar 
+    int coinCurrent;
+
+    public int coin
+    {
+        get { return coinCurrent; }
+        set { coinCurrent = value; }
+    }
+
+
+    public void LoadData(GameData data)
+    {
+        this.level = data.level;
+        this.expCurrent = data.exp;
+        this.bloodCurrent = data.blood;
+        this.manaCurrent = data.mana;
+        this.coinCurrent = data.coin;
+    }
+    public void SaveData(ref GameData data)
+    {
+        data.level = this.level;
+        data.exp = this.expCurrent;
+        data.blood = this.bloodCurrent;
+        data.mana = this.manaCurrent;
+        data.coin = this.coinCurrent;
+    }
+
+
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        playerInventoryCanvas_isActive = playerInventoryCanvas.isActiveAndEnabled;
+
 
         currentTime = invincibleTime;
-        ExpBar.instance.SetValue(0);
 
-        manaCurrent = manaMax;
-        bloodCurrent = bloodMax;
-        // playerInventoryCanvas_isActive = playerInventoryCanvas.isActiveAndEnabled;
+        ExpBar expBar = ExpBar.instance;
+        ManaBar manaBar = ManaBar.instance;
+        BloodBar bloodBar = BloodBar.instance;
+
+        if (bloodBar != null)
+        {
+            bloodBar.gameObject.SetActive(true);
+            bloodBar.SetValue(1);
+        }
+        else
+        {
+            Debug.LogError("BloodBar instance is not properly initialized.");
+        }
+
+        if (manaBar != null)
+        {
+            manaBar.SetValue(0.9f);
+        }
+        else
+        {
+            Debug.LogError("ManaBar instance is not properly initialized.");
+        }
+
+        if (expBar != null)
+        {
+            expBar.SetValue(expCurrent / (float)levelList[level - 1]);
+        }
+        else
+        {
+            Debug.LogError("ExpBar instance is not properly initialized.");
+        }
     }
 
 
@@ -93,8 +153,6 @@ public class PlayerControl : MonoBehaviour
 
         recoverInTimeRange();
     }
-
-
     private void FixedUpdate()
     {
         Vector2 pos = transform.position;

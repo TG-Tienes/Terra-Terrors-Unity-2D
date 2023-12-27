@@ -8,7 +8,7 @@ public class MainMenuController : MonoBehaviour
     // start choose world scene
     public void playGame()
     {
-        SceneManager.LoadScene("Choose Level World 1");
+        SceneManager.LoadScene("Choose World");
     }
 
     // close entire app

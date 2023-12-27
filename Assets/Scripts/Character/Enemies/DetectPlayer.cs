@@ -29,7 +29,7 @@ public class DetectPlayer : MonoBehaviour
         _isCollided = false;
         _moveSpeed = _enemyCharacterStats._speed;
         _animator = _enemyCharacterStats._animator;
-        
+
         while (true)
         {
             _mainCharacter = GameObject.FindWithTag("Main Character");
@@ -43,7 +43,7 @@ public class DetectPlayer : MonoBehaviour
     {
         if (_isDetected && !_isStop)
         {
-            Vector2 direction = (_mainCharacter.transform.position - transform.position ).normalized;
+            Vector2 direction = (_mainCharacter.transform.position - transform.position).normalized;
             float angle = Mathf.Atan2(direction.x, direction.y + _distanceBetweenPlayer);
 
             _rb2d.rotation = angle;
@@ -106,7 +106,7 @@ public class DetectPlayer : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag.Equals("Main Character"))
+        if (collision.gameObject.tag.Equals("Main Character"))
         {
             _isCollided = true;
         }
@@ -115,7 +115,7 @@ public class DetectPlayer : MonoBehaviour
     private void OnCollisionExit2D(Collision2D collision)
     {
         _isCollided = false;
-        
+
     }
 
 }
