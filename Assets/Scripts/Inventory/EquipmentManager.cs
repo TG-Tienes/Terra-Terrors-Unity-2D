@@ -6,8 +6,6 @@ using Unity.VisualScripting;
 
 public class EquipmentManager : MonoBehaviour
 {
-    public Dictionary<EquipType, int> equipTypeDictionary;
-
     #region Singleton
     public static EquipmentManager instance;
  
@@ -25,6 +23,7 @@ public class EquipmentManager : MonoBehaviour
     #endregion Singleton
  
     public Equipment[] currentEquipment;
+    public Dictionary<EquipType, int> equipTypeDictionary;
 
     public delegate void OnEquipmentChangedCallback();
     public OnEquipmentChangedCallback onEquipmentChangedCallback;
@@ -54,14 +53,34 @@ public class EquipmentManager : MonoBehaviour
     public void Equip(Equipment newEquipment)
     {   
         // If equipment slot is currently empty
-        if (currentEquipment[equipTypeDictionary[newEquipment.equipType]] == null)
+        if (newEquipment.equipType == EquipType.WEAPON)
         {
-            // Update player stats
-            StatsManager.instance.UpdateCharacterStatus(newEquipment, null);
+            if (currentEquipment[3] == null)
+            {
+                AddEquipment(3, newEquipment);
+                // Update UI
+                onEquipmentChangedCallback?.Invoke();
+            }
+            else if (currentEquipment[4] == null)
+            {
+                AddEquipment(4, newEquipment);
+                // Update UI
+                onEquipmentChangedCallback?.Invoke();
+            }
+            else
+            {
+                SwapEquipment(4, newEquipment);
+                // Update UI
+                onEquipmentChangedCallback?.Invoke();
+            }
+        }
+        else if (currentEquipment[equipTypeDictionary[newEquipment.equipType]] == null)
+        {
             // Get slot index
             int slotIndex = equipTypeDictionary[newEquipment.equipType];
             // Add new equipment to the list
-            currentEquipment[slotIndex] = newEquipment;
+            AddEquipment(slotIndex, newEquipment);
+            // Update UI
             onEquipmentChangedCallback?.Invoke();
         }
         // If equipment slot is occupied by another equipment
@@ -69,22 +88,37 @@ public class EquipmentManager : MonoBehaviour
         {
             // Get slot index
             int slotIndex = equipTypeDictionary[newEquipment.equipType];
-            // Unequip old equipment of same slot
-            Equipment oldEquipment = currentEquipment[slotIndex];
-            Unequip(oldEquipment);
-            // Update player stats
-            StatsManager.instance.UpdateCharacterStatus(newEquipment, null);
-            // Add new equipment to the list
-            currentEquipment[slotIndex] = newEquipment;
+            // Swap equipment
+            SwapEquipment(slotIndex, newEquipment);
+            // Update UI
             onEquipmentChangedCallback?.Invoke();
         }
     }
 
-    public void Unequip(Equipment oldEquipment)
+    public void Unequip(int slotIndex, Equipment oldEquipment)
     {
         Inventory.instance.AddItem(oldEquipment);
-        currentEquipment[equipTypeDictionary[oldEquipment.equipType]] = null;
+        currentEquipment[slotIndex] = null;
         StatsManager.instance.UpdateCharacterStatus(null, oldEquipment);
         onEquipmentChangedCallback?.Invoke();
+    }
+
+    public void AddEquipment(int slotIndex, Equipment newEquipment)
+    {
+        // Update player stats
+        StatsManager.instance.UpdateCharacterStatus(newEquipment, null);
+        // Add new equipment to the list
+        currentEquipment[slotIndex] = newEquipment;
+    }
+
+    public void SwapEquipment(int slotIndex, Equipment newEquipment)
+    {
+        // Unequip old equipment of same slot
+        Equipment oldEquipment = currentEquipment[slotIndex];
+        Unequip(slotIndex, oldEquipment);
+        // Update player stats
+        StatsManager.instance.UpdateCharacterStatus(newEquipment, null);
+        // Add new equipment to the list
+        currentEquipment[slotIndex] = newEquipment;
     }
 }

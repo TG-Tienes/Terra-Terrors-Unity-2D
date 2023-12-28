@@ -29,7 +29,7 @@ public class EquipmentSlotClick : MonoBehaviour
         if (currentTime - lastClickTime < doubleClickThreshold)
         {
             Equipment equipmentToBeRemoved = EquipmentManager.instance.currentEquipment[slotIndex];
-            EquipmentManager.instance.Unequip(equipmentToBeRemoved);
+            EquipmentManager.instance.Unequip(slotIndex, equipmentToBeRemoved);
         }
 
         lastClickTime = currentTime;

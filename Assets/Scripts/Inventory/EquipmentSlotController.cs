@@ -1,17 +1,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEngine.UI;  
+using UnityEngine.UI;
+using System;
 
 [DefaultExecutionOrder(-50)]
 public class EquipmentSlotController : MonoBehaviour
 {
+    public int slotIndex;
     public List<Image> spriteFields;
     public List<Image> rarityBackgroundFields;
+
+    public List<Image> weaponSpriteFields;
 
     public void Start()
     {
         EquipmentManager.instance.onEquipmentChangedCallback += UpdateAllSlots;
+    }
+
+    public void UpdateWeaponSlot(int slotIndex, Sprite sprite)
+    {
+        weaponSpriteFields[slotIndex].enabled = true;
+        weaponSpriteFields[slotIndex].sprite = sprite;
     }
 
     public void UpdateSlot(int slotIndex, Sprite sprite, ItemRarity rarity)
@@ -54,7 +64,12 @@ public class EquipmentSlotController : MonoBehaviour
         {
             if (equipment != null)
             {
-                UpdateSlot(EquipmentManager.instance.equipTypeDictionary[equipment.equipType], equipment.sprite, equipment.rarity);
+                slotIndex = Array.IndexOf(EquipmentManager.instance.currentEquipment, equipment);
+                UpdateSlot(slotIndex, equipment.sprite, equipment.rarity);
+                if (equipment.equipType == EquipType.WEAPON)
+                {
+                    UpdateWeaponSlot(slotIndex - 3, equipment.sprite);
+                }
             }
         }
     }
@@ -68,6 +83,10 @@ public class EquipmentSlotController : MonoBehaviour
         foreach (Image rarityBackgroundField in rarityBackgroundFields)
         {
             rarityBackgroundField.color = GlobalColor.color_SlotDefault;
+        }
+        foreach (Image weaponSpriteField in weaponSpriteFields)
+        {
+            weaponSpriteField.enabled = false;
         }
     }
 }

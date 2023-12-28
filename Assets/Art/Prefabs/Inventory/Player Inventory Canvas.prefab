@@ -2335,6 +2335,7 @@ MonoBehaviour:
   - {fileID: 4988895607210835830}
   - {fileID: 4129091947633336863}
   - {fileID: 8998117963268317133}
+  weaponSpriteFields: []
 --- !u!1 &5616732894641039431
 GameObject:
   m_ObjectHideFlags: 0
@@ -2961,7 +2962,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8822058980216713740}
   m_HandleRect: {fileID: 17037681079987674}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
