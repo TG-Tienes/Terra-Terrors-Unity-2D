@@ -18,6 +18,7 @@ public class StatsManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
+            Reset();
             DontDestroyOnLoad(this);
         }
         else
@@ -28,6 +29,14 @@ public class StatsManager : MonoBehaviour
 
     #endregion
 
+    public void Reset()
+    {
+        playerStats.mana = playerStats.baseMana;
+        playerStats.health = playerStats.baseHealth;
+        playerStats.attack = playerStats.baseAttack;
+        playerStats.defense = playerStats.baseDefense;
+    }
+
     public void UpdateCharacterStatus(Equipment newItem, Equipment oldItem)
     {
         if (oldItem != null)
@@ -36,8 +45,11 @@ public class StatsManager : MonoBehaviour
             playerStats.defense -= oldItem.defenseModifier;
         }
 
-        playerStats.attack = playerStats.baseAttack + newItem.attackModifier;
-        playerStats.defense = playerStats.baseDefense + newItem.defenseModifier;
+        if (newItem != null)
+        {
+            playerStats.attack += newItem.attackModifier;
+            playerStats.defense += newItem.defenseModifier;
+        }
 
         onStatusChangedCallback.Invoke();
     }

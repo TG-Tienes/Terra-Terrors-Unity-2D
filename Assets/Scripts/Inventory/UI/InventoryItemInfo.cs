@@ -6,8 +6,6 @@ using System;
 
 public class InventoryItemInfo : MonoBehaviour
 {
-    public List<Color> colorList = new List<Color>();
-
     public int slotIndex;
     private Item currentItem;
 
@@ -57,22 +55,22 @@ public class InventoryItemInfo : MonoBehaviour
             {
                 case ItemRarity.COMMON:
                 {
-                    nameField.color = colorList[0];
+                    nameField.color = GlobalColor.color_Common;
                     break;
                 }
                 case ItemRarity.RARE:
                 {
-                    nameField.color = colorList[1];
+                    nameField.color = GlobalColor.color_Rare;
                     break;
                 }
                 case ItemRarity.EPIC:
                 {
-                    nameField.color = colorList[2];
+                    nameField.color = GlobalColor.color_Epic;
                     break;
                 }
                 case ItemRarity.LEGENDARY:
                 {
-                    nameField.color = colorList[3];
+                    nameField.color = GlobalColor.color_Legendary;
                     break;
                 }
                 default:

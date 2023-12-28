@@ -15,7 +15,7 @@ MonoBehaviour:
   ID: 2
   name: Golden Bow
   quantity: 1
-  sprite: {fileID: -60198305, guid: 577953ff403fe7b44bcfea38724816af, type: 3}
+  sprite: {fileID: 1469526603, guid: bec99060a4a80f6428006e482d8e8e38, type: 3}
   description: 
   rarity: 1
   type: 1
