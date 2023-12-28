@@ -10,15 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c0af41c0f9830c2499d262f0e779931d, type: 3}
-  m_Name: New Equipment
+  m_Name: Blue Mystic
   m_EditorClassIdentifier: 
-  ID: 3
-  name: 
-  quantity: 10
-  sprite: {fileID: 0}
+  ID: 2
+  name: 'Blue Mystic '
+  quantity: 1
+  sprite: {fileID: 1415376041, guid: 577953ff403fe7b44bcfea38724816af, type: 3}
   description: 
   rarity: 2
   type: 1
-  equipType: 0
+  price: 8500
+  equipType: 3
   attackModifier: 5
-  defenseModifier: 1
+  defenseModifier: 0

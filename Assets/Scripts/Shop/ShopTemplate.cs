@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class ShopTemplate : MonoBehaviour
 {
     public Image imgItem;
+    public Image rareItem;
     public TMP_Text nameItem;
     public TMP_Text priceItem;
 }

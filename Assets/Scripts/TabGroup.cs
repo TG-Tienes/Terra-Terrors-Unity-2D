@@ -55,7 +55,7 @@ public class TabGroup : MonoBehaviour
 
                 if (objectsToSwap[i].name == "ArmorScroll")
                     ShopManager.instance.LoadPanels("armor");
-                if (objectsToSwap[i].name == "  WeaponScroll")
+                if (objectsToSwap[i].name == "WeaponScroll")
                     ShopManager.instance.LoadPanels("weapon");
                 if (objectsToSwap[i].name == "ConsumableScroll")
                     ShopManager.instance.LoadPanels("consumable");
