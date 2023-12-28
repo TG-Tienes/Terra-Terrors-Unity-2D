@@ -9,7 +9,7 @@ public enum ShopItemType
     CONSUMABLE
 }
 
-[DefaultExecutionOrder(-50)]
+
 public class ShopItemClick : MonoBehaviour
 {
     public Button button;

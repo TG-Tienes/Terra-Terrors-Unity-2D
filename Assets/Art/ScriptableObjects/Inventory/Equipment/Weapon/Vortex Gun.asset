@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0af41c0f9830c2499d262f0e779931d, type: 3}
   m_Name: Vortex Gun
   m_EditorClassIdentifier: 
-  ID: 27
+  ID: 29
   name: Vortex Gun
   quantity: 1
   sprite: {fileID: -567366603, guid: bef96cc8ac583e94c9d715ef089e3f09, type: 3}

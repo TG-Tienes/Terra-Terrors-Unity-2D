@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0af41c0f9830c2499d262f0e779931d, type: 3}
   m_Name: Strong Gun
   m_EditorClassIdentifier: 
-  ID: 2
+  ID: 28
   name: Strong Gun
   quantity: 1
   sprite: {fileID: 1666335082, guid: bef96cc8ac583e94c9d715ef089e3f09, type: 3}

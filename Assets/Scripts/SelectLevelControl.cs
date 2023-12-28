@@ -59,7 +59,7 @@ public class SelectLevelControl : MonoBehaviour
     public void BackGame()
     {
         //SceneManager.LoadScene(2);
-        SceneManager.LoadScene("Main Menu");
+        SceneManager.LoadScene("Choose World");
 
     }
 

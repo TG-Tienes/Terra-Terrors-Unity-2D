@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using UnityEngine;
 
+[DefaultExecutionOrder(-100)]
 public class DataPersistenceManager : MonoBehaviour
 {
     [Header("File Storage Config")]
@@ -49,7 +50,7 @@ public class DataPersistenceManager : MonoBehaviour
             dataPersistenceObj.LoadData(gameData);
         }
 
-        Debug.Log(gameData.blood);
+        Debug.Log(gameData.coin);
     }
 
     public void SaveGame()
