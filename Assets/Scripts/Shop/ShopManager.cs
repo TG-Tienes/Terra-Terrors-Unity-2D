@@ -6,8 +6,8 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-[DefaultExecutionOrder(-200)]
-public class ShopManager : MonoBehaviour
+[DefaultExecutionOrder(-50)]
+public class ShopManager : MonoBehaviour, IDataPersistence
 {
     Color colorRare(string rare)
     {
@@ -28,7 +28,7 @@ public class ShopManager : MonoBehaviour
         return color;
     }
 
-    public int coin;
+    int coinCurrent;
     private TMP_Text coinUI;
     public List<Equipment> armorListItem;
     public List<Equipment> weaponListItem;
@@ -47,6 +47,7 @@ public class ShopManager : MonoBehaviour
     public float displayTime = 2f;
     public GameObject notEnoughCoinBox;
 
+    NumberFormatter formatter;
     #region Singleton
     public static ShopManager instance;
     void Awake()
@@ -54,7 +55,7 @@ public class ShopManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(transform.root.gameObject);
+            formatter = new NumberFormatter();
         }
         else
         {
@@ -63,11 +64,20 @@ public class ShopManager : MonoBehaviour
     }
 
     #endregion Singleton
-
+    public void LoadData(GameData data)
+    {
+        this.coinCurrent = data.coin;
+    }
+    public void SaveData(ref GameData data)
+    {
+        data.coin = this.coinCurrent;
+    }
     private void Start()
     {
+        Debug.Log(coinCurrent + "Coin current");
+
         coinUI = GameObject.Find("CoinPlayer").GetComponent<TMP_Text>();
-        coinUI.text = coin.ToString();
+        coinUI.text = formatter.FormatNumber(coinCurrent);
 
         for (int i = 0; i < weaponListItem.Count; i++)
             shopWeaponPanelsItem[i].SetActive(true);
@@ -81,15 +91,15 @@ public class ShopManager : MonoBehaviour
         {
             for (int i = 0; i < weaponListItem.Count; i++)
             {
+                weaponListItem[i].ID = i;
                 if (weaponListItem[i].quantity != 0)
                 {
-                    weaponListItem[i].ID = i;
                     shopWeaponPanelsItem[i].SetActive(true);
 
                     shopWeaponPanels[i].rareItem.color = colorRare(weaponListItem[i].rarity.ToString());
                     shopWeaponPanels[i].nameItem.text = weaponListItem[i].name;
                     shopWeaponPanels[i].imgItem.sprite = weaponListItem[i].sprite;
-                    shopWeaponPanels[i].priceItem.text = weaponListItem[i].price.ToString();
+                    shopWeaponPanels[i].priceItem.text = formatter.FormatNumber(weaponListItem[i].price);
                 }
                 else
                 {
@@ -102,15 +112,15 @@ public class ShopManager : MonoBehaviour
         {
             for (int i = 0; i < armorListItem.Count; i++)
             {
+                armorListItem[i].ID = i;
                 if (armorListItem[i].quantity != 0)
                 {
-                    armorListItem[i].ID = i;
                     shopArmorPanelsItem[i].SetActive(true);
 
                     shopArmorPanels[i].rareItem.color = colorRare(armorListItem[i].rarity.ToString());
                     shopArmorPanels[i].nameItem.text = armorListItem[i].name;
                     shopArmorPanels[i].imgItem.sprite = armorListItem[i].sprite;
-                    shopArmorPanels[i].priceItem.text = armorListItem[i].price.ToString();
+                    shopArmorPanels[i].priceItem.text = formatter.FormatNumber(armorListItem[i].price);
                 }
                 else
                 {
@@ -121,6 +131,7 @@ public class ShopManager : MonoBehaviour
 
         if (typePanel == "consumable")
         {
+
             for (int i = 0; i < consumableListItem.Count; i++)
             {
                 consumableListItem[i].ID = i;
@@ -129,7 +140,7 @@ public class ShopManager : MonoBehaviour
                 shopConsumablePanels[i].rareItem.color = colorRare(consumableListItem[i].rarity.ToString());
                 shopConsumablePanels[i].nameItem.text = consumableListItem[i].name;
                 shopConsumablePanels[i].imgItem.sprite = consumableListItem[i].sprite;
-                shopConsumablePanels[i].priceItem.text = consumableListItem[i].price.ToString();
+                shopConsumablePanels[i].priceItem.text = formatter.FormatNumber(consumableListItem[i].price);
             }
         }
     }
@@ -146,7 +157,7 @@ public class ShopManager : MonoBehaviour
 
     public void Purchased(int priceItem, int idItem, string typeItem)
     {
-        if (priceItem > coin)
+        if (priceItem > coinCurrent)
         {
             itemDetail.SetActive(false);
             blurBG.SetActive(false);
@@ -160,7 +171,6 @@ public class ShopManager : MonoBehaviour
             {
                 shopWeaponPanelsItem[i].SetActive(false);
                 shopArmorPanelsItem[i].SetActive(false);
-                shopConsumablePanelsItem[i].SetActive(false);
             }
 
             itemDetail.SetActive(false);
@@ -168,21 +178,17 @@ public class ShopManager : MonoBehaviour
             notEnoughCoinBox.SetActive(true);
 
             //Update money
-            coin -= priceItem;
-            coinUI.text = coin.ToString();
-
+            coinCurrent -= priceItem;
+            coinUI.text = formatter.FormatNumber(coinCurrent);
             //Remove Item
             if (typeItem == "WEAPON")
             {
                 weaponListItem[idItem].quantity -= 1;
-                weaponListItem.RemoveAt(idItem);
-
                 LoadPanels("weapon");
             }
             if (typeItem == "ARMOR")
             {
                 armorListItem[idItem].quantity -= 1;
-                armorListItem.RemoveAt(idItem);
 
                 LoadPanels("armor");
             }
