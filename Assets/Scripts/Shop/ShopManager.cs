@@ -94,7 +94,6 @@ public class ShopManager : MonoBehaviour
                 else
                 {
                     shopWeaponPanelsItem[i].SetActive(false);
-                    weaponListItem[i].ID = -1;
                 }
             }
         }
@@ -116,7 +115,6 @@ public class ShopManager : MonoBehaviour
                 else
                 {
                     shopArmorPanelsItem[i].SetActive(false);
-                    armorListItem[i].ID = -1;
                 }
             }
         }
