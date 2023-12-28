@@ -18,7 +18,6 @@ public class DetectPlayer : MonoBehaviour
     public float _distanceBetweenPlayer = 0;
     [SerializeField] private bool _isRangeType = false;
     public bool _isBoss;
-    public GameObject _attackEffect1;
     private bool _isStop = false;
 
     // Start is called before the first frame update
