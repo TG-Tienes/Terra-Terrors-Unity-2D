@@ -55,7 +55,7 @@ public class DetectPlayer : MonoBehaviour
         _animator.SetFloat("Speed", _moveDirection.magnitude);
         float distanceVal = Vector2.Distance(transform.position, _mainCharacter.transform.position);
 
-        if (_distanceBetweenPlayer >= distanceVal)
+        if (_distanceBetweenPlayer >= distanceVal || _enemyCharacterStats._canDestroyGameObject)
         {
             _isStop = true;
         }

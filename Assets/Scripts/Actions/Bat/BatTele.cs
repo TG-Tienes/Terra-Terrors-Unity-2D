@@ -24,8 +24,8 @@ public class BatTele : MonoBehaviour
         Vector2 playerPos = _player.transform.position;
         float distance = Vector2.Distance(transform.position, playerPos);
 
-        //if (distance < 0.5)
-        //{
+        if (distance < 5)
+        {
             timer += Time.deltaTime;
 
             if (timer > 5)
@@ -33,8 +33,9 @@ public class BatTele : MonoBehaviour
                 _animator.SetTrigger("Teleport");
                 timer = 0;
             }
-        //}
-        if(_canTeleport)
+        }
+
+        if (_canTeleport)
         {
             Vector2 tempPos = playerPos;
             tempPos.x += 0.2f;

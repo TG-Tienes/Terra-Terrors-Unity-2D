@@ -7,16 +7,15 @@ public class BasicEnemyStats : MonoBehaviour
 {
     Rigidbody2D _rigidbody;
     Transform target;
-    float timer;
 
     public float _speed;
     public Animator _animator;
     [SerializeField] BasicHealthBar healthBar;
     [SerializeField] float _armorStat;
     [SerializeField] float health, maxHealth;
-    [SerializeField] float _showDeadBodyTime;
-    [SerializeField] bool _isRangeType = false;
     private GameObject _mainCharacter;
+    public GameObject _damageTakenText;
+    public bool _canDestroyGameObject = false;
 
 
     // Start is called before the first frame update
@@ -32,11 +31,18 @@ public class BasicEnemyStats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
-        if (health < 0 && timer > _showDeadBodyTime)
+        if (_canDestroyGameObject)
         {
-            if (timer > _showDeadBodyTime)
-                Destroy(gameObject);
+            Destroy(gameObject);
+        }
+
+        if (health <= 0 && !_canDestroyGameObject)
+        {
+            Debug.Log("DEAD HIHI");
+            _animator.SetTrigger("Dead");
+
+            //Add exp for main character
+            _mainCharacter.GetComponent<PlayerControl>().handleExp(15);
         }
     }
 
@@ -47,19 +53,11 @@ public class BasicEnemyStats : MonoBehaviour
             // formula base on LOL physical armor
             float realDamageAmountTaken = damageAmount * 100 / (100 + _armorStat);
 
+            DamageIdicator idicator = Instantiate(_damageTakenText, transform.position, Quaternion.identity).GetComponent<DamageIdicator>();
+            idicator.SetDamageText(realDamageAmountTaken);
+
             health -= realDamageAmountTaken;
             healthBar.updateHealthBar(health, maxHealth);
-        }
-
-        _animator.SetTrigger("Hit");
-
-        if (health < 0)
-        {
-            _animator.SetTrigger("Dead");
-            timer = 0;
-
-            //Add exp for main character
-            _mainCharacter.GetComponent<PlayerControl>().handleExp(15);
         }
     }
 
@@ -75,5 +73,10 @@ public class BasicEnemyStats : MonoBehaviour
         {
             _mainCharacter.GetComponent<PlayerControl>().handleBlood(-15);
         }
+    }
+
+    public void removeBody()
+    {
+        _canDestroyGameObject = true;
     }
 }
