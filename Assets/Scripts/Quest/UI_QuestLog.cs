@@ -31,6 +31,10 @@ public class UI_QuestLog : MonoBehaviour
         UpdateQuests(new List<Quest>(), new List<Quest>());
     }
 
+    private void Start() {
+            // questLogObject.SetActive(!questLogObject.activeSelf);
+    }
+
     private void Update() {
         if (Input.GetKeyDown(KeyCode.M))
             questLogObject.SetActive(!questLogObject.activeSelf);
@@ -95,6 +99,7 @@ public class UI_QuestLog : MonoBehaviour
         Button button = Instantiate(questInListPrefab, listTransform).GetComponent<Button>();
         button.image.rectTransform.sizeDelta = new Vector2(0, 80);
         button.image.rectTransform.anchoredPosition = new Vector2(0, -80 * index);
+        button.image.color = new Color(0, 0, 0, 0);
         button.onClick.AddListener(delegate { QuestPress(button); });
         return button;
     }

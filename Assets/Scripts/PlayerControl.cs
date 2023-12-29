@@ -51,6 +51,19 @@ public class PlayerControl : MonoBehaviour
         set { bloodCurrent = value; }
     }
 
+     private struct QuestInfo
+    {
+        public int questType;
+        public string questName;
+        public string questDescription;
+    }
+
+    private QuestInfo[] quests = {
+        new QuestInfo { questType = 2, questName = "Collect Special Items", questDescription = "Collect unique, elusive items scattered throughout the realm. These special artifacts possess mystical qualities and are crucial for unlocking hidden powers or crafting powerful gear." },
+        new QuestInfo { questType = 0, questName = "Kill Boss", questDescription = "Overcome the challenge posed by the level-specific mini-bosses. These adversaries, while smaller in stature, hold significant power and guard valuable treasures or pathways deeper into the world." },
+        new QuestInfo { questType = 0, questName = "Kill 10 Monsters", questDescription = "Engage and eliminate ten formidable creatures wandering the lands. These adversaries range from ferocious beasts to cunning foes, each presenting a unique threat and offering valuable rewards upon their defeat." }
+    };
+
     // Start is called before the first frame update
     void Start()
     {
@@ -120,27 +133,9 @@ public class PlayerControl : MonoBehaviour
 
    private void AddQuest()
     {
-        int [] questType = {
-            2,
-            0,
-            0,
-        };
-
-        string[] questNames = {
-        "Collect Special Items",
-        "Kill Boss",
-        "Kill 10 Monster"
-        };
-
-        string[] questDescriptions = {
-            "Collect unique, elusive items scattered throughout the realm. These special artifacts possess mystical qualities and are crucial for unlocking hidden powers or crafting powerful gear.",
-            "Overcome the challenge posed by the level-specific mini-bosses. These adversaries, while smaller in stature, hold significant power and guard valuable treasures or pathways deeper into the world.",
-            "Engage and eliminate ten formidable creatures wandering the lands. These adversaries range from ferocious beasts to cunning foes, each presenting a unique threat and offering valuable rewards upon their defeat."
-        };
-
-        for (int i = 0; i < questNames.Length; i++)
+       foreach (var quest in quests)
         {
-            QuestLog.AddQuest(CreateQuest(questNames[i], questDescriptions[i], questType[i]));
+            QuestLog.AddQuest(CreateQuest(quest.questName, quest.questDescription, quest.questType));
         }
     }
 
