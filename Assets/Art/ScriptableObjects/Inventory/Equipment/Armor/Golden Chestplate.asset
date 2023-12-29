@@ -15,7 +15,8 @@ MonoBehaviour:
   ID: 2001
   name: Golden Chestplate
   quantity: 1
-  sprite: {fileID: -338566035, guid: 2804f4f7799ccd24aa62eaa9e8f12ea0, type: 3}
+  sprite: {fileID: -1767334201, guid: 81fe1ddfc2cf6da4594e1909a1e183ae, type: 3}
+  spriteID: 31
   description: 
   rarity: 1
   type: 1
@@ -23,3 +24,5 @@ MonoBehaviour:
   equipType: 1
   attackModifier: 0
   defenseModifier: 40
+  manaUsage: 0
+  fireRate: 0

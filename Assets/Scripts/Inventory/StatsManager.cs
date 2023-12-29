@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Dynamic;
+using System.IO;
 using UnityEngine;
 
 [DefaultExecutionOrder(-100)]
@@ -18,7 +20,6 @@ public class StatsManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            Reset();
             DontDestroyOnLoad(this);
         }
         else
@@ -29,12 +30,14 @@ public class StatsManager : MonoBehaviour
 
     #endregion
 
-    public void Reset()
+    public void Start()
     {
-        playerStats.mana = playerStats.baseMana;
-        playerStats.health = playerStats.baseHealth;
-        playerStats.attack = playerStats.baseAttack;
-        playerStats.defense = playerStats.baseDefense;
+        LoadPlayerData();
+    }
+
+    public void OnDestroy()
+    {
+        SavePlayerData();
     }
 
     public void UpdateCharacterStatus(Equipment newItem, Equipment oldItem)
@@ -51,6 +54,29 @@ public class StatsManager : MonoBehaviour
             playerStats.defense += newItem.defenseModifier;
         }
 
-        onStatusChangedCallback.Invoke();
+        onStatusChangedCallback?.Invoke();
+    }
+
+    private const string path = "D:/Unity/GameData/playerData.json";
+
+    public void SavePlayerData()
+    {
+        string json = JsonUtility.ToJson(instance.playerStats);
+        File.WriteAllText(path, json);
+    }
+
+    public static void LoadPlayerData()
+    {
+        if (File.Exists(path))
+        {
+            string json = File.ReadAllText(path);
+            instance.playerStats = PlayerStats.LoadFromJson(json, instance.playerStats);
+
+            Debug.Log("Player Stats loaded from JSON file.");
+        }
+        else
+        {
+            Debug.LogWarning("Player data not found. Using default player stats.");
+        }
     }
 }

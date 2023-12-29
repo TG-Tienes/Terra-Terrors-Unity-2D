@@ -1,10 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
+[DefaultExecutionOrder(0)]
 public class PlayerControl : MonoBehaviour
 {
     public Animator animator;
@@ -19,8 +21,10 @@ public class PlayerControl : MonoBehaviour
     public Canvas playerInventoryCanvas;
     private bool playerInventoryCanvas_isActive;
 
+    public static PlayerStats playerStats;
+
     //Handle EXP Bar
-    private int level = 1;
+    private int level;
     private int[] levelList = { 100, 200, 300 };
     public float invincibleTime = 10.0f;
     private float currentTime;
@@ -32,7 +36,7 @@ public class PlayerControl : MonoBehaviour
     }
 
     //Handle Mana Bar
-    public int manaMax = 50;
+    public int manaMax;
     int manaCurrent;
 
     public int mana
@@ -42,7 +46,7 @@ public class PlayerControl : MonoBehaviour
     }
 
     //Handle Blood Bar 
-    public int bloodMax = 100;
+    public int bloodMax;
     int bloodCurrent;
 
     public int blood
@@ -73,11 +77,15 @@ public class PlayerControl : MonoBehaviour
         currentTime = invincibleTime;
         ExpBar.instance.SetValue(0);
 
+        playerStats = StatsManager.instance.playerStats;
+        level = playerStats.level;
+        manaMax = playerStats.mana;
+        bloodMax = playerStats.health;
+
         manaCurrent = manaMax;
         bloodCurrent = bloodMax;
         // playerInventoryCanvas_isActive = playerInventoryCanvas.isActiveAndEnabled;
         AddQuest();
-
     }
 
 
@@ -105,6 +113,23 @@ public class PlayerControl : MonoBehaviour
             playerInventoryCanvas.gameObject.SetActive(playerInventoryCanvas_isActive);
             miniMapCanvas.gameObject.SetActive(!playerInventoryCanvas_isActive);
         }
+        
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            if (EquipmentManager.instance.currentEquipment[3] != null)
+            {
+                EquipmentManager.instance.currentWeapon = EquipmentManager.instance.currentEquipment[3];
+                WeaponSlotController.instance.UpdateWeaponSlots(0);
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            if (EquipmentManager.instance.currentEquipment[4] != null)
+            {
+                EquipmentManager.instance.currentWeapon = EquipmentManager.instance.currentEquipment[4];
+                WeaponSlotController.instance.UpdateWeaponSlots(1);
+            }
+        }
 
         recoverInTimeRange();
     }
@@ -118,7 +143,7 @@ public class PlayerControl : MonoBehaviour
         rb.MovePosition(pos);
     }
 
-  private Quest CreateQuest(string questName, string questDescription, int type) {
+    private Quest CreateQuest(string questName, string questDescription, int type) {
         Quest q = new Quest();
         q.questName = questName;
         q.questDescription = questDescription;
@@ -164,8 +189,10 @@ public class PlayerControl : MonoBehaviour
 
     public void handleBlood(int dataBlood)
     {
-        if (dataBlood < 0)
+        if (dataBlood < 0) {
             animator.SetTrigger("Hit");
+            dataBlood *= (int) (100f / (100 + StatsManager.instance.playerStats.defense));
+        }
         bloodCurrent += dataBlood;
 
         if (bloodCurrent <= 0)

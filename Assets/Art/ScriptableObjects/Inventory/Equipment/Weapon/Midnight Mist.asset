@@ -21,5 +21,7 @@ MonoBehaviour:
   type: 1
   price: 3200
   equipType: 3
-  attackModifier: 5
+  attackModifier: 20
   defenseModifier: 0
+  manaUsage: 4
+  fireRate: 0.5

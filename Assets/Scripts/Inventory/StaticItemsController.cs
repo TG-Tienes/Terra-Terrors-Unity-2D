@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System;
-using UnityEditor.Build.Content;
 
 [DefaultExecutionOrder(-50)]
 public class StaticItemsController : MonoBehaviour

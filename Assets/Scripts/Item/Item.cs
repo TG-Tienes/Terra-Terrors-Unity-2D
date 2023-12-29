@@ -24,6 +24,7 @@ public class Item : ScriptableObject
     new public string name;
     public int quantity;
     public Sprite sprite;
+    public int spriteID;
     public string description;
     public ItemRarity rarity;
     public ItemType type;
@@ -44,5 +45,26 @@ public class Item : ScriptableObject
             Inventory inventory = player.GetComponent<Inventory>();
             inventory.AddItem(this);
         }
+    }
+
+    // Load data from JSON
+    public static Item LoadFromJson(string jsonString)
+    {
+        Item data = CreateInstance<Item>();
+        JsonUtility.FromJsonOverwrite(jsonString, data);
+
+        if (data.type == ItemType.EQUIPMENT)
+        {
+            Equipment newData = CreateInstance<Equipment>();
+            JsonUtility.FromJsonOverwrite(jsonString, newData);
+            return newData;
+        }
+        if (data.type == ItemType.CONSUMABLE)
+        {
+            Consumable newData = CreateInstance<Consumable>();
+            JsonUtility.FromJsonOverwrite(jsonString, newData);
+            return newData;
+        }
+        return data;
     }
 }

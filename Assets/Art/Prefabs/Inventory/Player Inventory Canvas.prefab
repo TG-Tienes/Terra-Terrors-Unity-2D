@@ -2323,6 +2323,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 870c367b0ddbba3448d243e5f2fb1169, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slotIndex: 0
   spriteFields:
   - {fileID: 2000135883822360058}
   - {fileID: 3087913423390693561}
@@ -2962,7 +2963,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8822058980216713740}
   m_HandleRect: {fileID: 17037681079987674}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:

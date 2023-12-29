@@ -15,7 +15,8 @@ MonoBehaviour:
   ID: 1
   name: Golden Helmet
   quantity: 1
-  sprite: {fileID: -1151317620, guid: 2804f4f7799ccd24aa62eaa9e8f12ea0, type: 3}
+  sprite: {fileID: 711592515, guid: 81fe1ddfc2cf6da4594e1909a1e183ae, type: 3}
+  spriteID: 10
   description: 
   rarity: 1
   type: 1
@@ -23,3 +24,5 @@ MonoBehaviour:
   equipType: 0
   attackModifier: 0
   defenseModifier: 30
+  manaUsage: 0
+  fireRate: 0

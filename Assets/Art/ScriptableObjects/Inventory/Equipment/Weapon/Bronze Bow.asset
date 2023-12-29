@@ -23,3 +23,5 @@ MonoBehaviour:
   equipType: 3
   attackModifier: 2
   defenseModifier: 0
+  manaUsage: 0
+  fireRate: 0.5

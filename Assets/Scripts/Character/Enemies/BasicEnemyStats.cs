@@ -69,7 +69,7 @@ public class BasicEnemyStats : MonoBehaviour
         if (collision.gameObject.tag.Equals("Player Projectile"))
         {
             _animator.SetTrigger("Hit");
-            takeDamage(15);
+            takeDamage(StatsManager.instance.playerStats.attack + EquipmentManager.instance.currentWeapon.attackModifier);
         }
         if (collision.gameObject.tag.Equals("Main Character"))
         {

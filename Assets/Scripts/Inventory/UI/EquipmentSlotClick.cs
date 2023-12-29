@@ -12,15 +12,8 @@ public class EquipmentSlotClick : MonoBehaviour
     public void Start()
     {
         button = GetComponent<Button>();
-        // button.onClick.AddListener(OnSlotClick);
         button.onClick.AddListener(OnSlotDoubleClick);
     }
-
-    // public void OnSlotClick()
-    // {
-    //     InventoryItemInfo.instance.slotIndex = slotIndex;
-    //     InventoryItemInfo.instance.onSelectedItemChangedCallback?.Invoke();
-    // }
 
     public void OnSlotDoubleClick()
     {

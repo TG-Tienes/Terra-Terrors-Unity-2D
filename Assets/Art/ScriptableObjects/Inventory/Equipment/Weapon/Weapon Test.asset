@@ -10,16 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c0af41c0f9830c2499d262f0e779931d, type: 3}
-  m_Name: Magma Drats
+  m_Name: Weapon Test
   m_EditorClassIdentifier: 
-  ID: 2
-  name: Magma Drats
+  ID: 999
+  name: Weapon Ultra Max
   quantity: 1
-  sprite: {fileID: -871098268, guid: 577953ff403fe7b44bcfea38724816af, type: 3}
+  sprite: {fileID: 475595264, guid: bec99060a4a80f6428006e482d8e8e38, type: 3}
   description: 
   rarity: 1
   type: 1
-  price: 7200
+  price: 2000
   equipType: 3
   attackModifier: 5
   defenseModifier: 0
+  manaUsage: 2
+  fireRate: 0.5

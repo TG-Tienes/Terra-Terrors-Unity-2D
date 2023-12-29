@@ -16,6 +16,8 @@ MonoBehaviour:
   name: Diamond Sword
   quantity: 1
   sprite: {fileID: -1690134769, guid: bec99060a4a80f6428006e482d8e8e38, type: 3}
+  spritePath: Assets/Art/Item Sprite/Weapon/Macrune's Weapony/64x64/RPG Weapons Dark
+    Outline 64x64.png
   description: 
   rarity: 2
   type: 1
@@ -23,3 +25,5 @@ MonoBehaviour:
   equipType: 3
   attackModifier: 10
   defenseModifier: 0
+  manaUsage: 0
+  fireRate: 0.5

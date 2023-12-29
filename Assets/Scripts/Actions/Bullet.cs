@@ -8,7 +8,7 @@ public class Bullet : MonoBehaviour
     private Camera mainCam;
     private Rigidbody2D rb2d;
     public float force;
-    public float disappearTime = 0.5f;
+    public float disappearTime = 3f;
     private float timer;
 
     // Start is called before the first frame update

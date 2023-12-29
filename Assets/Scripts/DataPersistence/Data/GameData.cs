@@ -11,6 +11,8 @@ public class GameData
     public int mana;
     public int coin;
 
+    public PlayerStats playerStats;
+
     public GameData()
     {
         this.level = 1;

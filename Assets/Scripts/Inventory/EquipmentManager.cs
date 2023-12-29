@@ -3,7 +3,9 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using Unity.VisualScripting;
+using System.IO;
 
+[DefaultExecutionOrder(-100)]
 public class EquipmentManager : MonoBehaviour
 {
     #region Singleton
@@ -21,7 +23,8 @@ public class EquipmentManager : MonoBehaviour
         }
     }
     #endregion Singleton
- 
+
+    public Equipment currentWeapon;
     public Equipment[] currentEquipment;
     public Dictionary<EquipType, int> equipTypeDictionary;
 
@@ -38,6 +41,12 @@ public class EquipmentManager : MonoBehaviour
             { EquipType.LEGS, 2 },
             { EquipType.WEAPON, 3 },
         };
+        LoadEquipmentData();
+    }
+
+    public void OnDestroy()
+    {
+        SaveEquipmentData();
     }
 
     public void PrintList()
@@ -120,5 +129,51 @@ public class EquipmentManager : MonoBehaviour
         StatsManager.instance.UpdateCharacterStatus(newEquipment, null);
         // Add new equipment to the list
         currentEquipment[slotIndex] = newEquipment;
+    }
+
+    private const string path = "D:/Unity/GameData/equipmentData.json";
+
+    public void SaveEquipmentData()
+    {
+        using (StreamWriter streamWriter = new StreamWriter(path))
+        {
+            foreach (Equipment equipment in instance.currentEquipment)
+            {
+                string json = JsonUtility.ToJson(equipment);
+                streamWriter.WriteLine(json);
+            }
+        }
+    }
+
+    public void LoadEquipmentData()
+    {
+        if (File.Exists(path))
+        {
+            using (StreamReader streamReader = new StreamReader(path))
+            {
+                int index = 0;
+                while (!streamReader.EndOfStream)
+                {
+                    // Read a line from the file
+                    string json = streamReader.ReadLine();
+                    
+                    if (!string.IsNullOrEmpty(json))
+                    {
+                        Equipment equipment = Equipment.LoadEquipmentFromJson(json);
+                        if (equipment != null)
+                        {
+                            instance.Equip(equipment);
+                        }
+                    }
+                    index++;
+                }
+            }
+
+            Debug.Log("Player Equipment loaded from JSON file.");
+        }
+        else
+        {
+            Debug.LogWarning("JSON file not found.");
+        }
     }
 }

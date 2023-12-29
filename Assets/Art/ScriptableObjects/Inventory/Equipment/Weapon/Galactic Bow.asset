@@ -13,13 +13,16 @@ MonoBehaviour:
   m_Name: Galactic Bow
   m_EditorClassIdentifier: 
   ID: 2
-  name: Golden Bow
+  name: Galactic Bow
   quantity: 1
   sprite: {fileID: 1469526603, guid: bec99060a4a80f6428006e482d8e8e38, type: 3}
+  spriteID: 72
   description: 
   rarity: 1
   type: 1
   price: 6000
   equipType: 3
-  attackModifier: 5
+  attackModifier: 10
   defenseModifier: 0
+  manaUsage: 2
+  fireRate: 0.8

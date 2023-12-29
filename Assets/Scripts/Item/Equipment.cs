@@ -16,11 +16,21 @@ public class Equipment : Item
 
     public int attackModifier;
     public int defenseModifier;
+    public int manaUsage;
+    public float fireRate;
 
     public override void Use()
     {
         base.Use();
         EquipmentManager.instance.Equip(this);
         Inventory.instance.RemoveItem(this);
+    }
+
+    // Load data from JSON
+    public static Equipment LoadEquipmentFromJson(string jsonString)
+    {
+        Equipment data = CreateInstance<Equipment>();
+        JsonUtility.FromJsonOverwrite(jsonString, data);
+        return data;
     }
 }

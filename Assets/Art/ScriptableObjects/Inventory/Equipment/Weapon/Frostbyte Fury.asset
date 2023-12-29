@@ -15,11 +15,14 @@ MonoBehaviour:
   ID: 2
   name: Frostbyte Fury
   quantity: 1
-  sprite: {fileID: -1897881923, guid: 577953ff403fe7b44bcfea38724816af, type: 3}
+  sprite: {fileID: -1163209653, guid: bec99060a4a80f6428006e482d8e8e38, type: 3}
+  spriteID: 501
   description: 
   rarity: 2
   type: 1
   price: 6000
   equipType: 3
-  attackModifier: 5
+  attackModifier: 2
   defenseModifier: 0
+  manaUsage: 0
+  fireRate: 0.2

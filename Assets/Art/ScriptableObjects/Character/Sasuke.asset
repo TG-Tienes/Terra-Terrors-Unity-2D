@@ -18,8 +18,10 @@ MonoBehaviour:
   baseAttack: 2
   baseDefense: 0
   baseMana: 100
+  baseFireRate: 0
   maxHealth: 100
   health: 100
   attack: 2
   defense: 0
   mana: 100
+  fireRate: 0.5

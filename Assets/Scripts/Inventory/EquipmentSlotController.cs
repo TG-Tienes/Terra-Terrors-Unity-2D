@@ -13,9 +13,14 @@ public class EquipmentSlotController : MonoBehaviour
 
     public List<Image> weaponSpriteFields;
 
-    public void Start()
+    public void Awake()
     {
         EquipmentManager.instance.onEquipmentChangedCallback += UpdateAllSlots;
+    }
+
+    public void Start()
+    {
+        UpdateAllSlots();
     }
 
     public void UpdateWeaponSlot(int slotIndex, Sprite sprite)

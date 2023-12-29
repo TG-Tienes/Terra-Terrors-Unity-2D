@@ -34,7 +34,15 @@ public class Shooting : MonoBehaviour
         if (!canFire)
         {
             timer += Time.deltaTime;
-            if (timer > fireRate)
+            if (EquipmentManager.instance.currentWeapon != null)
+            {
+                if (timer > EquipmentManager.instance.currentWeapon.fireRate)
+                {
+                    canFire = true;
+                    timer = 0;
+                }
+            }
+            else if (timer > fireRate)
             {
                 canFire = true;
                 timer = 0;

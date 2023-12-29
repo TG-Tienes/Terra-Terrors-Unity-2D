@@ -9,4 +9,7 @@ public class GlobalColor : MonoBehaviour
     public static Color32 color_Rare      = new Color32(0, 152, 255, 255);
     public static Color32 color_Epic      = new Color32(198, 0, 230, 255);
     public static Color32 color_Legendary = new Color32(255, 102, 0, 255);
+
+    public static Color32 color_weaponEnabled = new Color32(255,255,255,100);
+    public static Color32 color_weaponDisabled = new Color32(0,0,0,170);
 }

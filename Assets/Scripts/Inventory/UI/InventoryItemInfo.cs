@@ -35,7 +35,7 @@ public class InventoryItemInfo : MonoBehaviour
 
     public void Start()
     {
-        InventoryItemInfo.instance.onSelectedItemChangedCallback += UpdateItemInfo;
+        instance.onSelectedItemChangedCallback += UpdateItemInfo;
     }
 
     public void UpdateItemInfo()
