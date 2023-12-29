@@ -178,6 +178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1704f3592e6e5be41ab4fc7615f01099, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 5
+  force: 3
   _bulletRot: 180
   _useRot: 1
+  _flightPos: -1

@@ -10,6 +10,7 @@ public class EnemyBulletScript : MonoBehaviour
     public float force;
     public float _bulletRot;
     public bool _useRot;
+    public float _flightPos = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +19,7 @@ public class EnemyBulletScript : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Main Character");
 
         Vector3 direction = player.transform.position - transform.position;
+        direction.y += _flightPos;
         rb2d.velocity = new Vector2 (direction.x, direction.y).normalized * force;
         
         float rot = 0;

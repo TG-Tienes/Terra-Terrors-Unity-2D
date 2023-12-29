@@ -36,16 +36,18 @@ public class BatTele : MonoBehaviour
         //}
         if(_canTeleport)
         {
+            Vector2 tempPos = playerPos;
+            tempPos.x += 0.2f;
+            _animator.SetFloat("LOOK X", -playerPos.x);
+            gameObject.transform.position = tempPos;
             _animator.SetTrigger("Appear");
+
             _canTeleport = false;
         }
 
         if (_canAttack)
         {
-            Vector2 tempPos = playerPos;
-                tempPos.x += 0.2f;
-            _animator.SetFloat("LOOK X", -playerPos.x);
-            gameObject.transform.position = tempPos;
+            _animator.SetTrigger("Attack");
             _canAttack = false;
         }
     }

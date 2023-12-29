@@ -13,6 +13,8 @@ public class EnemyShooting : MonoBehaviour
     public string _animationName;
     public float _shootDistance;
     public float _spaceDistance = 0;
+    public bool _isMultipleShooting = false;
+    public int _multipleShootingProjectileCount = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -39,7 +41,19 @@ public class EnemyShooting : MonoBehaviour
 
         if (_canFire)
         {
-            shoot();
+            if (_isMultipleShooting)
+            {
+                bullet.GetComponent<EnemyBulletScript>()._flightPos = 1;
+                shoot();
+
+                bullet.GetComponent<EnemyBulletScript>()._flightPos = 0;
+                shoot();
+
+                bullet.GetComponent<EnemyBulletScript>()._flightPos = -1;
+                shoot();
+            }
+            else
+                shoot();
             _canFire = false;
         }
     }
