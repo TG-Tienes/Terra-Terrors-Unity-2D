@@ -69,7 +69,13 @@ public class BasicEnemyStats : MonoBehaviour
             _animator.SetTrigger("Hit");
             if (EquipmentManager.instance.currentWeapon != null)
             {
-                takeDamage(StatsManager.instance.playerStats.attack + EquipmentManager.instance.currentWeapon.attackModifier);
+                // Get player base attack and current weapon attack
+                int damageDealt = StatsManager.instance.playerStats.attack + EquipmentManager.instance.currentWeapon.attackModifier;
+                // If critical
+                bool isCriticalHit = Random.value < EquipmentManager.instance.currentWeapon.criticalChance;
+                damageDealt = isCriticalHit ? damageDealt * 2 : damageDealt;
+                // Enemy take damage
+                takeDamage(damageDealt);
             }
             else
             {

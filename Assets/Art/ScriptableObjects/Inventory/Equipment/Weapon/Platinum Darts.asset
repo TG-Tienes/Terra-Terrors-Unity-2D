@@ -26,3 +26,4 @@ MonoBehaviour:
   defenseModifier: 0
   manaUsage: 0
   fireRate: 0.3
+  criticalChance: 0.5

@@ -18,6 +18,7 @@ public class Equipment : Item
     public int defenseModifier;
     public int manaUsage;
     public float fireRate;
+    public float criticalChance;
 
     public override void Use()
     {
