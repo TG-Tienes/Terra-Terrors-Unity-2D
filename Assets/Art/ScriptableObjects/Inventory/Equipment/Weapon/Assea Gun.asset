@@ -16,7 +16,7 @@ MonoBehaviour:
   name: Assea Gun
   quantity: 1
   sprite: {fileID: -181031480, guid: bf596ab92c177c44fa803025dbad0b43, type: 3}
-  spritePath: Assets/Art/Item Sprite/Weapon/Macrune's Weapony/64x64/Run.png
+  spriteID: 3
   description: 
   rarity: 1
   type: 1
@@ -26,3 +26,4 @@ MonoBehaviour:
   defenseModifier: 0
   manaUsage: 0
   fireRate: 0.5
+  criticalChance: 0

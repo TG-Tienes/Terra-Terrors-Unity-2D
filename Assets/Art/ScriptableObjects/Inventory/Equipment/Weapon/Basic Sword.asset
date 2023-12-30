@@ -16,8 +16,7 @@ MonoBehaviour:
   name: Basic Sword
   quantity: 1
   sprite: {fileID: -866076115, guid: 577953ff403fe7b44bcfea38724816af, type: 3}
-  spritePath: Assets/Art/Item Sprite/Weapon/Macrune's Weapony/64x64/RPG Weapon No
-    Outline 64x64.png
+  spriteID: 4
   description: 
   rarity: 0
   type: 1
@@ -27,3 +26,4 @@ MonoBehaviour:
   defenseModifier: 0
   manaUsage: 0
   fireRate: 0.5
+  criticalChance: 0

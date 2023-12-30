@@ -150,6 +150,11 @@ public class EquipmentManager : MonoBehaviour
             foreach (Equipment equipment in instance.currentEquipment)
             {
                 string json = JsonUtility.ToJson(equipment);
+                if (equipment != null)
+                {
+                    StatsManager.instance.playerStats.attack -= equipment.attackModifier;
+                    StatsManager.instance.playerStats.defense -= equipment.defenseModifier;
+                }
                 streamWriter.WriteLine(json);
             }
         }
@@ -227,13 +232,16 @@ public class EquipmentManager : MonoBehaviour
 
         foreach (Equipment equipment in currentEquipment)
         {
-            if (equipment.equipType == EquipType.WEAPON)
+            if (equipment != null)
             {
-                equipment.sprite = weaponSprites[equipment.spriteID];
-            }
-            else
-            {
-                equipment.sprite = armorSprites[equipment.spriteID];
+                if (equipment.equipType == EquipType.WEAPON)
+                {
+                    equipment.sprite = weaponSprites[equipment.spriteID];
+                }
+                else
+                {
+                    equipment.sprite = armorSprites[equipment.spriteID];
+                }
             }
         }
     }

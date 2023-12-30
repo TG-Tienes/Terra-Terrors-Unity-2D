@@ -16,7 +16,7 @@ MonoBehaviour:
   name: 'Blue Mystic '
   quantity: 1
   sprite: {fileID: 1415376041, guid: 577953ff403fe7b44bcfea38724816af, type: 3}
-  spriteID: 0
+  spriteID: 179
   description: 
   rarity: 2
   type: 1
@@ -26,3 +26,4 @@ MonoBehaviour:
   defenseModifier: 0
   manaUsage: 0
   fireRate: 0.5
+  criticalChance: 0

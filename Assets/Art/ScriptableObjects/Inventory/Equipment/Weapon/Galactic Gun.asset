@@ -16,6 +16,7 @@ MonoBehaviour:
   name: Galatic Gun
   quantity: 1
   sprite: {fileID: -3780508, guid: bef96cc8ac583e94c9d715ef089e3f09, type: 3}
+  spriteID: 4
   description: 
   rarity: 1
   type: 1
@@ -25,3 +26,4 @@ MonoBehaviour:
   defenseModifier: 0
   manaUsage: 0
   fireRate: 0.5
+  criticalChance: 0

@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 24
   name: Galactic Bow
-  quantity: 1
+  quantity: 0
   sprite: {fileID: -1960585295, guid: 577953ff403fe7b44bcfea38724816af, type: 3}
-  spriteID: 0
+  spriteID: 129
   description: 
   rarity: 1
   type: 1
@@ -26,3 +26,4 @@ MonoBehaviour:
   defenseModifier: 0
   manaUsage: 0
   fireRate: 0.5
+  criticalChance: 0
