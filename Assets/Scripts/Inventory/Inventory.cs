@@ -12,8 +12,8 @@ public class Inventory : MonoBehaviour
 {
     public List<Item> defaultItems = new List<Item>();
     public List<Item> items = new List<Item>();
-    public int capacity = 20;
-    public int stackSize = 5;
+    public int capacity = 27;
+    public int stackSize = 99;
  
     public delegate void OnItemChangedCallback();
     public OnItemChangedCallback onItemChangedCallback;
@@ -144,7 +144,7 @@ public class Inventory : MonoBehaviour
         onItemChangedCallback?.Invoke();
     }
 
-    private const string path = "D:/Unity/GameData/inventoryData.json";
+    private const string path = "Assets/GameData/inventoryData.json";
 
     public void SaveInventoryData()
     {

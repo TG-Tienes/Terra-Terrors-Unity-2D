@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0af41c0f9830c2499d262f0e779931d, type: 3}
   m_Name: Nebula Gun
   m_EditorClassIdentifier: 
-  ID: 22
+  ID: 24
   name: Galactic Bow
   quantity: 1
   sprite: {fileID: -1960585295, guid: 577953ff403fe7b44bcfea38724816af, type: 3}
+  spriteID: 0
   description: 
   rarity: 1
   type: 1

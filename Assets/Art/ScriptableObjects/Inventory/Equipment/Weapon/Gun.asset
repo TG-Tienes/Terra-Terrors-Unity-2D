@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0af41c0f9830c2499d262f0e779931d, type: 3}
   m_Name: Gun
   m_EditorClassIdentifier: 
-  ID: 18
+  ID: 17
   name: Gun
   quantity: 1
   sprite: {fileID: 917245772, guid: bf596ab92c177c44fa803025dbad0b43, type: 3}
+  spriteID: 0
   description: 
   rarity: 0
   type: 1

@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0af41c0f9830c2499d262f0e779931d, type: 3}
   m_Name: Bronze Bow
   m_EditorClassIdentifier: 
-  ID: 0
+  ID: 7
   name: Bronze Bow
   quantity: 1
   sprite: {fileID: -777770635, guid: bec99060a4a80f6428006e482d8e8e38, type: 3}
+  spriteID: 0
   description: 
   rarity: 0
   type: 1

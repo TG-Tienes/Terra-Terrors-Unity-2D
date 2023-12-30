@@ -7,7 +7,7 @@ public class BasicEnemyStats : MonoBehaviour
 {
     Rigidbody2D _rigidbody;
     Transform target;
-
+    
     public float _speed;
     public Animator _animator;
     [SerializeField] BasicHealthBar healthBar;
@@ -67,7 +67,14 @@ public class BasicEnemyStats : MonoBehaviour
         if (collision.gameObject.tag.Equals("Player Projectile"))
         {
             _animator.SetTrigger("Hit");
-            takeDamage(StatsManager.instance.playerStats.attack + EquipmentManager.instance.currentWeapon.attackModifier);
+            if (EquipmentManager.instance.currentWeapon != null)
+            {
+                takeDamage(StatsManager.instance.playerStats.attack + EquipmentManager.instance.currentWeapon.attackModifier);
+            }
+            else
+            {
+                takeDamage(StatsManager.instance.playerStats.attack);
+            }
         }
         if (collision.gameObject.tag.Equals("Main Character"))
         {

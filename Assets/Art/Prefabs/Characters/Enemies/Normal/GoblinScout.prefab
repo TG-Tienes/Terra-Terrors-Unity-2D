@@ -505,7 +505,6 @@ MonoBehaviour:
   _distanceBetweenPlayer: 0
   _isRangeType: 0
   _isBoss: 0
-  _attackEffect1: {fileID: 0}
 --- !u!114 &1964593152454986885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -524,8 +523,8 @@ MonoBehaviour:
   _armorStat: 0
   health: 0
   maxHealth: 100
-  _showDeadBodyTime: 1
-  _isRangeType: 0
+  _damageTakenText: {fileID: 1982050339960965236, guid: f082b26f39c7ffc4d8961a54e2df29ba, type: 3}
+  _canDestroyGameObject: 0
 --- !u!1 &7529529819707797584
 GameObject:
   m_ObjectHideFlags: 0

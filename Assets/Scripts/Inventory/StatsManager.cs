@@ -57,7 +57,7 @@ public class StatsManager : MonoBehaviour
         onStatusChangedCallback?.Invoke();
     }
 
-    private const string path = "D:/Unity/GameData/playerData.json";
+    private const string path = "Assets/GameData/playerData.json";
 
     public void SavePlayerData()
     {

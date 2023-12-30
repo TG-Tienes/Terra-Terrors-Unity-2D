@@ -51,10 +51,17 @@ public class EquipmentManager : MonoBehaviour
 
     public void PrintList()
     {
-        Debug.Log("List contents: ");
+        Debug.Log("Equipment contains: ");
         foreach (Equipment equipment in currentEquipment)
         {
-            Debug.Log(equipment);
+            if (equipment != null)
+            {
+                Debug.Log(equipment.name + ", ");
+            }
+            else
+            {
+                Debug.Log("null , ");
+            }
         }
         Debug.Log("\n");
     }
@@ -102,12 +109,14 @@ public class EquipmentManager : MonoBehaviour
             // Update UI
             onEquipmentChangedCallback?.Invoke();
         }
+        PrintList();
     }
 
     public void Unequip(int slotIndex, Equipment oldEquipment)
     {
-        Inventory.instance.AddItem(oldEquipment);
+        Inventory.instance.AddItem((Item) oldEquipment);
         currentEquipment[slotIndex] = null;
+        PrintList();
         StatsManager.instance.UpdateCharacterStatus(null, oldEquipment);
         onEquipmentChangedCallback?.Invoke();
     }
@@ -131,7 +140,7 @@ public class EquipmentManager : MonoBehaviour
         currentEquipment[slotIndex] = newEquipment;
     }
 
-    private const string path = "D:/Unity/GameData/equipmentData.json";
+    private const string path = "Assets/GameData/equipmentData.json";
 
     public void SaveEquipmentData()
     {

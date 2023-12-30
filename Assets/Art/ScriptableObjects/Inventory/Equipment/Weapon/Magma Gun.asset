@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0af41c0f9830c2499d262f0e779931d, type: 3}
   m_Name: Magma Gun
   m_EditorClassIdentifier: 
-  ID: 21
+  ID: 19
   name: Magma Gun
   quantity: 1
   sprite: {fileID: 431124345, guid: bf596ab92c177c44fa803025dbad0b43, type: 3}
+  spriteID: 0
   description: 
   rarity: 1
   type: 1

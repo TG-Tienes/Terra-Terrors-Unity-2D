@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0af41c0f9830c2499d262f0e779931d, type: 3}
   m_Name: Red Bow
   m_EditorClassIdentifier: 
-  ID: 24
+  ID: 27
   name: Red Bow
   quantity: 1
   sprite: {fileID: -1470768323, guid: 577953ff403fe7b44bcfea38724816af, type: 3}
+  spriteID: 0
   description: 
   rarity: 3
   type: 1
