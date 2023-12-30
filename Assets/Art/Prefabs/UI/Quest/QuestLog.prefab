@@ -296,8 +296,6 @@ MonoBehaviour:
   questExpRewardText: {fileID: 3495106386622674282}
   questObjectiveText: {fileID: 6844512670950076235}
   rewardsContent: {fileID: 1551012133372726437}
-  miniMapCanvas: {fileID: 0}
-  playerInventoryCanvas: {fileID: 0}
 --- !u!1 &960405704326664662
 GameObject:
   m_ObjectHideFlags: 0
@@ -1074,7 +1072,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.00009165606}
+  m_AnchoredPosition: {x: 0, y: 0.00081578706}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &4514056773021579824
@@ -1492,7 +1490,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.000065901935}
+  m_AnchoredPosition: {x: 0, y: 0.0008685968}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &5746403750408218943
@@ -2303,7 +2301,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -23.8088, y: 0.0000019073}
+  m_AnchoredPosition: {x: -23.808777, y: 0}
   m_SizeDelta: {x: -613.6759, y: -291.1027}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3558449197603698645

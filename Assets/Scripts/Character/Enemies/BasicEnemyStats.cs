@@ -16,7 +16,7 @@ public class BasicEnemyStats : MonoBehaviour
     private GameObject _mainCharacter;
     public GameObject _damageTakenText;
     public bool _canDestroyGameObject = false;
-
+    public bool _isBoss;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +34,16 @@ public class BasicEnemyStats : MonoBehaviour
         if (_canDestroyGameObject)
         {
             Destroy(gameObject);
+            if(_isBoss) {
+                QuestManager.instance.RegisterBossKill();
+                QuestLog.CheckQuestObjective(Quest.Objective.Type.killBoss, QuestManager.instance.bossesKilled);
+                Debug.Log("kill boss: " + QuestManager.instance.bossesKilled);
+            } else {
+                QuestManager.instance.RegisterEnemyKill();
+                QuestLog.CheckQuestObjective(Quest.Objective.Type.killEnemy, QuestManager.instance.enemiesKilled);
+                Debug.Log("kill enemy: " + QuestManager.instance.enemiesKilled);
+
+            }
         }
 
         if (health <= 0 && !_canDestroyGameObject)
@@ -42,7 +52,7 @@ public class BasicEnemyStats : MonoBehaviour
             _animator.SetTrigger("Dead");
 
             //Add exp for main character
-            _mainCharacter.GetComponent<PlayerControl>().handleExp(15);
+        //     _mainCharacter.GetComponent<PlayerControl>().handleExp(15);
         }
     }
 

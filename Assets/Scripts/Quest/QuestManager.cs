@@ -23,26 +23,27 @@ public class QuestManager : MonoBehaviour
 
     public int enemiesKilled = 0;
     public int bossesKilled = 0;
+    public int collectItem = 0;
 
     public void Reset()
     {
         enemiesKilled = 0;
         bossesKilled = 0;
+        collectItem = 0;
     }
 
     public void RegisterEnemyKill()
     {
         enemiesKilled++;
-        // Bạn có thể thêm các hành động khác tại đây, ví dụ như:
-        // - Kiểm tra hoàn thành nhiệm vụ liên quan đến số lượng kẻ địch
-        // - Cập nhật giao diện hiển thị số lượng kẻ địch bị tiêu diệt
     }
 
     public void RegisterBossKill()
     {
         bossesKilled++;
-        // Bạn có thể thêm các hành động khác tại đây, ví dụ như:
-        // - Kiểm tra hoàn thành nhiệm vụ liên quan đến boss
-        // - Cập nhật giao diện hiển thị số lượng boss bị tiêu diệt
+    }
+
+    public void RegisterCollectItem()
+    {
+        collectItem++;
     }
 }

@@ -107,7 +107,7 @@ public class UI_QuestLog : MonoBehaviour
     private void UpdateQuestText(Button questButton, Quest quest, bool isCompleted = false) {
         TMP_Text text = questButton.GetComponentInChildren<TMP_Text>();
         text.text = quest.questName;
-        text.color = isCompleted ? Color.gray : GetColorFromCategory(quest.questCategory);
+        text.color = isCompleted ? Color.red : GetColorFromCategory(quest.questCategory);
     }
 
     private Color GetColorFromCategory(short category) {
