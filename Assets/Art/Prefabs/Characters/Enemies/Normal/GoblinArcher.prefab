@@ -592,9 +592,9 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   _armorStat: 0
   health: 0
-  maxHealth: 100
-  _showDeadBodyTime: 1
-  _isRangeType: 1
+  maxHealth: 30
+  _damageTakenText: {fileID: 1982050339960965236, guid: f082b26f39c7ffc4d8961a54e2df29ba, type: 3}
+  _canDestroyGameObject: 0
 --- !u!95 &5705555876704714004
 Animator:
   serializedVersion: 5
@@ -634,6 +634,8 @@ MonoBehaviour:
   _animationName: Attack
   _shootDistance: 3
   _spaceDistance: 0
+  _isMultipleShooting: 0
+  _multipleShootingProjectileCount: 1
 --- !u!114 &4975698202922407017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -650,7 +652,6 @@ MonoBehaviour:
   _distanceBetweenPlayer: 1
   _isRangeType: 1
   _isBoss: 0
-  _attackEffect1: {fileID: 0}
 --- !u!1 &8022563221061643315
 GameObject:
   m_ObjectHideFlags: 0

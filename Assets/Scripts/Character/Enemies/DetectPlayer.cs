@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -39,7 +40,7 @@ public class DetectPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_isDetected && !_isStop)
+        if (_isDetected && !_isStop && !_enemyCharacterStats._canDestroyGameObject)
         {
             Vector2 direction = (_mainCharacter.transform.position - transform.position).normalized;
             float angle = Mathf.Atan2(direction.x, direction.y + _distanceBetweenPlayer);
@@ -54,8 +55,9 @@ public class DetectPlayer : MonoBehaviour
         _animator.SetFloat("Speed", _moveDirection.magnitude);
         float distanceVal = Vector2.Distance(transform.position, _mainCharacter.transform.position);
 
-        if (_distanceBetweenPlayer >= distanceVal || _enemyCharacterStats._canDestroyGameObject)
+        if (_distanceBetweenPlayer >= distanceVal)
         {
+            
             _isStop = true;
         }
         else
@@ -63,8 +65,11 @@ public class DetectPlayer : MonoBehaviour
             _isStop = false;
         }
 
-
-        if (_isDetected && !_isCollided && !_isStop)
+        if (_enemyCharacterStats._canDestroyGameObject)
+        {
+            _rb2d.velocity = Vector2.zero;
+        }
+        else if (_isDetected && !_isCollided && !_isStop && !_enemyCharacterStats._canDestroyGameObject)
         {
             // move
             _rb2d.velocity = new Vector2(_moveDirection.x, _moveDirection.y) * _moveSpeed;

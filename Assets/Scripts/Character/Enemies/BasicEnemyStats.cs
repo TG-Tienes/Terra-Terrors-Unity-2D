@@ -46,14 +46,15 @@ public class BasicEnemyStats : MonoBehaviour
         }
     }
 
-    void takeDamage(float damageAmount)
+    void takeDamage(float damageAmount, bool isCrit)
     {
         if (health > 0)
         {
             // formula base on LOL physical armor
             float realDamageAmountTaken = damageAmount * 100 / (100 + _armorStat);
-
+            
             DamageIdicator idicator = Instantiate(_damageTakenText, transform.position, Quaternion.identity).GetComponent<DamageIdicator>();
+            if(isCrit) idicator.SetTextColor();
             idicator.SetDamageText(realDamageAmountTaken);
 
             health -= realDamageAmountTaken;
@@ -75,11 +76,11 @@ public class BasicEnemyStats : MonoBehaviour
                 bool isCriticalHit = Random.value < EquipmentManager.instance.currentWeapon.criticalChance;
                 damageDealt = isCriticalHit ? damageDealt * 2 : damageDealt;
                 // Enemy take damage
-                takeDamage(damageDealt);
+                takeDamage(damageDealt, isCriticalHit);
             }
             else
             {
-                takeDamage(StatsManager.instance.playerStats.attack);
+                takeDamage(StatsManager.instance.playerStats.attack, false);
             }
         }
         if (collision.gameObject.tag.Equals("Main Character"))

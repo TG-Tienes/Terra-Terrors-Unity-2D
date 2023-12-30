@@ -44,4 +44,8 @@ public class DamageIdicator : MonoBehaviour
     {
         text.text = damage.ToString();
     }
+    public void SetTextColor()
+    {
+        text.color = Color.yellow;
+    }
 }
