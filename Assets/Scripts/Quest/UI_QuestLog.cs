@@ -32,7 +32,7 @@ public class UI_QuestLog : MonoBehaviour
     }
 
     private void Start() {
-            // questLogObject.SetActive(!questLogObject.activeSelf);
+            questLogObject.SetActive(!questLogObject.activeSelf);
     }
 
     private void Update() {

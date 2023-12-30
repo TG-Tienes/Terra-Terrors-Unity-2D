@@ -14,6 +14,7 @@ public static class QuestLog
 
         questList = new List<Quest>();
         completedQuest = new List<Quest>();
+        // QuestManager.instance.Reset(); 
     }
 
     public static void AddQuest(Quest quest) {

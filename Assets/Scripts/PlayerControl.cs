@@ -60,12 +60,13 @@ public class PlayerControl : MonoBehaviour
         public int questType;
         public string questName;
         public string questDescription;
+        public int amount;
     }
 
     private QuestInfo[] quests = {
-        new QuestInfo { questType = 2, questName = "Collect Special Items", questDescription = "Collect unique, elusive items scattered throughout the realm. These special artifacts possess mystical qualities and are crucial for unlocking hidden powers or crafting powerful gear." },
-        new QuestInfo { questType = 0, questName = "Kill Boss", questDescription = "Overcome the challenge posed by the level-specific mini-bosses. These adversaries, while smaller in stature, hold significant power and guard valuable treasures or pathways deeper into the world." },
-        new QuestInfo { questType = 0, questName = "Kill 10 Monsters", questDescription = "Engage and eliminate ten formidable creatures wandering the lands. These adversaries range from ferocious beasts to cunning foes, each presenting a unique threat and offering valuable rewards upon their defeat." }
+        new QuestInfo { questType = 2, questName = "Collect Special Items", questDescription = "Collect unique, elusive items scattered throughout the realm. These special artifacts possess mystical qualities and are crucial for unlocking hidden powers or crafting powerful gear.", amount = 3 },
+        new QuestInfo { questType = 1, questName = "Kill Boss", questDescription = "Overcome the challenge posed by the level-specific mini-bosses. These adversaries, while smaller in stature, hold significant power and guard valuable treasures or pathways deeper into the world.", amount = 1 },
+        new QuestInfo { questType = 0, questName = "Kill 10 Monsters", questDescription = "Engage and eliminate ten formidable creatures wandering the lands. These adversaries range from ferocious beasts to cunning foes, each presenting a unique threat and offering valuable rewards upon their defeat.", amount = 5 }
     };
 
     // Start is called before the first frame update
@@ -143,7 +144,7 @@ public class PlayerControl : MonoBehaviour
         rb.MovePosition(pos);
     }
 
-    private Quest CreateQuest(string questName, string questDescription, int type) {
+    private Quest CreateQuest(string questName, string questDescription, int type, int amount) {
         Quest q = new Quest();
         q.questName = questName;
         q.questDescription = questDescription;
@@ -152,7 +153,7 @@ public class PlayerControl : MonoBehaviour
         q.questCategory = 0;
         q.objective = new Quest.Objective();
         q.objective.type = (Quest.Objective.Type)type;
-        q.objective.amount = UnityEngine.Random.Range(2,10);
+        q.objective.amount = amount;
         return q;
     }
 
@@ -160,7 +161,7 @@ public class PlayerControl : MonoBehaviour
     {
        foreach (var quest in quests)
         {
-            QuestLog.AddQuest(CreateQuest(quest.questName, quest.questDescription, quest.questType));
+            QuestLog.AddQuest(CreateQuest(quest.questName, quest.questDescription, quest.questType, quest.amount));
         }
     }
 

@@ -16,7 +16,7 @@ public class Quest
     [System.Serializable]
     public class Objective
     {
-        public enum Type { kill, talk, collect }
+        public enum Type { killEnemy, killBoss, collect, talk }
         public int objectiveId;
         public int amount;
         [System.NonSerialized]
@@ -31,12 +31,14 @@ public class Quest
 
         public bool ForceAddObjective(int amount) {
             currentAmount += amount;
-            return currentAmount >= amount;
+            return currentAmount >= amount && amount > 0;
         }
 
         public override string ToString() {
             switch (type) {
-                case Type.kill:
+                case Type.killEnemy:
+                    return "Kill " + /* MonsterList.MonsterNameFromID(objectiveId) + " " +*/ currentAmount + "/" + amount;
+                case Type.killBoss:
                     return "Kill " + /* MonsterList.MonsterNameFromID(objectiveId) + " " +*/ currentAmount + "/" + amount;
                 case Type.talk:
                     return "Talk to " /*+ NpcList.NpcNameFromID(objectiveId) */;
