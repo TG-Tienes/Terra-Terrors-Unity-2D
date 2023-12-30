@@ -13,6 +13,9 @@ public class PlayerControl : MonoBehaviour
     public float speed = 1.5f;
     private Rigidbody2D rb;
 
+    public Sprite defaultRotateWeapon;
+    private GameObject rotateWeapon;
+
     private float directionX;
     private float directionY;
     Vector2 lookDirection = new Vector2(1, 0);
@@ -83,6 +86,8 @@ public class PlayerControl : MonoBehaviour
         manaMax = playerStats.mana;
         bloodMax = playerStats.health;
 
+        rotateWeapon = transform.GetChild(0).GetChild(0).gameObject;
+
         manaCurrent = manaMax;
         bloodCurrent = bloodMax;
         // playerInventoryCanvas_isActive = playerInventoryCanvas.isActiveAndEnabled;
@@ -95,6 +100,9 @@ public class PlayerControl : MonoBehaviour
     {
         directionX = Input.GetAxis("Horizontal");
         directionY = Input.GetAxis("Vertical");
+
+        SpriteRenderer weaponSpriteRenderer = rotateWeapon.GetComponent<SpriteRenderer>();
+        weaponSpriteRenderer.sprite = (EquipmentManager.instance.currentWeapon != null) ? EquipmentManager.instance.currentWeapon.sprite : defaultRotateWeapon;
 
         Vector2 move = new Vector2(directionX, directionY);
 
