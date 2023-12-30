@@ -6,6 +6,7 @@ public class PlayerStats : ScriptableObject
 {
     public string charName = "name";
     
+    public int coin           = 0;
     public int level          = 1;
     public int health         = 0;
     public int attack         = 0;

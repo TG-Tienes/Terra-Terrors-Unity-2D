@@ -48,7 +48,7 @@ public class ItemDetail : MonoBehaviour
 
     public void HandleBuy()
     {
-        ShopManager.instance.Purchased(currentItem.price, currentItem.ID, itemType.ToString());
+        ShopManager.instance.Purchased(currentItem ,currentItem.price, currentItem.ID, itemType.ToString());
     }
 
     public void UpdateItemInfo()

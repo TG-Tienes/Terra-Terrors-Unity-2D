@@ -72,10 +72,10 @@ public class ShopManager : MonoBehaviour, IDataPersistence
     }
     private void Start()
     {
-        Debug.Log(coinCurrent + "Coin current");
+        Debug.Log(StatsManager.instance.playerStats.coin + "Coin current");
 
         coinUI = GameObject.Find("CoinPlayer").GetComponent<TMP_Text>();
-        coinUI.text = formatter.FormatNumber(coinCurrent);
+        coinUI.text = formatter.FormatNumber(StatsManager.instance.playerStats.coin);
 
         for (int i = 0; i < weaponListItem.Count; i++)
             shopWeaponPanelsItem[i].SetActive(true);
@@ -153,9 +153,9 @@ public class ShopManager : MonoBehaviour, IDataPersistence
         SceneManager.LoadScene("Choose World");
     }
 
-    public void Purchased(int priceItem, int idItem, string typeItem)
+    public void Purchased(Item currentItem, int priceItem, int idItem, string typeItem)
     {
-        if (priceItem > coinCurrent)
+        if (priceItem > StatsManager.instance.playerStats.coin)
         {
             itemDetail.SetActive(false);
             blurBG.SetActive(false);
@@ -175,9 +175,12 @@ public class ShopManager : MonoBehaviour, IDataPersistence
             blurBG.SetActive(false);
             notEnoughCoinBox.SetActive(true);
 
+            Item itemCopy = Instantiate(currentItem);
+            Inventory.instance.AddItem(itemCopy);
+
             //Update money
-            coinCurrent -= priceItem;
-            coinUI.text = formatter.FormatNumber(coinCurrent);
+            StatsManager.instance.playerStats.coin -= priceItem;
+            coinUI.text = formatter.FormatNumber(StatsManager.instance.playerStats.coin);
             //Remove Item
             if (typeItem == "WEAPON")
             {

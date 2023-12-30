@@ -1,9 +1,12 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using Unity.VisualScripting;
 using System.IO;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 [DefaultExecutionOrder(-100)]
 public class EquipmentManager : MonoBehaviour
@@ -109,14 +112,12 @@ public class EquipmentManager : MonoBehaviour
             // Update UI
             onEquipmentChangedCallback?.Invoke();
         }
-        PrintList();
     }
 
     public void Unequip(int slotIndex, Equipment oldEquipment)
     {
         Inventory.instance.AddItem((Item) oldEquipment);
         currentEquipment[slotIndex] = null;
-        PrintList();
         StatsManager.instance.UpdateCharacterStatus(null, oldEquipment);
         onEquipmentChangedCallback?.Invoke();
     }
@@ -177,12 +178,63 @@ public class EquipmentManager : MonoBehaviour
                     index++;
                 }
             }
-
+            LoadSprite();
             Debug.Log("Player Equipment loaded from JSON file.");
         }
         else
         {
             Debug.LogWarning("JSON file not found.");
+        }
+    }
+
+    public async void LoadSprite()
+    {
+        // Load weapon sprites from Addressables
+        String weaponAddress = "Weapon";
+        Sprite[] weaponSprites_array;
+        List<Sprite> weaponSprites = new List<Sprite>();
+
+        AsyncOperationHandle<Sprite[]> handle_1 = Addressables.LoadAssetAsync<Sprite[]>(weaponAddress);
+        await handle_1.Task;
+
+        if (handle_1.Status == AsyncOperationStatus.Succeeded)
+        {
+            weaponSprites_array = handle_1.Result;
+            weaponSprites = new List<Sprite>(weaponSprites_array);
+        }
+        else
+        {
+            Debug.LogError("Failed to load sprite with addressable key: " + "Weapon");
+        }
+        
+        // Load armor sprites from Addressables
+        String armorAddress = "Armor";
+        Sprite[] armorSprites_array;
+        List<Sprite> armorSprites = new List<Sprite>();
+
+        AsyncOperationHandle<Sprite[]> handle_2 = Addressables.LoadAssetAsync<Sprite[]>(armorAddress);
+        await handle_2.Task;
+
+        if (handle_2.Status == AsyncOperationStatus.Succeeded)
+        {
+            armorSprites_array = handle_2.Result;
+            armorSprites = new List<Sprite>(armorSprites_array);
+        }
+        else
+        {
+            Debug.LogError("Failed to load sprite with addressable key: " + "Armor");
+        }
+
+        foreach (Equipment equipment in currentEquipment)
+        {
+            if (equipment.equipType == EquipType.WEAPON)
+            {
+                equipment.sprite = weaponSprites[equipment.spriteID];
+            }
+            else
+            {
+                equipment.sprite = armorSprites[equipment.spriteID];
+            }
         }
     }
 }

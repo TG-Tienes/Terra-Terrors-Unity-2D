@@ -13,7 +13,7 @@ public class Inventory : MonoBehaviour
     public List<Item> defaultItems = new List<Item>();
     public List<Item> items = new List<Item>();
     public int capacity = 27;
-    public int stackSize = 99;
+    public int stackSize = 999;
  
     public delegate void OnItemChangedCallback();
     public OnItemChangedCallback onItemChangedCallback;
