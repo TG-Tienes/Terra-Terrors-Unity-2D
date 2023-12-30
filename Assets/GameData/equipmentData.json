@@ -1,5 +1,5 @@
 
 
 
-
-
+{"ID":25,"name":"Platinum Darts","quantity":1,"sprite":{"instanceID":53620},"spriteID":220,"description":"","rarity":1,"type":1,"price":7200,"equipType":3,"attackModifier":4,"defenseModifier":0,"manaUsage":0,"fireRate":0.30000001192092898}
+{"ID":13,"name":"Galactic Bow","quantity":1,"sprite":{"instanceID":53618},"spriteID":72,"description":"","rarity":1,"type":1,"price":6000,"equipType":3,"attackModifier":10,"defenseModifier":0,"manaUsage":2,"fireRate":0.800000011920929}
