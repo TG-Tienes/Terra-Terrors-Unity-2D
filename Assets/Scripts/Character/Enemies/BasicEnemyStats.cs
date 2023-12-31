@@ -18,6 +18,9 @@ public class BasicEnemyStats : MonoBehaviour
     public bool _canDestroyGameObject = false;
     public bool _isBoss;
 
+    private AudioSource _hitAudio;
+    private AudioSource _deadAudio;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +29,9 @@ public class BasicEnemyStats : MonoBehaviour
         healthBar.updateHealthBar(health, maxHealth);
 
         _mainCharacter = GameObject.FindWithTag("Main Character");
+
+        _hitAudio = transform.GetChild(0).GetChild(0).GetComponent<AudioSource>();
+        _deadAudio = transform.GetChild(0).GetChild(1).GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -102,5 +108,15 @@ public class BasicEnemyStats : MonoBehaviour
     public void removeBody()
     {
         _canDestroyGameObject = true;
+    }
+
+    void playHitSound()
+    {
+        _hitAudio.Play();
+    }
+
+    void playDeadSound()
+    {
+        _deadAudio.Play();
     }
 }

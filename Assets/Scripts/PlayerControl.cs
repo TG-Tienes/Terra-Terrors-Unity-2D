@@ -72,9 +72,15 @@ public class PlayerControl : MonoBehaviour
         new QuestInfo { questType = 0, questName = "Kill 10 Monsters", questDescription = "Engage and eliminate ten formidable creatures wandering the lands. These adversaries range from ferocious beasts to cunning foes, each presenting a unique threat and offering valuable rewards upon their defeat.", amount = 5 }
     };
 
+    private AudioSource _walkAudio;
+    private AudioSource _shootingAudio;
+
     // Start is called before the first frame update
     void Start()
     {
+        _walkAudio = transform.GetChild(2).GetChild(0).GetComponent<AudioSource>();
+        _shootingAudio = transform.GetChild(2).GetChild(1).GetComponent<AudioSource>();
+
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
 
@@ -238,5 +244,10 @@ public class PlayerControl : MonoBehaviour
                 ManaBar.instance.SetValue(manaCurrent / (float)manaMax);
             currentTime = invincibleTime;
         }
+    }
+
+    public void playWalkAudio()
+    {
+        _walkAudio.Play();
     }
 }
