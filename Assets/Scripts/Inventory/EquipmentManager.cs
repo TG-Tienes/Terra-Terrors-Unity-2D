@@ -230,6 +230,24 @@ public class EquipmentManager : MonoBehaviour
             Debug.LogError("Failed to load sprite with addressable key: " + "Armor");
         }
 
+        // Load bullet sprites from Addressables
+        String bulletAddress = "Bullet";
+        Sprite[] bulletSprites_array;
+        List<Sprite> bulletSprites = new List<Sprite>();
+
+        AsyncOperationHandle<Sprite[]> handle_3 = Addressables.LoadAssetAsync<Sprite[]>(bulletAddress);
+        await handle_3.Task;
+
+        if (handle_3.Status == AsyncOperationStatus.Succeeded)
+        {
+            bulletSprites_array = handle_3.Result;
+            bulletSprites = new List<Sprite>(bulletSprites_array);
+        }
+        else
+        {
+            Debug.LogError("Failed to load sprite with addressable key: " + "Bullet");
+        }
+
         foreach (Equipment equipment in currentEquipment)
         {
             if (equipment != null)
@@ -237,6 +255,7 @@ public class EquipmentManager : MonoBehaviour
                 if (equipment.equipType == EquipType.WEAPON)
                 {
                     equipment.sprite = weaponSprites[equipment.spriteID];
+                    equipment.bulletSprite = bulletSprites[equipment.bulletSpriteID];
                 }
                 else
                 {

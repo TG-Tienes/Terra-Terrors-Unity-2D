@@ -41,6 +41,11 @@ public class EquipmentSlotController : MonoBehaviour
                 rarityBackgroundFields[slotIndex].color = GlobalColor.color_Common;
                 break;
             }
+            case ItemRarity.UNCOMMON:
+            {
+                rarityBackgroundFields[slotIndex].color = GlobalColor.color_Uncommon;
+                break;
+            }
             case ItemRarity.RARE:
             {
                 rarityBackgroundFields[slotIndex].color = GlobalColor.color_Rare;
@@ -54,6 +59,11 @@ public class EquipmentSlotController : MonoBehaviour
             case ItemRarity.LEGENDARY:
             {
                 rarityBackgroundFields[slotIndex].color = GlobalColor.color_Legendary;
+                break;
+            }
+            case ItemRarity.MYTHICAL:
+            {
+                rarityBackgroundFields[slotIndex].color = GlobalColor.color_Mythical;
                 break;
             }
             default:

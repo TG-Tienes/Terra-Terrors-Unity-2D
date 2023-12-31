@@ -58,6 +58,11 @@ public class InventoryItemInfo : MonoBehaviour
                     nameField.color = GlobalColor.color_Common;
                     break;
                 }
+                case ItemRarity.UNCOMMON:
+                {
+                    nameField.color = GlobalColor.color_Uncommon;
+                    break;
+                }
                 case ItemRarity.RARE:
                 {
                     nameField.color = GlobalColor.color_Rare;
@@ -71,6 +76,11 @@ public class InventoryItemInfo : MonoBehaviour
                 case ItemRarity.LEGENDARY:
                 {
                     nameField.color = GlobalColor.color_Legendary;
+                    break;
+                }
+                case ItemRarity.MYTHICAL:
+                {
+                    nameField.color = GlobalColor.color_Mythical;
                     break;
                 }
                 default:

@@ -13,7 +13,9 @@ public class PlayerControl : MonoBehaviour
     public float speed = 1.5f;
     private Rigidbody2D rb;
 
+    public Sprite defaultBulletSprite;
     public Sprite defaultRotateWeapon;
+    private GameObject rotateShooting;
     private GameObject rotateWeapon;
 
     private float directionX;
@@ -92,6 +94,7 @@ public class PlayerControl : MonoBehaviour
         manaMax = playerStats.mana;
         bloodMax = playerStats.health;
 
+        rotateShooting = transform.GetChild(0).gameObject;
         rotateWeapon = transform.GetChild(0).GetChild(0).gameObject;
 
         manaCurrent = manaMax;
@@ -106,6 +109,10 @@ public class PlayerControl : MonoBehaviour
     {
         directionX = Input.GetAxis("Horizontal");
         directionY = Input.GetAxis("Vertical");
+
+        Shooting bulletShooting = rotateShooting.GetComponent<Shooting>();
+        bulletShooting.bullet.gameObject.GetComponent<SpriteRenderer>().sprite = 
+            (EquipmentManager.instance.currentWeapon != null) ? EquipmentManager.instance.currentWeapon.bulletSprite : defaultBulletSprite;
 
         SpriteRenderer weaponSpriteRenderer = rotateWeapon.GetComponent<SpriteRenderer>();
         weaponSpriteRenderer.sprite = (EquipmentManager.instance.currentWeapon != null) ? EquipmentManager.instance.currentWeapon.sprite : defaultRotateWeapon;

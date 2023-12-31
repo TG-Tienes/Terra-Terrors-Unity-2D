@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0af41c0f9830c2499d262f0e779931d, type: 3}
+  m_Name: STAFF - Loki
+  m_EditorClassIdentifier: 
+  ID: 29
+  name: Loki's Staff
+  quantity: 1
+  sprite: {fileID: 1186104940, guid: bec99060a4a80f6428006e482d8e8e38, type: 3}
+  spriteID: 768
+  bulletSprite: {fileID: -968522605, guid: 577953ff403fe7b44bcfea38724816af, type: 3}
+  bulletSpriteID: 699
+  description: 
+  rarity: 4
+  type: 0
+  price: 0
+  equipType: 0
+  attackModifier: 70
+  defenseModifier: 0
+  manaUsage: 0
+  fireRate: 0.65
+  criticalChance: 0.25
