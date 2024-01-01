@@ -11,7 +11,7 @@ public class Quest
     public int expReward;
     public Objective objective;
     public short questCategory;
-
+    public string imagePath;
 
     [System.Serializable]
     public class Objective
@@ -46,7 +46,7 @@ public class Quest
                 case Type.killBoss:
                     return "Kill " + /* MonsterList.MonsterNameFromID(objectiveId) + " " +*/ currentAmount + "/" + amount;
                 case Type.talk:
-                    return "Talk to " /*+ NpcList.NpcNameFromID(objectiveId) */;
+                    return "Talk to " + " Hera";
                case Type.collect:
                     return "Collect " + /* ItemList.ItemNameFromID(objectiveId) + " " +*/ currentAmount + "/" + amount;
             }

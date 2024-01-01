@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Networking;
 
 public class UI_QuestLog : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class UI_QuestLog : MonoBehaviour
 
     private GameObject questLogObject;
     private Button[] questButtons;
+    public Image questImage;
 
     private Quest currentQuest;
     private int previousButtonIndex;
@@ -102,8 +104,38 @@ public class UI_QuestLog : MonoBehaviour
         questDescriptionText.rectTransform.sizeDelta = new Vector2(0, questDescriptionText.preferredHeight);
         rewardsContent.anchoredPosition = new Vector2(0, -50 - questDescriptionText.rectTransform.sizeDelta.y);
         questDescription.sizeDelta = new Vector2(0, questDescriptionText.rectTransform.sizeDelta.y + 300);
+    
+        // Load and display the quest image
+        if (!string.IsNullOrEmpty(quest.imagePath)) {
+            StartCoroutine(LoadQuestImage(quest.imagePath));
+        }
     }
 
+  private IEnumerator LoadQuestImage(string imagePath) {
+    // Load the image asynchronously
+    using (UnityWebRequest request = UnityWebRequestTexture.GetTexture(imagePath)) {
+        yield return request.SendWebRequest();
+
+        if (request.isNetworkError || request.isHttpError) {
+            Debug.Log(request.error);
+        } else {
+            // Assign the loaded texture to the questImage component
+            Texture2D texture = ((DownloadHandlerTexture)request.downloadHandler).texture;
+
+            // Calculate the scaling factor to maintain aspect ratio
+            float aspectRatio = (float)texture.width / texture.height;
+            float desiredWidth = questImage.rectTransform.rect.width;
+            float desiredHeight = desiredWidth / aspectRatio;
+
+            // Resize the image to match the desired width and aspect ratio
+            questImage.rectTransform.sizeDelta = new Vector2(desiredWidth, desiredHeight);
+
+            // Assign the texture to the questImage component
+            questImage.sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
+        }
+    }
+}
+    
     private Button InitializeButton(int index) {
         Button button = Instantiate(questInListPrefab, listTransform).GetComponent<Button>();
         button.image.rectTransform.sizeDelta = new Vector2(0, 80);

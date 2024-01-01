@@ -66,12 +66,14 @@ public class PlayerControl : MonoBehaviour
         public string questName;
         public string questDescription;
         public int amount;
+        public string imagePath;
     }
 
     private QuestInfo[] quests = {
-        new QuestInfo { questType = 2, questName = "Collect Special Items", questDescription = "Collect unique, elusive items scattered throughout the realm. These special artifacts possess mystical qualities and are crucial for unlocking hidden powers or crafting powerful gear.", amount = 3 },
-        new QuestInfo { questType = 1, questName = "Kill Boss", questDescription = "Overcome the challenge posed by the level-specific mini-bosses. These adversaries, while smaller in stature, hold significant power and guard valuable treasures or pathways deeper into the world.", amount = 1 },
-        new QuestInfo { questType = 0, questName = "Kill 10 Monsters", questDescription = "Engage and eliminate ten formidable creatures wandering the lands. These adversaries range from ferocious beasts to cunning foes, each presenting a unique threat and offering valuable rewards upon their defeat.", amount = 5 }
+       new QuestInfo { questType = 2, questName = "Collect Special Items", questDescription = "Find unique items scattered across the realm.", amount = 3, imagePath = "https://firebasestorage.googleapis.com/v0/b/chat-app-ee53e.appspot.com/o/BlueCrystalMoving1.png?alt=media&token=412896f0-8b84-4fac-a54f-731d9ff4c922"},
+        new QuestInfo { questType = 1, questName = "Kill Boss", questDescription = "Conquer level-specific mini-bosses guarding valuable treasures.", amount = 1, imagePath = "https://firebasestorage.googleapis.com/v0/b/chat-app-ee53e.appspot.com/o/Minotaur.png?alt=media&token=a4edc1b4-c1a6-4243-b5a7-b0c9488d8128"},
+        new QuestInfo { questType = 0, questName = "Kill 10 Monsters", questDescription = "Eliminate ten formidable creatures wandering the lands.", amount = 5, imagePath = "https://firebasestorage.googleapis.com/v0/b/chat-app-ee53e.appspot.com/o/gobin.png?alt=media&token=bad4e6bd-c593-4b63-bba7-f4fdf5e5b189"},
+        new QuestInfo { questType = 3, questName = "Talk to NPC", questDescription = "Engage in a conversation with an important character.", amount = 1, imagePath = "https://firebasestorage.googleapis.com/v0/b/chat-app-ee53e.appspot.com/o/Hera.png?alt=media&token=de2dcc53-fd03-4fb7-9ec1-982a4b466e07"},
     };
 
     private AudioSource _walkAudio;
@@ -178,25 +180,25 @@ public class PlayerControl : MonoBehaviour
         rb.MovePosition(pos);
     }
 
-    private Quest CreateQuest(string questName, string questDescription, int type, int amount)
-    {
+  private Quest CreateQuest(string questName, string questDescription, int type, int amount, string imagePath) {
         Quest q = new Quest();
         q.questName = questName;
         q.questDescription = questDescription;
-        q.expReward = UnityEngine.Random.Range(100, 1000);
-        q.goldReward = UnityEngine.Random.Range(5, 20);
+        q.expReward = UnityEngine.Random.Range(100,1000);
+        q.goldReward = UnityEngine.Random.Range(5,20);
         q.questCategory = 0;
+        q.imagePath = imagePath;
         q.objective = new Quest.Objective();
         q.objective.type = (Quest.Objective.Type)type;
         q.objective.amount = amount;
         return q;
     }
 
-    private void AddQuest()
+   private void AddQuest()
     {
-        foreach (var quest in quests)
+       foreach (var quest in quests)
         {
-            QuestLog.AddQuest(CreateQuest(quest.questName, quest.questDescription, quest.questType, quest.amount));
+            QuestLog.AddQuest(CreateQuest(quest.questName, quest.questDescription, quest.questType, quest.amount, quest.imagePath));
         }
     }
 
