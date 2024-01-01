@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0af41c0f9830c2499d262f0e779931d, type: 3}
+  m_Name: BOOK - Frost Celestius
+  m_EditorClassIdentifier: 
+  ID: 3
+  name: Frost Celestius
+  quantity: 1
+  sprite: {fileID: 348896426, guid: bec99060a4a80f6428006e482d8e8e38, type: 3}
+  spriteID: 491
+  bulletSprite: {fileID: -690059829, guid: 577953ff403fe7b44bcfea38724816af, type: 3}
+  bulletSpriteID: 553
+  description: 
+  rarity: 2
+  type: 1
+  price: 10000
+  equipType: 3
+  attackModifier: 4
+  defenseModifier: 0
+  manaUsage: 0
+  fireRate: 0.15
+  criticalChance: 0.2

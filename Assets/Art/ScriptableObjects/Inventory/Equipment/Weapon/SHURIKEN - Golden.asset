@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0af41c0f9830c2499d262f0e779931d, type: 3}
+  m_Name: SHURIKEN - Golden
+  m_EditorClassIdentifier: 
+  ID: 22
+  name: Golden Shuriken
+  quantity: 1
+  sprite: {fileID: 1119660827, guid: bec99060a4a80f6428006e482d8e8e38, type: 3}
+  spriteID: 79
+  bulletSprite: {fileID: 1195866017, guid: 577953ff403fe7b44bcfea38724816af, type: 3}
+  bulletSpriteID: 79
+  description: 
+  rarity: 1
+  type: 1
+  price: 10800
+  equipType: 3
+  attackModifier: 6
+  defenseModifier: 0
+  manaUsage: 0
+  fireRate: 0.25
+  criticalChance: 0.15

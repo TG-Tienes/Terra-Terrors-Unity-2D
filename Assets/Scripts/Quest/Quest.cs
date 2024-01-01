@@ -18,21 +18,26 @@ public class Quest
     {
         public enum Type { killEnemy, killBoss, collect, talk }
         public int objectiveId;
-        public int amount;
+        public int amount ;
         [System.NonSerialized]
         public int currentAmount;
         public Type type;
 
-        public bool CheckObjectiveCompleted(Type type, int id) {
-            if (this.type == type && id == objectiveId)
-                currentAmount++;
+        public bool CheckObjectiveCompleted(Type type, int quantity) {
+            Debug.Log("type: " + type);
+            if (this.type == type) {
+                Debug.Log("type check: " + type);
+                currentAmount = quantity;
+
+            }
+            Debug.Log("type check: " + type + ": " + currentAmount + "amount: " + amount);
             return currentAmount >= amount;
         }
 
-        public bool ForceAddObjective(int amount) {
-            currentAmount += amount;
-            return currentAmount >= amount && amount > 0;
-        }
+        // public bool ForceAddObjective(int amount) {
+        //     currentAmount += amount;
+        //     return currentAmount >= amount && amount > 0;
+        // }
 
         public override string ToString() {
             switch (type) {

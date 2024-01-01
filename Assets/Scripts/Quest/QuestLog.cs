@@ -19,14 +19,27 @@ public static class QuestLog
 
     public static void AddQuest(Quest quest) {
         questList.Add(quest);
-        HandleOwnedItems(quest);
+        // HandleOwnedItems(quest);
         onQuestChange.Invoke(questList, completedQuest);
     }
 
-    public static void CheckQuestObjective(Quest.Objective.Type type, int id) {
+    public static void CheckQuestObjective(Quest.Objective.Type type, int quantity) {
+        List<Quest> questsToComplete = new List<Quest>();
         foreach (Quest quest in questList)
-            if (quest.objective.CheckObjectiveCompleted(type, id))
-                CompleteQuest(quest);
+        {
+            if (quest.objective.CheckObjectiveCompleted(type, quantity))
+            {
+                Debug.Log(StatsManager.instance.playerStats.coin);
+                StatsManager.instance.playerStats.coin += quest.goldReward;
+                Debug.Log(StatsManager.instance.playerStats.coin);
+                questsToComplete.Add(quest);
+            }
+        }
+
+        foreach (Quest quest in questsToComplete)
+        {
+            CompleteQuest(quest);
+        }
         onQuestChange.Invoke(questList, completedQuest);
 
     }
@@ -40,13 +53,13 @@ public static class QuestLog
 
     }
 
-    private static void HandleOwnedItems(Quest quest) {
-        if (quest.objective.type != Quest.Objective.Type.collect)
-            return;
-        int amount = 0;//Inventory.GetCountOfIndex(quest.objective.objectiveId); 
-        if (quest.objective.ForceAddObjective(amount))
-            CompleteQuest(quest);
-    }
+    // private static void HandleOwnedItems(Quest quest) {
+    //     if (quest.objective.type != Quest.Objective.Type.collect)
+    //         return;
+    //     int amount = 0;//Inventory.GetCountOfIndex(quest.objective.objectiveId); 
+    //     if (quest.objective.ForceAddObjective(amount))
+    //         CompleteQuest(quest);
+    // }
 
     public static Quest getQuestNo(int index) {
         if (index < questList.Count)

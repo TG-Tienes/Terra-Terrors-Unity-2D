@@ -16,7 +16,10 @@ public class BasicEnemyStats : MonoBehaviour
     private GameObject _mainCharacter;
     public GameObject _damageTakenText;
     public bool _canDestroyGameObject = false;
+    public bool _isBoss;
 
+    private AudioSource _hitAudio;
+    private AudioSource _deadAudio;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +29,9 @@ public class BasicEnemyStats : MonoBehaviour
         healthBar.updateHealthBar(health, maxHealth);
 
         _mainCharacter = GameObject.FindWithTag("Main Character");
+
+        _hitAudio = transform.GetChild(0).GetChild(0).GetComponent<AudioSource>();
+        _deadAudio = transform.GetChild(0).GetChild(1).GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -34,15 +40,24 @@ public class BasicEnemyStats : MonoBehaviour
         if (_canDestroyGameObject)
         {
             Destroy(gameObject);
+            if(_isBoss) {
+                QuestManager.instance.RegisterBossKill();
+                QuestLog.CheckQuestObjective(Quest.Objective.Type.killBoss, QuestManager.instance.bossesKilled);
+                Debug.Log("kill boss: " + QuestManager.instance.bossesKilled);
+            } else {
+                QuestManager.instance.RegisterEnemyKill();
+                QuestLog.CheckQuestObjective(Quest.Objective.Type.killEnemy, QuestManager.instance.enemiesKilled);
+                Debug.Log("kill enemy: " + QuestManager.instance.enemiesKilled);
+
+            }
         }
 
         if (health <= 0 && !_canDestroyGameObject)
         {
-            Debug.Log("DEAD HIHI");
             _animator.SetTrigger("Dead");
 
             //Add exp for main character
-            _mainCharacter.GetComponent<PlayerControl>().handleExp(15);
+        //     _mainCharacter.GetComponent<PlayerControl>().handleExp(15);
         }
     }
 
@@ -55,7 +70,7 @@ public class BasicEnemyStats : MonoBehaviour
             
             DamageIdicator idicator = Instantiate(_damageTakenText, transform.position, Quaternion.identity).GetComponent<DamageIdicator>();
             if(isCrit) idicator.SetTextColor();
-            idicator.SetDamageText(realDamageAmountTaken);
+            idicator.SetDamageText(Mathf.Round(realDamageAmountTaken));
 
             health -= realDamageAmountTaken;
             healthBar.updateHealthBar(health, maxHealth);
@@ -83,6 +98,7 @@ public class BasicEnemyStats : MonoBehaviour
                 takeDamage(StatsManager.instance.playerStats.attack, false);
             }
         }
+
         if (collision.gameObject.tag.Equals("Main Character"))
         {
             _mainCharacter.GetComponent<PlayerControl>().handleBlood(-15);
@@ -92,5 +108,16 @@ public class BasicEnemyStats : MonoBehaviour
     public void removeBody()
     {
         _canDestroyGameObject = true;
+    }
+
+    void playHitSound()
+    {
+        _hitAudio.Play();
+        Debug.Log("HIT SOUND");
+    }
+
+    void playDeadSound()
+    {
+        _deadAudio.Play();
     }
 }

@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 7269552080203349065}
   - component: {fileID: 7493949020137117939}
   - component: {fileID: 3432677795159255373}
-  - component: {fileID: 4585150464668213886}
   - component: {fileID: 5398626537409542910}
   m_Layer: 0
   m_Name: Attack Smoke
@@ -108,20 +107,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4585150464668213886
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1752730665132648577}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6320ad0cd2393144eb3825a4639dfd1b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attack1Smoke: {fileID: 0}
-  _animator: {fileID: 0}
 --- !u!114 &5398626537409542910
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -13,7 +13,9 @@ public class PlayerControl : MonoBehaviour
     public float speed = 1.5f;
     private Rigidbody2D rb;
 
+    public Sprite defaultBulletSprite;
     public Sprite defaultRotateWeapon;
+    private GameObject rotateShooting;
     private GameObject rotateWeapon;
 
     private float directionX;
@@ -72,9 +74,14 @@ public class PlayerControl : MonoBehaviour
         new QuestInfo { questType = 0, questName = "Kill 10 Monsters", questDescription = "Engage and eliminate ten formidable creatures wandering the lands. These adversaries range from ferocious beasts to cunning foes, each presenting a unique threat and offering valuable rewards upon their defeat.", amount = 5 }
     };
 
+    private AudioSource _walkAudio;
+    private AudioSource _shootingAudio;
+
     // Start is called before the first frame update
     void Start()
     {
+        _walkAudio = transform.GetChild(2).GetChild(0).GetComponent<AudioSource>();
+        _shootingAudio = transform.GetChild(2).GetChild(1).GetComponent<AudioSource>();
 
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
@@ -87,6 +94,7 @@ public class PlayerControl : MonoBehaviour
         manaMax = playerStats.mana;
         bloodMax = playerStats.health;
 
+        rotateShooting = transform.GetChild(0).gameObject;
         rotateWeapon = transform.GetChild(0).GetChild(0).gameObject;
 
         manaCurrent = manaMax;
@@ -101,6 +109,10 @@ public class PlayerControl : MonoBehaviour
     {
         directionX = Input.GetAxis("Horizontal");
         directionY = Input.GetAxis("Vertical");
+
+        Shooting bulletShooting = rotateShooting.GetComponent<Shooting>();
+        bulletShooting.bullet.gameObject.GetComponent<SpriteRenderer>().sprite =
+            (EquipmentManager.instance.currentWeapon != null) ? EquipmentManager.instance.currentWeapon.bulletSprite : defaultBulletSprite;
 
         SpriteRenderer weaponSpriteRenderer = rotateWeapon.GetComponent<SpriteRenderer>();
         weaponSpriteRenderer.sprite = (EquipmentManager.instance.currentWeapon != null) ? EquipmentManager.instance.currentWeapon.sprite : defaultRotateWeapon;
@@ -245,5 +257,10 @@ public class PlayerControl : MonoBehaviour
                 ManaBar.instance.SetValue(manaCurrent / (float)manaMax);
             currentTime = invincibleTime;
         }
+    }
+
+    public void playWalkAudio()
+    {
+        _walkAudio.Play();
     }
 }

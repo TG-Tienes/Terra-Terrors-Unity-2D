@@ -9,6 +9,7 @@ TagManager:
   - Tree
   - Minimap Slider
   - Enemy Projectile
+  - Pause Menu
   layers:
   - Default
   - TransparentFX
