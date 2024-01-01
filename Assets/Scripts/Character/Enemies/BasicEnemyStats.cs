@@ -54,7 +54,6 @@ public class BasicEnemyStats : MonoBehaviour
 
         if (health <= 0 && !_canDestroyGameObject)
         {
-            Debug.Log("DEAD HIHI");
             _animator.SetTrigger("Dead");
 
             //Add exp for main character
@@ -71,7 +70,7 @@ public class BasicEnemyStats : MonoBehaviour
             
             DamageIdicator idicator = Instantiate(_damageTakenText, transform.position, Quaternion.identity).GetComponent<DamageIdicator>();
             if(isCrit) idicator.SetTextColor();
-            idicator.SetDamageText(realDamageAmountTaken);
+            idicator.SetDamageText(Mathf.Round(realDamageAmountTaken));
 
             health -= realDamageAmountTaken;
             healthBar.updateHealthBar(health, maxHealth);
@@ -99,6 +98,7 @@ public class BasicEnemyStats : MonoBehaviour
                 takeDamage(StatsManager.instance.playerStats.attack, false);
             }
         }
+
         if (collision.gameObject.tag.Equals("Main Character"))
         {
             _mainCharacter.GetComponent<PlayerControl>().handleBlood(-15);
@@ -113,6 +113,7 @@ public class BasicEnemyStats : MonoBehaviour
     void playHitSound()
     {
         _hitAudio.Play();
+        Debug.Log("HIT SOUND");
     }
 
     void playDeadSound()

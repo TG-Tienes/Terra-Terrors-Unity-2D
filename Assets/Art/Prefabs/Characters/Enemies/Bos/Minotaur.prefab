@@ -1122,7 +1122,7 @@ MonoBehaviour:
   _animator: {fileID: 8283158444041578155}
   healthBar: {fileID: 0}
   _armorStat: 100
-  health: 0
+  health: 1000000
   maxHealth: 100
   _damageTakenText: {fileID: 1982050339960965236, guid: f082b26f39c7ffc4d8961a54e2df29ba, type: 3}
   _canDestroyGameObject: 0
