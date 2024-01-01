@@ -11,11 +11,13 @@ public class BatTele : MonoBehaviour
 
     bool _canTeleport;
     bool _canAttack;
+    AudioSource _teleAudio;
 
     // Start is called before the first frame update
     void Start()
     {
         _player = GameObject.FindGameObjectWithTag("Main Character");
+        _teleAudio = transform.GetChild(0).GetChild(5).GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -56,6 +58,8 @@ public class BatTele : MonoBehaviour
     void teleportToPlayer()
     {
         _canTeleport = true;
+        _teleAudio.Play();
+
     }
 
     void attackPlayer()

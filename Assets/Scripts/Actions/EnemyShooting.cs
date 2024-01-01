@@ -16,11 +16,14 @@ public class EnemyShooting : MonoBehaviour
     public bool _isMultipleShooting = false;
     public int _multipleShootingProjectileCount = 1;
 
+    private AudioSource _shootSound;
+
     // Start is called before the first frame update
     void Start()
     {
         _canFire = false;
         _player = GameObject.FindGameObjectWithTag("Main Character");
+        _shootSound = this.transform.GetChild(0).GetChild(3).GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -60,6 +63,7 @@ public class EnemyShooting : MonoBehaviour
 
     void shoot()
     {
+        _shootSound.Play();
         Instantiate(bullet, bulletPos.position, Quaternion.identity);
     }
 
