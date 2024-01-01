@@ -29,7 +29,9 @@ public static class QuestLog
         {
             if (quest.objective.CheckObjectiveCompleted(type, quantity))
             {
-                Debug.Log("type quest: " + type);
+                Debug.Log(StatsManager.instance.playerStats.coin);
+                StatsManager.instance.playerStats.coin += quest.goldReward;
+                Debug.Log(StatsManager.instance.playerStats.coin);
                 questsToComplete.Add(quest);
             }
         }
