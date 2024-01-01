@@ -46,7 +46,7 @@ public class MessageController : MonoBehaviour
         foreach (char character in sentence[index].ToCharArray())
         {
             message.text += character;
-            yield return new WaitForSeconds(messageSpeed);
+            yield return new WaitForSecondsRealtime(messageSpeed);
         }
     }
 }

@@ -48,6 +48,7 @@ public class NpcShop : MonoBehaviour
         messageBox.SetActive(true);
         MessageController.instance.ResetSentence();
         MessageController.instance.NextSentence();
+        PauseMenuManager.pauseGame();
     }
 
     public void ClickBlurBG()
@@ -55,6 +56,7 @@ public class NpcShop : MonoBehaviour
         blurBG.SetActive(false);
         messageBox.SetActive(false);
         ShopInGame.SetActive(false);
+        PauseMenuManager.unpauseGame();
     }
 
     public void GoToShop()
@@ -70,5 +72,6 @@ public class NpcShop : MonoBehaviour
     {
         blurBG.SetActive(false);
         ShopInGame.SetActive(false);
+        PauseMenuManager.unpauseGame();
     }
 }
