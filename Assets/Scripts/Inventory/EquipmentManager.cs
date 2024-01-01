@@ -34,8 +34,14 @@ public class EquipmentManager : MonoBehaviour
     public delegate void OnEquipmentChangedCallback();
     public OnEquipmentChangedCallback onEquipmentChangedCallback;
 
+    AudioSource _equipAudio;
+
     public void Start()
     {
+        GameObject sceneAudioManager = GameObject.Find("SceneAudioManager").gameObject;
+
+        _equipAudio = sceneAudioManager.transform.GetChild(1).GetComponent<AudioSource>();
+
         currentEquipment = new Equipment[5];
         equipTypeDictionary = new Dictionary<EquipType, int>
         {
@@ -71,6 +77,8 @@ public class EquipmentManager : MonoBehaviour
 
     public void Equip(Equipment newEquipment)
     {   
+        _equipAudio.Play();
+
         // If equipment slot is currently empty
         if (newEquipment.equipType == EquipType.WEAPON)
         {

@@ -76,12 +76,20 @@ public class PlayerControl : MonoBehaviour
 
     private AudioSource _walkAudio;
     private AudioSource _shootingAudio;
+    private AudioSource _openInventoryAudio;
+    private AudioSource _closeInventoryAudio;
 
     // Start is called before the first frame update
     void Start()
     {
+        GameObject sceneAudioManager = GameObject.Find("SceneAudioManager").gameObject;
+
         _walkAudio = transform.GetChild(2).GetChild(0).GetComponent<AudioSource>();
         _shootingAudio = transform.GetChild(2).GetChild(1).GetComponent<AudioSource>();
+
+        _openInventoryAudio = sceneAudioManager.transform.GetChild(3).GetComponent<AudioSource>();
+        _closeInventoryAudio = sceneAudioManager.transform.GetChild(4).GetComponent<AudioSource>();
+
 
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
@@ -132,6 +140,11 @@ public class PlayerControl : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q))
         {
             playerInventoryCanvas_isActive = !playerInventoryCanvas_isActive;
+
+            if(playerInventoryCanvas_isActive)
+                _openInventoryAudio.Play();
+            else
+                _closeInventoryAudio.Play();
             playerInventoryCanvas.gameObject.SetActive(playerInventoryCanvas_isActive);
             miniMapCanvas.gameObject.SetActive(!playerInventoryCanvas_isActive);
         }

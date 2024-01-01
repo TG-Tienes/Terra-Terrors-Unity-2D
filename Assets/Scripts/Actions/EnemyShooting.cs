@@ -15,6 +15,7 @@ public class EnemyShooting : MonoBehaviour
     public float _spaceDistance = 0;
     public bool _isMultipleShooting = false;
     public int _multipleShootingProjectileCount = 1;
+    public bool _useAudio = true;
 
     private AudioSource _shootSound;
 
@@ -63,7 +64,9 @@ public class EnemyShooting : MonoBehaviour
 
     void shoot()
     {
-        _shootSound.Play();
+        if(_useAudio)
+            _shootSound.Play();
+
         Instantiate(bullet, bulletPos.position, Quaternion.identity);
     }
 
