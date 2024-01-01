@@ -39,8 +39,7 @@ public class ShopItemClick : MonoBehaviour
 
         ItemDetail.instance.slotIndex = slotIndex;
         ItemDetail.instance.itemType = type;
-        Debug.Log("run3");
+
         ItemDetail.instance.onSelectedItemChangedCallback?.Invoke();
-        Debug.Log("run2");
     }
 }

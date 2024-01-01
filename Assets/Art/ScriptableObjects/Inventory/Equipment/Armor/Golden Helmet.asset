@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 1
   name: Golden Helmet
-  quantity: 1
+  quantity: 0
   sprite: {fileID: 711592515, guid: 81fe1ddfc2cf6da4594e1909a1e183ae, type: 3}
   spriteID: 10
   description: 
@@ -26,3 +26,4 @@ MonoBehaviour:
   defenseModifier: 30
   manaUsage: 0
   fireRate: 0
+  criticalChance: 0

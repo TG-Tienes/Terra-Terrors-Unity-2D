@@ -13,7 +13,7 @@ public class EquipmentManager : MonoBehaviour
 {
     #region Singleton
     public static EquipmentManager instance;
- 
+
     void Awake()
     {
         if (instance == null)
@@ -124,7 +124,7 @@ public class EquipmentManager : MonoBehaviour
 
     public void Unequip(int slotIndex, Equipment oldEquipment)
     {
-        Inventory.instance.AddItem((Item) oldEquipment);
+        Inventory.instance.AddItem((Item)oldEquipment);
         currentEquipment[slotIndex] = null;
         StatsManager.instance.UpdateCharacterStatus(null, oldEquipment);
         onEquipmentChangedCallback?.Invoke();
@@ -179,7 +179,7 @@ public class EquipmentManager : MonoBehaviour
                 {
                     // Read a line from the file
                     string json = streamReader.ReadLine();
-                    
+
                     if (!string.IsNullOrEmpty(json))
                     {
                         Equipment equipment = Equipment.LoadEquipmentFromJson(json);
@@ -219,7 +219,7 @@ public class EquipmentManager : MonoBehaviour
         {
             Debug.LogError("Failed to load sprite with addressable key: " + "Weapon");
         }
-        
+
         // Load armor sprites from Addressables
         String armorAddress = "Armor";
         Sprite[] armorSprites_array;
