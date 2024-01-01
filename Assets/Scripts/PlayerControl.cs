@@ -58,7 +58,7 @@ public class PlayerControl : MonoBehaviour
         set { bloodCurrent = value; }
     }
 
-     private struct QuestInfo
+    private struct QuestInfo
     {
         public int questType;
         public string questName;
@@ -75,6 +75,7 @@ public class PlayerControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
 
@@ -122,7 +123,7 @@ public class PlayerControl : MonoBehaviour
             playerInventoryCanvas.gameObject.SetActive(playerInventoryCanvas_isActive);
             miniMapCanvas.gameObject.SetActive(!playerInventoryCanvas_isActive);
         }
-        
+
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             if (EquipmentManager.instance.currentEquipment[3] != null)
@@ -152,12 +153,13 @@ public class PlayerControl : MonoBehaviour
         rb.MovePosition(pos);
     }
 
-    private Quest CreateQuest(string questName, string questDescription, int type, int amount) {
+    private Quest CreateQuest(string questName, string questDescription, int type, int amount)
+    {
         Quest q = new Quest();
         q.questName = questName;
         q.questDescription = questDescription;
-        q.expReward = UnityEngine.Random.Range(100,1000);
-        q.goldReward = UnityEngine.Random.Range(5,20);
+        q.expReward = UnityEngine.Random.Range(100, 1000);
+        q.goldReward = UnityEngine.Random.Range(5, 20);
         q.questCategory = 0;
         q.objective = new Quest.Objective();
         q.objective.type = (Quest.Objective.Type)type;
@@ -165,9 +167,9 @@ public class PlayerControl : MonoBehaviour
         return q;
     }
 
-   private void AddQuest()
+    private void AddQuest()
     {
-       foreach (var quest in quests)
+        foreach (var quest in quests)
         {
             QuestLog.AddQuest(CreateQuest(quest.questName, quest.questDescription, quest.questType, quest.amount));
         }
@@ -175,6 +177,10 @@ public class PlayerControl : MonoBehaviour
 
     public void handleExp(int dataRxp)
     {
+        Debug.Log(dataRxp);
+        Debug.Log(level);
+        Debug.Log(levelList[level - 1]);
+
         expCurrent += dataRxp;
         if (expCurrent <= levelList[level - 1])
         {
@@ -198,9 +204,10 @@ public class PlayerControl : MonoBehaviour
 
     public void handleBlood(int dataBlood)
     {
-        if (dataBlood < 0) {
+        if (dataBlood < 0)
+        {
             animator.SetTrigger("Hit");
-            dataBlood *= (int) (100f / (100 + StatsManager.instance.playerStats.defense));
+            dataBlood *= (int)(100f / (100 + StatsManager.instance.playerStats.defense));
         }
         bloodCurrent += dataBlood;
 

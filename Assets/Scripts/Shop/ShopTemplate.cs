@@ -10,4 +10,6 @@ public class ShopTemplate : MonoBehaviour
     public Image rareItem;
     public TMP_Text nameItem;
     public TMP_Text priceItem;
+    public TMP_Text attackData;
+    public TMP_Text defendData;
 }

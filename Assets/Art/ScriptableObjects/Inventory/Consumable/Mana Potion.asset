@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab6a3edf15f6b8f44af1809a63b55195, type: 3}
   m_Name: Mana Potion
   m_EditorClassIdentifier: 
-  ID: 0
+  ID: 1
   name: Mana Potion
-  quantity: 0
+  quantity: 1
   sprite: {fileID: 21300000, guid: 6d7f1bfe62c111940a5cfdce0d11ed45, type: 3}
+  spriteID: 0
   description: 
   rarity: 0
   type: 0

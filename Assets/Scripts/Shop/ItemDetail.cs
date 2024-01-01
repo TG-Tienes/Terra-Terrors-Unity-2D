@@ -35,7 +35,6 @@ public class ItemDetail : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            // DontDestroyOnLoad(this);
             instance.onSelectedItemChangedCallback += UpdateItemInfo;
             formatter = new NumberFormatter();
         }
@@ -48,19 +47,11 @@ public class ItemDetail : MonoBehaviour
 
     public void HandleBuy()
     {
-        ShopManager.instance.Purchased(currentItem ,currentItem.price, currentItem.ID, itemType.ToString());
+        ShopManager.instance.Purchased(currentItem, currentItem.price, currentItem.ID, itemType.ToString());
     }
 
     public void UpdateItemInfo()
     {
-        int len = ShopManager.instance.weaponListItem.Count();
-        if (itemType.ToString() == "ARMOR")
-            len = ShopManager.instance.armorListItem.Count();
-        if (itemType.ToString() == "CONSUMABLE")
-            len = ShopManager.instance.consumableListItem.Count();
-
-
-
         if (itemType.ToString() == "WEAPON")
             currentItem = ShopManager.instance.weaponListItem[slotIndex];
         if (itemType.ToString() == "ARMOR")
