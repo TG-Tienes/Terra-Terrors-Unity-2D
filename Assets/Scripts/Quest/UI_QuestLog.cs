@@ -22,6 +22,7 @@ public class UI_QuestLog : MonoBehaviour
 
     private Quest currentQuest;
     private int previousButtonIndex;
+    private bool _gamePaused = false;
 
     private void Awake() {
         questLogObject = transform.GetChild(0).gameObject;
@@ -36,8 +37,16 @@ public class UI_QuestLog : MonoBehaviour
     }
 
     private void Update() {
-        if (Input.GetKeyDown(KeyCode.M))
+        if (Input.GetKeyDown(KeyCode.M)) {
             questLogObject.SetActive(!questLogObject.activeSelf);
+            _gamePaused = !_gamePaused;
+
+            if (_gamePaused) {
+                PauseMenuManager.pauseGame();
+            } else {
+                PauseMenuManager.unpauseGame();
+            }
+        }
         if (questLogObject.activeSelf && Input.GetKeyDown(KeyCode.Escape))
             questLogObject.SetActive(false);
     }

@@ -1199,7 +1199,7 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   _armorStat: 20
   health: 0
-  maxHealth: 1000
+  maxHealth: 100
   _damageTakenText: {fileID: 1982050339960965236, guid: f082b26f39c7ffc4d8961a54e2df29ba, type: 3}
   _canDestroyGameObject: 0
   _isBoss: 0
