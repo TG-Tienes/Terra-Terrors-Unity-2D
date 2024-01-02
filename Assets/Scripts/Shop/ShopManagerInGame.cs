@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 [DefaultExecutionOrder(-50)]
-public class ShopManagerInGame : MonoBehaviour, IDataPersistence
+public class ShopManagerInGame : MonoBehaviour
 {
     Color colorRare(string rare)
     {
@@ -60,14 +60,6 @@ public class ShopManagerInGame : MonoBehaviour, IDataPersistence
     }
 
     #endregion Singleton
-    public void LoadData(GameData data)
-    {
-        this.coinCurrent = data.coin;
-    }
-    public void SaveData(ref GameData data)
-    {
-        data.coin = this.coinCurrent;
-    }
     private void Start()
     {
         coinUI = GameObject.Find("CoinPlayer").GetComponent<TMP_Text>();
@@ -146,7 +138,7 @@ public class ShopManagerInGame : MonoBehaviour, IDataPersistence
         shopPanels[2].rareItem.color = colorRare(consumableListItem[idConsumable].rarity.ToString());
         shopPanels[2].nameItem.text = consumableListItem[idConsumable].name;
         shopPanels[2].imgItem.sprite = consumableListItem[idConsumable].sprite;
-        shopPanels[2].attackData.text = "Potency: +" + consumableListItem[idConsumable].potency.ToString();
+        shopPanels[2].attackData.text = "Modificafication: +" + consumableListItem[idConsumable].healthBoost.ToString();
         shopPanels[2].priceItem.text = formatter.FormatNumber(consumableListItem[idConsumable].price);
         PlayerPrefs.Save();
 

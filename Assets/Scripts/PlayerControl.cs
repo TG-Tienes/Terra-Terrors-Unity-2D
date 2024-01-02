@@ -5,11 +5,29 @@ using System.Security.Cryptography;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 [DefaultExecutionOrder(0)]
 public class PlayerControl : MonoBehaviour
 {
+    #region Singleton
+    public static PlayerControl instance;
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+    }
+    #endregion Singleton
+
+
     public Animator animator;
+    public TMP_Text coinText;
     public float speed = 1.5f;
     private Rigidbody2D rb;
 
@@ -26,13 +44,18 @@ public class PlayerControl : MonoBehaviour
     public Canvas playerInventoryCanvas;
     private bool playerInventoryCanvas_isActive;
 
-    public static PlayerStats playerStats;
+    public bool consumableOnCooldown = false;
+    public Slider consumableCooldownSlider;
+    public float cooldownDuration = 5f;
+    private float cooldownTimer;
 
-    //Handle EXP Bar
+    //Handle Level
     private int level;
-    private int[] levelList = { 100, 200, 300 };
+    private int[] levelList = { 100, 200, 300, 400, 600, 1000 };
     public float invincibleTime = 10.0f;
     private float currentTime;
+
+    //Handle EXP Bar
     int expCurrent = 0;
     public int exp
     {
@@ -60,6 +83,14 @@ public class PlayerControl : MonoBehaviour
         set { bloodCurrent = value; }
     }
 
+    //Handle Coin
+    int coinCurrent;
+    public int coin
+    {
+        get { return coinCurrent; }
+        set { coinCurrent = value; }
+    }
+
     private struct QuestInfo
     {
         public int questType;
@@ -82,10 +113,12 @@ public class PlayerControl : MonoBehaviour
     private AudioSource _closeInventoryAudio;
     private AudioSource _hitAudio;
 
+    NumberFormatter formatter;
     // Start is called before the first frame update
     void Start()
     {
         GameObject sceneAudioManager = GameObject.Find("SceneAudioManager").gameObject;
+        formatter = new NumberFormatter();
 
         _walkAudio = transform.GetChild(2).GetChild(0).GetComponent<AudioSource>();
         _shootingAudio = transform.GetChild(2).GetChild(1).GetComponent<AudioSource>();
@@ -98,19 +131,28 @@ public class PlayerControl : MonoBehaviour
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
 
-        currentTime = invincibleTime;
-        ExpBar.instance.SetValue(0);
+        level = StatsManager.instance.playerStats.level;
+        manaMax = StatsManager.instance.playerStats.mana;
+        bloodMax = StatsManager.instance.playerStats.health;
 
-        playerStats = StatsManager.instance.playerStats;
-        level = playerStats.level;
-        manaMax = playerStats.mana;
-        bloodMax = playerStats.health;
+        expCurrent = StatsManager.instance.playerStats.exp;
+        coinCurrent = StatsManager.instance.playerStats.coin;
+        manaCurrent = manaMax;
+        bloodCurrent = bloodMax;
+
 
         rotateShooting = transform.GetChild(0).gameObject;
         rotateWeapon = transform.GetChild(0).GetChild(0).gameObject;
 
-        manaCurrent = manaMax;
-        bloodCurrent = bloodMax;
+        currentTime = invincibleTime;
+
+        Debug.Log(level);
+        coinText.SetText(formatter.FormatNumber(coinCurrent));
+        ExpBar.instance.SetLevel(level);
+        ExpBar.instance.SetValue(expCurrent / (float)levelList[level - 1]);
+        BloodBar.instance.SetValue(1);
+        ManaBar.instance.SetValue(1);
+
         // playerInventoryCanvas_isActive = playerInventoryCanvas.isActiveAndEnabled;
         AddQuest();
     }
@@ -145,7 +187,7 @@ public class PlayerControl : MonoBehaviour
         {
             playerInventoryCanvas_isActive = !playerInventoryCanvas_isActive;
 
-            if(playerInventoryCanvas_isActive)
+            if (playerInventoryCanvas_isActive)
                 _openInventoryAudio.Play();
             else
                 _closeInventoryAudio.Play();
@@ -169,6 +211,21 @@ public class PlayerControl : MonoBehaviour
                 WeaponSlotController.instance.UpdateWeaponSlots(1);
             }
         }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            if (EquipmentManager.instance.currentConsumable != null)
+            {
+                if (consumableOnCooldown == false)
+                {
+                    UseConsumable();
+                }
+            }
+        }
+
+        if (consumableOnCooldown == true)
+        {
+            consumableCooldown();
+        }
 
         recoverInTimeRange();
     }
@@ -182,12 +239,13 @@ public class PlayerControl : MonoBehaviour
         rb.MovePosition(pos);
     }
 
-  private Quest CreateQuest(string questName, string questDescription, int type, int amount, string imagePath) {
+    private Quest CreateQuest(string questName, string questDescription, int type, int amount, string imagePath)
+    {
         Quest q = new Quest();
         q.questName = questName;
         q.questDescription = questDescription;
-        q.expReward = UnityEngine.Random.Range(100,1000);
-        q.goldReward = UnityEngine.Random.Range(5,20);
+        q.expReward = UnityEngine.Random.Range(100, 1000);
+        q.goldReward = UnityEngine.Random.Range(5, 20);
         q.questCategory = 0;
         q.imagePath = imagePath;
         q.objective = new Quest.Objective();
@@ -196,9 +254,9 @@ public class PlayerControl : MonoBehaviour
         return q;
     }
 
-   private void AddQuest()
+    private void AddQuest()
     {
-       foreach (var quest in quests)
+        foreach (var quest in quests)
         {
             QuestLog.AddQuest(CreateQuest(quest.questName, quest.questDescription, quest.questType, quest.amount, quest.imagePath));
         }
@@ -206,16 +264,9 @@ public class PlayerControl : MonoBehaviour
 
     public void handleExp(int dataRxp)
     {
-        Debug.Log(dataRxp);
-        Debug.Log(level);
-        Debug.Log(levelList[level - 1]);
-
         expCurrent += dataRxp;
         if (expCurrent <= levelList[level - 1])
         {
-            Debug.Log(expCurrent);
-            Debug.Log(levelList[level - 1]);
-
             ExpBar.instance.SetValue(expCurrent / (float)levelList[level - 1]);
         }
 
@@ -225,8 +276,16 @@ public class PlayerControl : MonoBehaviour
             if (expCurrent > levelList[level - 1])
             {
                 level += 1;
-                ExpBar.instance.SetLevel(level);
                 expCurrent = 0;
+                ExpBar.instance.SetLevel(level);
+                ExpBar.instance.SetValue(1);
+                ExpBar.instance.SetValue(0);
+
+                StatsManager.instance.playerStats.level = level;
+                StatsManager.instance.playerStats.exp = expCurrent;
+                StatsManager.instance.playerStats.health += 100;
+                StatsManager.instance.playerStats.attack += 2;
+                StatsManager.instance.playerStats.defense += 2;
             }
         }
     }
@@ -247,7 +306,7 @@ public class PlayerControl : MonoBehaviour
             animator.SetTrigger("Dead");
         }
 
-        //Set data mana
+        //Set data blood
         if (bloodCurrent > -1 && bloodCurrent < bloodMax + 1)
         {
             BloodBar.instance.SetValue(bloodCurrent / (float)bloodMax);
@@ -262,6 +321,13 @@ public class PlayerControl : MonoBehaviour
         {
             ManaBar.instance.SetValue(manaCurrent / (float)manaMax);
         }
+    }
+
+    public void handleCoin(int dataCoin)
+    {
+        coinCurrent += dataCoin;
+        StatsManager.instance.playerStats.coin = coinCurrent;
+        coinText.SetText(formatter.FormatNumber(coinCurrent));
     }
 
     void recoverInTimeRange()
@@ -280,5 +346,42 @@ public class PlayerControl : MonoBehaviour
     public void playWalkAudio()
     {
         _walkAudio.Play();
+    }
+
+    public void UseConsumable()
+    {
+        handleBlood(EquipmentManager.instance.currentConsumable.healthBoost);
+        handleMana(EquipmentManager.instance.currentConsumable.manaBoost);
+
+        EquipmentManager.instance.currentConsumable.quantity -= 1;
+        if (EquipmentManager.instance.currentConsumable.quantity == 0)
+        {
+            EquipmentManager.instance.currentConsumable = null;
+            EquipmentManager.instance.onEquipmentChangedCallback?.Invoke();
+        }
+
+        consumableOnCooldown = true;
+        consumableCooldownSlider.gameObject.SetActive(true);
+    }
+
+    public void consumableCooldown()
+    {
+        // Increment the timer based on the duration
+        cooldownTimer += Time.deltaTime / cooldownDuration;
+
+        // Ensure the timer stays within the range [0, 1]
+        cooldownTimer = Mathf.Clamp01(cooldownTimer);
+
+        // Set the slider value based on the timer
+        consumableCooldownSlider.value = cooldownTimer;
+
+        // Check if the transition is complete
+        if (cooldownTimer >= 1f)
+        {
+            // Reset the timer to 0 for the next transition
+            cooldownTimer = 0f;
+            consumableOnCooldown = false;
+            consumableCooldownSlider.gameObject.SetActive(false);
+        }
     }
 }

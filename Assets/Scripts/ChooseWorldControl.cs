@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 [DefaultExecutionOrder(-50)]
-public class ChooseWorldControl : MonoBehaviour, IDataPersistence
+public class ChooseWorldControl : MonoBehaviour
 {
     NumberFormatter formatter;
     private TMP_Text coinUI;
@@ -16,15 +16,6 @@ public class ChooseWorldControl : MonoBehaviour, IDataPersistence
     AudioSource _chooseWorldAudio;
 
     int coinCurrent;
-    public void LoadData(GameData data)
-    {
-        this.coinCurrent = data.coin;
-    }
-    public void SaveData(ref GameData data)
-    {
-        data.coin = this.coinCurrent;
-    }
-
     private void Start()
     {
         GameObject sceneAudioManager = GameObject.Find("SceneAudioManager").gameObject;
@@ -34,6 +25,7 @@ public class ChooseWorldControl : MonoBehaviour, IDataPersistence
         _openInventoryAudio = sceneAudioManager.transform.GetChild(3).GetComponent<AudioSource>();
         _chooseWorldAudio = sceneAudioManager.transform.GetChild(6).GetComponent<AudioSource>();
 
+        coinCurrent = StatsManager.instance.playerStats.coin;
         coinUI = GameObject.Find("CoinPlayer").GetComponent<TMP_Text>();
         formatter = new NumberFormatter();
         coinUI.text = formatter.FormatNumber(coinCurrent);
@@ -59,7 +51,7 @@ public class ChooseWorldControl : MonoBehaviour, IDataPersistence
 
     public void OpenShopScene()
     {
-        SceneManager.LoadScene("Shop");
+        SceneManager.LoadScene("Shop Game");
     }
 
     public void GoToForest()

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[DefaultExecutionOrder(-10)]
 public class BloodBar : MonoBehaviour
 {
     public static BloodBar instance { get; private set; }
@@ -15,7 +16,6 @@ public class BloodBar : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(this);
         }
         else
         {

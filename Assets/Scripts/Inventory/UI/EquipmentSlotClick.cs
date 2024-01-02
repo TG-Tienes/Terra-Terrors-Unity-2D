@@ -25,8 +25,17 @@ public class EquipmentSlotClick : MonoBehaviour
         if (currentTime - lastClickTime < doubleClickThreshold)
         {
             _unequipAudio.Play();
-            Equipment equipmentToBeRemoved = EquipmentManager.instance.currentEquipment[slotIndex];
-            EquipmentManager.instance.Unequip(slotIndex, equipmentToBeRemoved);
+            if (slotIndex == 5)
+            {
+                Inventory.instance.AddItem((Item) EquipmentManager.instance.currentConsumable);
+                EquipmentManager.instance.currentConsumable = null;
+                EquipmentManager.instance.onEquipmentChangedCallback?.Invoke();
+            }
+            else
+            {
+                Equipment equipmentToBeRemoved = EquipmentManager.instance.currentEquipment[slotIndex];
+                EquipmentManager.instance.Unequip(slotIndex, equipmentToBeRemoved);
+            }
         }
 
         lastClickTime = currentTime;

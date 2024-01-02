@@ -27,6 +27,7 @@ public class EquipmentManager : MonoBehaviour
     }
     #endregion Singleton
 
+    public Consumable currentConsumable;
     public Equipment currentWeapon;
     public Equipment[] currentEquipment;
     public Dictionary<EquipType, int> equipTypeDictionary;
@@ -149,6 +150,16 @@ public class EquipmentManager : MonoBehaviour
         currentEquipment[slotIndex] = newEquipment;
     }
 
+    public void EquipConsumable(Consumable newConsumable)
+    {
+        if (currentConsumable != null)
+        {
+            Inventory.instance.items.Add((Item) currentConsumable);
+        }
+        currentConsumable = newConsumable;
+        onEquipmentChangedCallback?.Invoke();
+    }
+
     private const string path = "Assets/GameData/equipmentData.json";
 
     public void SaveEquipmentData()
@@ -163,6 +174,11 @@ public class EquipmentManager : MonoBehaviour
                     StatsManager.instance.playerStats.attack -= equipment.attackModifier;
                     StatsManager.instance.playerStats.defense -= equipment.defenseModifier;
                 }
+                streamWriter.WriteLine(json);
+            }
+            if (currentConsumable != null)
+            {
+                string json = JsonUtility.ToJson(currentConsumable);
                 streamWriter.WriteLine(json);
             }
         }
@@ -182,10 +198,24 @@ public class EquipmentManager : MonoBehaviour
 
                     if (!string.IsNullOrEmpty(json))
                     {
-                        Equipment equipment = Equipment.LoadEquipmentFromJson(json);
-                        if (equipment != null)
+                        Item item = Item.LoadFromJson(json);
+                        if (item != null)
                         {
-                            instance.Equip(equipment);
+                            switch (item.type)
+                            {
+                                case ItemType.EQUIPMENT:
+                                {
+                                    instance.Equip((Equipment) item);
+                                    break;
+                                }
+                                case ItemType.CONSUMABLE:
+                                {
+                                    instance.EquipConsumable((Consumable) item);
+                                    break;
+                                }
+                                default:
+                                    break;
+                            }
                         }
                     }
                     index++;
@@ -256,6 +286,37 @@ public class EquipmentManager : MonoBehaviour
             Debug.LogError("Failed to load sprite with addressable key: " + "Bullet");
         }
 
+        // Load health potion sprite from Addressables
+        String healthPotionAddress = "Health Potion";
+        List<Sprite> potionSprites = new List<Sprite>();
+
+        AsyncOperationHandle<Sprite> handle_4 = Addressables.LoadAssetAsync<Sprite>(healthPotionAddress);
+        await handle_4.Task;
+
+        if (handle_4.Status == AsyncOperationStatus.Succeeded)
+        {
+            potionSprites.Add(handle_4.Result);
+        }
+        else
+        {
+            Debug.LogError("Failed to load sprite with addressable key: " + "Health Potion");
+        }
+
+        // Load health potion sprite from Addressables
+        String manaPotionAddress = "Mana Potion";
+
+        AsyncOperationHandle<Sprite> handle_5 = Addressables.LoadAssetAsync<Sprite>(manaPotionAddress);
+        await handle_5.Task;
+
+        if (handle_5.Status == AsyncOperationStatus.Succeeded)
+        {
+            potionSprites.Add(handle_5.Result);
+        }
+        else
+        {
+            Debug.LogError("Failed to load sprite with addressable key: " + "Mana Potion");
+        }
+
         foreach (Equipment equipment in currentEquipment)
         {
             if (equipment != null)
@@ -270,6 +331,20 @@ public class EquipmentManager : MonoBehaviour
                     equipment.sprite = armorSprites[equipment.spriteID];
                 }
             }
+        }
+        if (currentConsumable != null)
+        {
+            switch (currentConsumable.name)
+            {
+                case "Health Potion":
+                    currentConsumable.sprite = potionSprites[0];
+                    break;
+                case "Mana Potion":
+                    currentConsumable.sprite = potionSprites[1];
+                    break;
+                default:
+                    break;
+            };
         }
     }
 }

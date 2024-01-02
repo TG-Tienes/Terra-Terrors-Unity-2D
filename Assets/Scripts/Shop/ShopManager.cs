@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 [DefaultExecutionOrder(-50)]
-public class ShopManager : MonoBehaviour, IDataPersistence
+public class ShopManager : MonoBehaviour
 {
     Color colorRare(string rare)
     {
@@ -64,14 +64,6 @@ public class ShopManager : MonoBehaviour, IDataPersistence
     }
 
     #endregion Singleton
-    public void LoadData(GameData data)
-    {
-        this.coinCurrent = data.coin;
-    }
-    public void SaveData(ref GameData data)
-    {
-        data.coin = this.coinCurrent;
-    }
     private void Start()
     {
         _buttonClicked = GameObject.Find("SceneAudioManager").gameObject.transform.GetChild(0).GetComponent<AudioSource>();

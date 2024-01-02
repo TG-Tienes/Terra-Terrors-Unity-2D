@@ -5,14 +5,15 @@ using UnityEngine;
 public class PlayerStats : ScriptableObject
 {
     public string charName = "name";
-    
-    public int coin           = 0;
-    public int level          = 1;
-    public int health         = 0;
-    public int attack         = 0;
-    public int defense        = 0;
-    public int mana           = 0;
-    public float fireRate     = 0;
+
+    public int coin = 0;
+    public int level = 1;
+    public int health = 0;
+    public int attack = 0;
+    public int defense = 0;
+    public int mana = 0;
+    public int exp = 0;
+    public float fireRate = 0;
 
     // Load data from JSON
     public static PlayerStats LoadFromJson(string jsonString, PlayerStats existingInstance = null)

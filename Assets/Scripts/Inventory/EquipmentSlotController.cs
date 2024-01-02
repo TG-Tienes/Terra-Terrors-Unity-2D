@@ -87,6 +87,17 @@ public class EquipmentSlotController : MonoBehaviour
                 }
             }
         }
+
+        if (EquipmentManager.instance.currentConsumable != null)
+        {
+            Consumable consumable = EquipmentManager.instance.currentConsumable;
+            UpdateSlot(5, consumable.sprite, consumable.rarity);
+            UpdateWeaponSlot(2, consumable.sprite);
+        }
+        // else if (EquipmentManager.instance.currentConsumable == null)
+        // {
+        //     weaponSpriteFields[3].enabled = false;
+        // }
     }
 
     void ClearAllSlots()

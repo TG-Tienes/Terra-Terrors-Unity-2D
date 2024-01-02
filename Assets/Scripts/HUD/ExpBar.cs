@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
+[DefaultExecutionOrder(-10)]
 public class ExpBar : MonoBehaviour
 // Start is called before the first frame update
 {
@@ -20,7 +21,6 @@ public class ExpBar : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(this);
         }
         else
         {
@@ -34,6 +34,7 @@ public class ExpBar : MonoBehaviour
     {
         originalSize = mask.rectTransform.rect.width;
         levelTitle = GameObject.Find("LevelTitle").GetComponent<TMP_Text>();
+        Debug.Log(levelTitle);
     }
 
     public void SetValue(float value)
