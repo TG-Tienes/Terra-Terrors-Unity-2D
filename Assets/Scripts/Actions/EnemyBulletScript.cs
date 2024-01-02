@@ -11,6 +11,7 @@ public class EnemyBulletScript : MonoBehaviour
     public float _bulletRot;
     public bool _useRot;
     public float _flightPos = 0;
+    public int _damageDeal = 15;
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +34,8 @@ public class EnemyBulletScript : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Main Character"))
         {
+            collision.gameObject.GetComponent<PlayerControl>().handleBlood(_damageDeal);
+
             Destroy(gameObject);
         }
     }

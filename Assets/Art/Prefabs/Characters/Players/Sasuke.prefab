@@ -421,8 +421,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: c5862039d101c314abf577c39cb2c77e, type: 3}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: 61e484a22697ddd41a4a57820eab1f94, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -833,7 +833,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
   speed: 1.5
-  defaultBulletSprite: {fileID: 0}
+  defaultBulletSprite: {fileID: 337120274, guid: 577953ff403fe7b44bcfea38724816af, type: 3}
   defaultRotateWeapon: {fileID: 1149468307, guid: bec99060a4a80f6428006e482d8e8e38, type: 3}
   miniMapCanvas: {fileID: 0}
   playerInventoryCanvas: {fileID: 0}

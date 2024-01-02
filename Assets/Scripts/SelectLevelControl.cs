@@ -17,8 +17,15 @@ public class SelectLevelControl : MonoBehaviour
     private string[] missionList = {"Mission: to navigate the secrets of the forest, confront formidable challenges, and reclaim the invaluable key, all while facing the lurking danger posed by the enigmatic creature.",
      "Mission: to explore the secrets of the forest, confront formidable challenges, and reclaim the invaluable key, all while facing the lurking danger posed by the enigmatic creature.",
      "Mission: to discover the secrets of the forest, confront formidable challenges, and reclaim the invaluable key, all while facing the lurking danger posed by the enigmatic creature."   };
+
+    AudioSource _buttonClicked;
+    AudioSource _navButtonClicked;
+    
     void Start()
     {
+        _buttonClicked = GameObject.Find("SceneAudioManager").gameObject.transform.GetChild(1).GetComponent<AudioSource>();
+        _navButtonClicked = GameObject.Find("SceneAudioManager").gameObject.transform.GetChild(0).GetComponent<AudioSource>();
+
         fullPathLevel = "Scenes/World/World 1/Levels/Level 1/Level 1 Scene";
         mapLevel = GameObject.Find("MapLevel").GetComponent<Image>();
         mission = GameObject.Find("DetailMap").GetComponent<TMP_Text>();
@@ -33,6 +40,8 @@ public class SelectLevelControl : MonoBehaviour
 
     public void SetLevel(int level)
     {
+        _buttonClicked.Play();
+
         fullPathLevel = path + level.ToString() + "/Level " + level.ToString() + " scene";
         mission.SetText(missionList[level - 1]);
 
@@ -53,14 +62,20 @@ public class SelectLevelControl : MonoBehaviour
 
     public void PlayGame()
     {
+        _navButtonClicked.Play();
         SceneManager.LoadScene(fullPathLevel);
     }
 
     public void BackGame()
     {
+        Invoke("BackToChooseWorld", _navButtonClicked.clip.length);
+        _navButtonClicked.Play();
         //SceneManager.LoadScene(2);
-        SceneManager.LoadScene("Choose World");
+    }
 
+    public void BackToChooseWorld()
+    {
+        SceneManager.LoadScene("Choose World");
     }
 
     private void changeColorButton(Button btn, Color newColor)

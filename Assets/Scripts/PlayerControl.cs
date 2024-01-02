@@ -80,6 +80,7 @@ public class PlayerControl : MonoBehaviour
     private AudioSource _shootingAudio;
     private AudioSource _openInventoryAudio;
     private AudioSource _closeInventoryAudio;
+    private AudioSource _hitAudio;
 
     // Start is called before the first frame update
     void Start()
@@ -88,6 +89,7 @@ public class PlayerControl : MonoBehaviour
 
         _walkAudio = transform.GetChild(2).GetChild(0).GetComponent<AudioSource>();
         _shootingAudio = transform.GetChild(2).GetChild(1).GetComponent<AudioSource>();
+        _hitAudio = transform.GetChild(2).GetChild(2).GetComponent<AudioSource>();
 
         _openInventoryAudio = sceneAudioManager.transform.GetChild(3).GetComponent<AudioSource>();
         _closeInventoryAudio = sceneAudioManager.transform.GetChild(4).GetComponent<AudioSource>();
@@ -233,6 +235,7 @@ public class PlayerControl : MonoBehaviour
     {
         if (dataBlood < 0)
         {
+            _hitAudio.Play();
             animator.SetTrigger("Hit");
             dataBlood *= (int)(100f / (100 + StatsManager.instance.playerStats.defense));
         }

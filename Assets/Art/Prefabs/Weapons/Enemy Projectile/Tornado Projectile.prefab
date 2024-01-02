@@ -332,3 +332,4 @@ MonoBehaviour:
   _bulletRot: 0
   _useRot: 0
   _flightPos: 0
+  _damageDeal: 30

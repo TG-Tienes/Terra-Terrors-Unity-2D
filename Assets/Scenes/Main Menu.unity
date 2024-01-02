@@ -190,8 +190,8 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: -1592442170, guid: f5b534104b1af5d4ca5c30056b6876e6, type: 3}
-    m_PressedSprite: {fileID: -706645848, guid: f5b534104b1af5d4ca5c30056b6876e6, type: 3}
+    m_HighlightedSprite: {fileID: 543401053, guid: d24d739a528b49744896b2e6a47c6aa7, type: 3}
+    m_PressedSprite: {fileID: 1239954433, guid: d24d739a528b49744896b2e6a47c6aa7, type: 3}
     m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
@@ -249,7 +249,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 530048370, guid: f5b534104b1af5d4ca5c30056b6876e6, type: 3}
+  m_Sprite: {fileID: -1648624284, guid: d24d739a528b49744896b2e6a47c6aa7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1162,8 +1162,8 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 337919294, guid: f5b534104b1af5d4ca5c30056b6876e6, type: 3}
-    m_PressedSprite: {fileID: -168838859, guid: f5b534104b1af5d4ca5c30056b6876e6, type: 3}
+    m_HighlightedSprite: {fileID: 1064348888, guid: d24d739a528b49744896b2e6a47c6aa7, type: 3}
+    m_PressedSprite: {fileID: 785974279, guid: d24d739a528b49744896b2e6a47c6aa7, type: 3}
     m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
@@ -1209,7 +1209,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1359693468, guid: f5b534104b1af5d4ca5c30056b6876e6, type: 3}
+  m_Sprite: {fileID: -1874061151, guid: d24d739a528b49744896b2e6a47c6aa7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2390,8 +2390,8 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: -393312681, guid: f5b534104b1af5d4ca5c30056b6876e6, type: 3}
-    m_PressedSprite: {fileID: -1344664909, guid: f5b534104b1af5d4ca5c30056b6876e6, type: 3}
+    m_HighlightedSprite: {fileID: 679104818, guid: d24d739a528b49744896b2e6a47c6aa7, type: 3}
+    m_PressedSprite: {fileID: 355473710, guid: d24d739a528b49744896b2e6a47c6aa7, type: 3}
     m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
@@ -2437,7 +2437,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1385360628, guid: f5b534104b1af5d4ca5c30056b6876e6, type: 3}
+  m_Sprite: {fileID: 436699493, guid: d24d739a528b49744896b2e6a47c6aa7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3740,6 +3740,63 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &2007541731
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5636280329127258136, guid: dc7ba78edbb4ec842aaff73314d8aa40, type: 3}
+      propertyPath: m_Name
+      value: SceneAudioManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5756808600459340744, guid: dc7ba78edbb4ec842aaff73314d8aa40, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 20.594902
+      objectReference: {fileID: 0}
+    - target: {fileID: 5756808600459340744, guid: dc7ba78edbb4ec842aaff73314d8aa40, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 25.138391
+      objectReference: {fileID: 0}
+    - target: {fileID: 5756808600459340744, guid: dc7ba78edbb4ec842aaff73314d8aa40, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5756808600459340744, guid: dc7ba78edbb4ec842aaff73314d8aa40, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5756808600459340744, guid: dc7ba78edbb4ec842aaff73314d8aa40, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5756808600459340744, guid: dc7ba78edbb4ec842aaff73314d8aa40, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5756808600459340744, guid: dc7ba78edbb4ec842aaff73314d8aa40, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5756808600459340744, guid: dc7ba78edbb4ec842aaff73314d8aa40, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5756808600459340744, guid: dc7ba78edbb4ec842aaff73314d8aa40, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5756808600459340744, guid: dc7ba78edbb4ec842aaff73314d8aa40, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: dc7ba78edbb4ec842aaff73314d8aa40, type: 3}
 --- !u!1 &2106571343
 GameObject:
   m_ObjectHideFlags: 0
@@ -3832,3 +3889,4 @@ SceneRoots:
   - {fileID: 230010176}
   - {fileID: 1785752551}
   - {fileID: 842386025}
+  - {fileID: 2007541731}

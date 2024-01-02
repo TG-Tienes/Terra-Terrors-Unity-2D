@@ -5,6 +5,7 @@ using UnityEngine;
 public class AoeTimer : MonoBehaviour
 {
     public float apperarTimer;
+    public int _damageDeal = 50;
     float timer;
 
     // Start is called before the first frame update
@@ -22,4 +23,12 @@ public class AoeTimer : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    if(collision.gameObject.tag.Equals("Main Character"))
+    //    {
+    //        collision.gameObject.GetComponent<PlayerControl>().handleBlood(_damageDeal);
+    //    }
+    //}
 }

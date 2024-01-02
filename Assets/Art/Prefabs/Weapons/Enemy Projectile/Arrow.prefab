@@ -130,6 +130,7 @@ MonoBehaviour:
   _bulletRot: 180
   _useRot: 1
   _flightPos: 0
+  _damageDeal: 20
 --- !u!60 &7068740872011547419
 PolygonCollider2D:
   m_ObjectHideFlags: 0

@@ -43,12 +43,22 @@ public class ChooseWorldControl : MonoBehaviour, IDataPersistence
     public void BackToMenu()
     {
         _buttonClickedAudio.Play();
+        Invoke("OpenMenuScene", _buttonClickedAudio.clip.length);
+    }
+
+    public void OpenMenuScene()
+    {
         SceneManager.LoadScene("Main Menu");
     }
 
     public void GoToShop()
     {
         _openShopAudio.Play();
+        Invoke("OpenShopScene", _openInventoryAudio.clip.length);
+    }
+
+    public void OpenShopScene()
+    {
         SceneManager.LoadScene("Shop");
     }
 

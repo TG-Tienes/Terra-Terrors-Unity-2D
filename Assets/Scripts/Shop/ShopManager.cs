@@ -155,6 +155,11 @@ public class ShopManager : MonoBehaviour, IDataPersistence
     public void CloseShop()
     {
         _buttonClicked.Play();
+        Invoke("OpenChooseWorldScene", _buttonClicked.clip.length);
+    }
+
+    public void OpenChooseWorldScene()
+    {
         SceneManager.LoadScene("Choose World");
     }
 
