@@ -16,15 +16,20 @@ public class Tab_Button : MonoBehaviour, IPointerEnterHandler, IPointerClickHand
 
     // public UnityEvent onTabSelect;
     // public UnityEvent onTabDeselect;
+    AudioSource _buttonClicked;
 
     private void Start()
     {
+        _buttonClicked = GameObject.Find("SceneAudioManager").gameObject.transform.GetChild(3).GetComponent<AudioSource>();
+
+
         background = GetComponent<UnityImage>();
         tabGroup.Subscribe(this);
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        _buttonClicked.Play();
         tabGroup.OnTabSelected(this);
     }
 

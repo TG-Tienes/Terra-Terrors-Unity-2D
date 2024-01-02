@@ -45,6 +45,8 @@ public class ShopManager : MonoBehaviour, IDataPersistence
     public float displayTime = 2f;
     public GameObject notEnoughCoinBox;
 
+    AudioSource _buttonClicked;
+
     NumberFormatter formatter;
     #region Singleton
     public static ShopManager instance;
@@ -72,6 +74,8 @@ public class ShopManager : MonoBehaviour, IDataPersistence
     }
     private void Start()
     {
+        _buttonClicked = GameObject.Find("SceneAudioManager").gameObject.transform.GetChild(0).GetComponent<AudioSource>();
+
         Debug.Log(StatsManager.instance.playerStats.coin + "Coin current");
 
         coinUI = GameObject.Find("CoinPlayer").GetComponent<TMP_Text>();
@@ -150,6 +154,7 @@ public class ShopManager : MonoBehaviour, IDataPersistence
     }
     public void CloseShop()
     {
+        _buttonClicked.Play();
         SceneManager.LoadScene("Choose World");
     }
 

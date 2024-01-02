@@ -26,12 +26,16 @@ public class ItemDetail : MonoBehaviour
     public delegate void OnSelectedItemChangedCallback();
     public OnSelectedItemChangedCallback onSelectedItemChangedCallback;
 
+    AudioSource _buyItemAudio;
+
     #region Singleton
     public static ItemDetail instance;
     NumberFormatter formatter;
 
     void Awake()
     {
+        _buyItemAudio = GameObject.Find("SceneAudioManager").gameObject.transform.GetChild(6).GetComponent<AudioSource>();
+
         if (instance == null)
         {
             instance = this;
@@ -47,6 +51,7 @@ public class ItemDetail : MonoBehaviour
 
     public void HandleBuy()
     {
+        _buyItemAudio.Play();  
         ShopManager.instance.Purchased(currentItem, currentItem.price, currentItem.ID, itemType.ToString());
     }
 

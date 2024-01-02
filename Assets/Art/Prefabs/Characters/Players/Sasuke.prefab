@@ -833,6 +833,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
   speed: 1.5
+  defaultBulletSprite: {fileID: 0}
   defaultRotateWeapon: {fileID: 1149468307, guid: bec99060a4a80f6428006e482d8e8e38, type: 3}
   miniMapCanvas: {fileID: 0}
   playerInventoryCanvas: {fileID: 0}
