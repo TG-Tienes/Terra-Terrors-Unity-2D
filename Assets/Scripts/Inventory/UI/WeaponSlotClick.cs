@@ -14,7 +14,17 @@ public class WeaponSlotClick : MonoBehaviour
 
     public void OnSlotClick()
     {
-        EquipmentManager.instance.currentWeapon = EquipmentManager.instance.currentEquipment[slotIndex + 3];
-        WeaponSlotController.instance.UpdateWeaponSlots(slotIndex);
+        if (slotIndex == 2)
+        {
+            if (PlayerControl.instance.consumableOnCooldown == false)
+            {    
+                PlayerControl.instance.UseConsumable();
+            }
+        }
+        else
+        {
+            EquipmentManager.instance.currentWeapon = EquipmentManager.instance.currentEquipment[slotIndex + 3];
+            WeaponSlotController.instance.UpdateWeaponSlots(slotIndex);
+        }
     }
 }

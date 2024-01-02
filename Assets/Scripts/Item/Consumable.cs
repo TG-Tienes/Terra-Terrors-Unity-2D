@@ -4,11 +4,12 @@ using UnityEngine;
  
 public class Consumable : Item
 {
-    public int potency;
+    public int healthBoost;
+    public int manaBoost;
  
     public override void Use()
     {
         base.Use();
-        Debug.Log("Using Item " + name + " with potency of " + potency);
+        PlayerControl.instance.UseConsumable();
     }
 }

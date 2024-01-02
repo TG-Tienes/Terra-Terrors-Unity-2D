@@ -32,6 +32,16 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 956adc06c07d8e64c854d5d0accd1d40
+    m_Address: Health Potion
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8fbf39f73f94fea44a8329ed23a82c9b
+    m_Address: Mana Potion
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 3dbae8aca0066d842912dc9023744d62, type: 2}
   m_SchemaSet:

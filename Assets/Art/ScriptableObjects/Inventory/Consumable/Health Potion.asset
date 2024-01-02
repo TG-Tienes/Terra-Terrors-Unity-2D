@@ -12,12 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab6a3edf15f6b8f44af1809a63b55195, type: 3}
   m_Name: Health Potion
   m_EditorClassIdentifier: 
-  ID: 0
+  ID: 1000
   name: Health Potion
   quantity: 1
-  sprite: {fileID: 21300000, guid: 6ab5d78601f95924786bdd1772135813, type: 3}
+  sprite: {fileID: 21300000, guid: 956adc06c07d8e64c854d5d0accd1d40, type: 3}
+  spriteID: 0
+  bulletSprite: {fileID: 0}
+  bulletSpriteID: 0
   description: 
-  rarity: 0
+  rarity: 2
   type: 0
   price: 1000
-  potency: 0
+  healthBoost: 20
+  manaBoost: 0

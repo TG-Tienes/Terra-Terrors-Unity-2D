@@ -138,7 +138,7 @@ public class ShopManagerInGame : MonoBehaviour
         shopPanels[2].rareItem.color = colorRare(consumableListItem[idConsumable].rarity.ToString());
         shopPanels[2].nameItem.text = consumableListItem[idConsumable].name;
         shopPanels[2].imgItem.sprite = consumableListItem[idConsumable].sprite;
-        shopPanels[2].attackData.text = "Potency: +" + consumableListItem[idConsumable].potency.ToString();
+        shopPanels[2].attackData.text = "Modificafication: +" + consumableListItem[idConsumable].healthBoost.ToString();
         shopPanels[2].priceItem.text = formatter.FormatNumber(consumableListItem[idConsumable].price);
         PlayerPrefs.Save();
 

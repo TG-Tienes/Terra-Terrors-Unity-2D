@@ -38,8 +38,8 @@ public class Inventory : MonoBehaviour
 
     public void Start()
     {
-        AddTestData();
-        //LoadInventoryData();
+        //AddTestData();
+        LoadInventoryData();
     }
 
     public void OnDestroy()
@@ -108,6 +108,40 @@ public class Inventory : MonoBehaviour
             Debug.LogError("Failed to load sprite with addressable key: " + "Bullet");
         }
 
+        // Load health potion sprite from Addressables
+        String healthPotionAddress = "Health Potion";
+        List<Sprite> potionSprites = new List<Sprite>();
+
+        AsyncOperationHandle<Sprite> handle_4 = Addressables.LoadAssetAsync<Sprite>(healthPotionAddress);
+        await handle_4.Task;
+
+        if (handle_4.Status == AsyncOperationStatus.Succeeded)
+        {
+            Sprite healthPotionSprite = handle_4.Result;
+            potionSprites.Add(healthPotionSprite);
+            Debug.Log("sprite load succeeded");
+        }
+        else
+        {
+            Debug.LogError("Failed to load sprite with addressable key: " + "Health Potion");
+        }
+
+        // Load health potion sprite from Addressables
+        String manaPotionAddress = "Mana Potion";
+
+        AsyncOperationHandle<Sprite> handle_5 = Addressables.LoadAssetAsync<Sprite>(manaPotionAddress);
+        await handle_5.Task;
+
+        if (handle_5.Status == AsyncOperationStatus.Succeeded)
+        {
+            Sprite manaPotionSprite = handle_5.Result;
+            potionSprites.Add(manaPotionSprite);
+        }
+        else
+        {
+            Debug.LogError("Failed to load sprite with addressable key: " + "Mana Potion");
+        }
+
         foreach (Item item in items)
         {
             switch (item.type)
@@ -126,6 +160,19 @@ public class Inventory : MonoBehaviour
                     }
                     break;
                 }
+                case ItemType.CONSUMABLE:
+                {
+                    Debug.Log("switch type");
+                    if (item.ID == 1000)
+                    {
+                        item.sprite = potionSprites[0];
+                    }
+                    else if (item.ID == 1001)
+                    {
+                        item.sprite = potionSprites[1];
+                    }
+                    break;
+                }
                 default:
                     break;
             }
@@ -137,7 +184,6 @@ public class Inventory : MonoBehaviour
         foreach (Item defaultItem in defaultItems)
         {
             Item item = Instantiate(defaultItem);
-            item.quantity = 1;
             items.Add(item);
         }
         SaveInventoryData();

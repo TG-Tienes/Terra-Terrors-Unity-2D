@@ -5,10 +5,27 @@ using System.Security.Cryptography;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 [DefaultExecutionOrder(0)]
 public class PlayerControl : MonoBehaviour
 {
+    #region Singleton
+    public static PlayerControl instance;
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+    }
+    #endregion Singleton
+
+
     public Animator animator;
     public TMP_Text coinText;
     public float speed = 1.5f;
@@ -26,6 +43,11 @@ public class PlayerControl : MonoBehaviour
     public Canvas miniMapCanvas;
     public Canvas playerInventoryCanvas;
     private bool playerInventoryCanvas_isActive;
+
+    public bool consumableOnCooldown = false;
+    public Slider consumableCooldownSlider;
+    public float cooldownDuration = 5f;
+    private float cooldownTimer;
 
     //Handle Level
     private int level;
@@ -189,6 +211,21 @@ public class PlayerControl : MonoBehaviour
                 WeaponSlotController.instance.UpdateWeaponSlots(1);
             }
         }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            if (EquipmentManager.instance.currentConsumable != null)
+            {
+                if (consumableOnCooldown == false)
+                {
+                    UseConsumable();
+                }
+            }
+        }
+
+        if (consumableOnCooldown == true)
+        {
+            consumableCooldown();
+        }
 
         recoverInTimeRange();
     }
@@ -309,5 +346,42 @@ public class PlayerControl : MonoBehaviour
     public void playWalkAudio()
     {
         _walkAudio.Play();
+    }
+
+    public void UseConsumable()
+    {
+        handleBlood(EquipmentManager.instance.currentConsumable.healthBoost);
+        handleMana(EquipmentManager.instance.currentConsumable.manaBoost);
+
+        EquipmentManager.instance.currentConsumable.quantity -= 1;
+        if (EquipmentManager.instance.currentConsumable.quantity == 0)
+        {
+            EquipmentManager.instance.currentConsumable = null;
+            EquipmentManager.instance.onEquipmentChangedCallback?.Invoke();
+        }
+
+        consumableOnCooldown = true;
+        consumableCooldownSlider.gameObject.SetActive(true);
+    }
+
+    public void consumableCooldown()
+    {
+        // Increment the timer based on the duration
+        cooldownTimer += Time.deltaTime / cooldownDuration;
+
+        // Ensure the timer stays within the range [0, 1]
+        cooldownTimer = Mathf.Clamp01(cooldownTimer);
+
+        // Set the slider value based on the timer
+        consumableCooldownSlider.value = cooldownTimer;
+
+        // Check if the transition is complete
+        if (cooldownTimer >= 1f)
+        {
+            // Reset the timer to 0 for the next transition
+            cooldownTimer = 0f;
+            consumableOnCooldown = false;
+            consumableCooldownSlider.gameObject.SetActive(false);
+        }
     }
 }
