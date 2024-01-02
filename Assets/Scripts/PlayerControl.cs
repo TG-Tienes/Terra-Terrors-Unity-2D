@@ -51,7 +51,7 @@ public class PlayerControl : MonoBehaviour
 
     //Handle Level
     private int level;
-    private int[] levelList = { 100, 200, 300, 400, 600, 1000 };
+    private int[] levelList = { 40, 50, 50, 50, 50, 50 };
     public float invincibleTime = 10.0f;
     private float currentTime;
 
@@ -147,7 +147,7 @@ public class PlayerControl : MonoBehaviour
         currentTime = invincibleTime;
 
         Debug.Log(level);
-        coinText.SetText(formatter.FormatNumber(coinCurrent));
+        coinText?.SetText(formatter.FormatNumber(coinCurrent));
         ExpBar.instance.SetLevel(level);
         ExpBar.instance.SetValue(expCurrent / (float)levelList[level - 1]);
         BloodBar.instance.SetValue(1);
@@ -244,8 +244,8 @@ public class PlayerControl : MonoBehaviour
         Quest q = new Quest();
         q.questName = questName;
         q.questDescription = questDescription;
-        q.expReward = UnityEngine.Random.Range(100, 1000);
-        q.goldReward = UnityEngine.Random.Range(5, 20);
+        q.expReward = UnityEngine.Random.Range(50, 100);
+        q.goldReward = UnityEngine.Random.Range(500, 2000);
         q.questCategory = 0;
         q.imagePath = imagePath;
         q.objective = new Quest.Objective();
@@ -272,7 +272,6 @@ public class PlayerControl : MonoBehaviour
 
         else if (level - 1 < levelList.Length)
         {
-
             if (expCurrent > levelList[level - 1])
             {
                 level += 1;
@@ -282,12 +281,13 @@ public class PlayerControl : MonoBehaviour
                 ExpBar.instance.SetValue(0);
 
                 StatsManager.instance.playerStats.level = level;
-                StatsManager.instance.playerStats.exp = expCurrent;
-                StatsManager.instance.playerStats.health += 100;
+                StatsManager.instance.playerStats.health += 20;
                 StatsManager.instance.playerStats.attack += 2;
                 StatsManager.instance.playerStats.defense += 2;
             }
         }
+
+        StatsManager.instance.playerStats.exp = expCurrent;
     }
 
     public void handleBlood(int dataBlood)
@@ -296,7 +296,7 @@ public class PlayerControl : MonoBehaviour
         {
             _hitAudio.Play();
             animator.SetTrigger("Hit");
-            dataBlood *= (int)(100f / (100 + StatsManager.instance.playerStats.defense));
+            dataBlood = (int)(dataBlood * (100f / (100 + StatsManager.instance.playerStats.defense)));
         }
         bloodCurrent += dataBlood;
 

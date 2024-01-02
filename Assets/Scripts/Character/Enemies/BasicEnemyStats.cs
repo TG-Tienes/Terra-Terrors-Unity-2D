@@ -8,6 +8,9 @@ public class BasicEnemyStats : MonoBehaviour
     Rigidbody2D _rigidbody;
     Transform target;
 
+    public int expAmount = 15;
+    public int coinAmount = 500;
+
     public float _speed;
     public Animator _animator;
     [SerializeField] BasicHealthBar healthBar;
@@ -17,6 +20,8 @@ public class BasicEnemyStats : MonoBehaviour
     public GameObject _damageTakenText;
     public bool _canDestroyGameObject = false;
     public bool _isBoss;
+
+    bool isDead = false;
 
     private AudioSource _hitAudio;
     private AudioSource _deadAudio;
@@ -36,32 +41,34 @@ public class BasicEnemyStats : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        if (_canDestroyGameObject)
-        {
-            Destroy(gameObject);
-            if (_isBoss)
-            {
-                QuestManager.instance.RegisterBossKill();
-                QuestLog.CheckQuestObjective(Quest.Objective.Type.killBoss, QuestManager.instance.bossesKilled);
-                Debug.Log("kill boss: " + QuestManager.instance.bossesKilled);
-            }
-            else
-            {
-                QuestManager.instance.RegisterEnemyKill();
-                QuestLog.CheckQuestObjective(Quest.Objective.Type.killEnemy, QuestManager.instance.enemiesKilled);
-                Debug.Log("kill enemy: " + QuestManager.instance.enemiesKilled);
+    {   
 
-            }
-        }
 
         if (health <= 0 && !_canDestroyGameObject)
         {
             _animator.SetTrigger("Dead");
+            if (!isDead)
+            {
+                if (_isBoss)
+                {
+                    QuestManager.instance.RegisterBossKill();
+                    QuestLog.CheckQuestObjective(Quest.Objective.Type.killBoss, QuestManager.instance.bossesKilled);
+                    Debug.Log("kill boss: " + QuestManager.instance.bossesKilled);
+                }
+                else
+                {
+                    QuestManager.instance.RegisterEnemyKill();
+                    QuestLog.CheckQuestObjective(Quest.Objective.Type.killEnemy, QuestManager.instance.enemiesKilled);
+                    Debug.Log("kill enemy: " + QuestManager.instance.enemiesKilled);
 
-            //Add exp for main character
-            _mainCharacter.GetComponent<PlayerControl>().handleExp(15);
-            _mainCharacter.GetComponent<PlayerControl>().handleCoin(1500);
+                }
+                //Add exp for main character
+                PlayerControl.instance.handleExp(expAmount);
+                PlayerControl.instance.handleCoin(coinAmount);
+                // _mainCharacter.GetComponent<PlayerControl>().handleExp(15);
+                // _mainCharacter.GetComponent<PlayerControl>().handleCoin(1500);
+                isDead = true;
+            }
             Destroy(gameObject);
             Debug.Log("dead");
         }

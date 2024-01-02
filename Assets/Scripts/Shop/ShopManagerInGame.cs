@@ -180,12 +180,12 @@ public class ShopManagerInGame : MonoBehaviour
             }
             if (typeItem == "ARMOR")
             {
-                armorListItem[idItem].quantity -= 1;
+                armorListItem[idItem - 2000].quantity -= 1;
                 shopPanelsItem[1].SetActive(false);
             }
             if (typeItem == "CONSUMABLE")
             {
-                consumableListItem[idItem].quantity += 1;
+                consumableListItem[idItem - 1000].quantity += 1;
                 shopPanelsItem[2].SetActive(false);
             }
 

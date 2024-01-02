@@ -30,7 +30,12 @@ public static class QuestLog
             if (quest.objective.CheckObjectiveCompleted(type, quantity))
             {
                 Debug.Log(StatsManager.instance.playerStats.coin);
-                StatsManager.instance.playerStats.coin += quest.goldReward;
+                Debug.Log(quest.expReward);
+                Debug.Log(quest.goldReward);
+                // StatsManager.instance.playerStats.coin += quest.goldReward;
+                // StatsManager.instance.playerStats.exp += quest.expReward;
+                PlayerControl.instance.handleCoin(quest.goldReward);
+                PlayerControl.instance.handleExp(quest.expReward);
                 Debug.Log(StatsManager.instance.playerStats.coin);
                 questsToComplete.Add(quest);
             }

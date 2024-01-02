@@ -14,9 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 2002
   name: Golden Leggings
-  quantity: 1
+  quantity: 0
   sprite: {fileID: -784294091, guid: 81fe1ddfc2cf6da4594e1909a1e183ae, type: 3}
   spriteID: 15
+  bulletSprite: {fileID: 0}
+  bulletSpriteID: 0
   description: 
   rarity: 1
   type: 1
@@ -26,3 +28,4 @@ MonoBehaviour:
   defenseModifier: 30
   manaUsage: 0
   fireRate: 0
+  criticalChance: 0

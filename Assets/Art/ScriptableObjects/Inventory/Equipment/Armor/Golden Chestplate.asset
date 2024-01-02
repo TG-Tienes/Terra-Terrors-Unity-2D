@@ -17,6 +17,8 @@ MonoBehaviour:
   quantity: 1
   sprite: {fileID: -1767334201, guid: 81fe1ddfc2cf6da4594e1909a1e183ae, type: 3}
   spriteID: 31
+  bulletSprite: {fileID: 0}
+  bulletSpriteID: 0
   description: 
   rarity: 1
   type: 1
@@ -26,3 +28,4 @@ MonoBehaviour:
   defenseModifier: 40
   manaUsage: 0
   fireRate: 0
+  criticalChance: 0
