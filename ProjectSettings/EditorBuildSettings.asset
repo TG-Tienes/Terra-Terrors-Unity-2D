@@ -21,8 +21,8 @@ EditorBuildSettings:
     path: Assets/Scenes/World/Choose World.unity
     guid: b25bcbecfd8ac654a9771d0e4e7ac99a
   - enabled: 1
-    path: Assets/Scenes/World/Shop.unity
-    guid: 1520e3beda4138e43888dfc80bfac438
+    path: Assets/Scenes/World/Shop Game.unity
+    guid: 9b0cc99f99c725042a53e1173fdf3482
   - enabled: 1
     path: Assets/Scenes/World/World 1/Choose Level World 1.unity
     guid: 882d0e3162f3c984f824d3249ff2e606

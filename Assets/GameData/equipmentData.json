@@ -1,5 +1,5 @@
 
 
 
-
-
+{"ID":21,"name":"Star Wrath","quantity":1,"sprite":{"instanceID":53034},"spriteID":309,"bulletSprite":{"instanceID":54866},"bulletSpriteID":310,"description":"","rarity":4,"type":1,"price":6000,"equipType":3,"attackModifier":15,"defenseModifier":0,"manaUsage":0,"fireRate":0.15000000596046449,"criticalChance":0.25}
+{"ID":25,"name":"Silver Shuriken","quantity":1,"sprite":{"instanceID":52686},"spriteID":51,"bulletSprite":{"instanceID":53528},"bulletSpriteID":51,"description":"","rarity":0,"type":1,"price":6000,"equipType":3,"attackModifier":4,"defenseModifier":0,"manaUsage":0,"fireRate":0.25,"criticalChance":0.15000000596046449}

@@ -19,6 +19,7 @@ public class EquipmentManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
+            DontDestroyOnLoad(this);
         }
         else
         {
@@ -78,7 +79,7 @@ public class EquipmentManager : MonoBehaviour
 
     public void Equip(Equipment newEquipment)
     {   
-        _equipAudio.Play();
+        //_equipAudio.Play();
 
         // If equipment slot is currently empty
         if (newEquipment.equipType == EquipType.WEAPON)
