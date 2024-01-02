@@ -24,11 +24,11 @@ public class AoeTimer : MonoBehaviour
         }
     }
 
-    //private void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    if(collision.gameObject.tag.Equals("Main Character"))
-    //    {
-    //        collision.gameObject.GetComponent<PlayerControl>().handleBlood(_damageDeal);
-    //    }
-    //}
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag.Equals("Main Character"))
+        {
+            collision.gameObject.GetComponent<PlayerControl>().handleBlood(-_damageDeal);
+        }
+    }
 }

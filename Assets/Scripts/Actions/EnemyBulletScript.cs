@@ -34,7 +34,7 @@ public class EnemyBulletScript : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Main Character"))
         {
-            collision.gameObject.GetComponent<PlayerControl>().handleBlood(_damageDeal);
+            collision.gameObject.GetComponent<PlayerControl>().handleBlood(-_damageDeal);
 
             Destroy(gameObject);
         }
