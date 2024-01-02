@@ -7,7 +7,7 @@ public class BasicEnemyStats : MonoBehaviour
 {
     Rigidbody2D _rigidbody;
     Transform target;
-    
+
     public float _speed;
     public Animator _animator;
     [SerializeField] BasicHealthBar healthBar;
@@ -40,11 +40,14 @@ public class BasicEnemyStats : MonoBehaviour
         if (_canDestroyGameObject)
         {
             Destroy(gameObject);
-            if(_isBoss) {
+            if (_isBoss)
+            {
                 QuestManager.instance.RegisterBossKill();
                 QuestLog.CheckQuestObjective(Quest.Objective.Type.killBoss, QuestManager.instance.bossesKilled);
                 Debug.Log("kill boss: " + QuestManager.instance.bossesKilled);
-            } else {
+            }
+            else
+            {
                 QuestManager.instance.RegisterEnemyKill();
                 QuestLog.CheckQuestObjective(Quest.Objective.Type.killEnemy, QuestManager.instance.enemiesKilled);
                 Debug.Log("kill enemy: " + QuestManager.instance.enemiesKilled);
@@ -57,7 +60,10 @@ public class BasicEnemyStats : MonoBehaviour
             _animator.SetTrigger("Dead");
 
             //Add exp for main character
-        //     _mainCharacter.GetComponent<PlayerControl>().handleExp(15);
+            _mainCharacter.GetComponent<PlayerControl>().handleExp(15);
+            _mainCharacter.GetComponent<PlayerControl>().handleCoin(1500);
+            Destroy(gameObject);
+            Debug.Log("dead");
         }
     }
 
@@ -67,9 +73,9 @@ public class BasicEnemyStats : MonoBehaviour
         {
             // formula base on LOL physical armor
             float realDamageAmountTaken = damageAmount * 100 / (100 + _armorStat);
-            
+
             DamageIdicator idicator = Instantiate(_damageTakenText, transform.position, Quaternion.identity).GetComponent<DamageIdicator>();
-            if(isCrit) idicator.SetTextColor();
+            if (isCrit) idicator.SetTextColor();
             idicator.SetDamageText(Mathf.Round(realDamageAmountTaken));
 
             health -= realDamageAmountTaken;
@@ -101,7 +107,7 @@ public class BasicEnemyStats : MonoBehaviour
 
         if (collision.gameObject.tag.Equals("Main Character"))
         {
-            _mainCharacter.GetComponent<PlayerControl>().handleBlood(-15);
+            _mainCharacter.GetComponent<PlayerControl>().handleBlood(-2);
         }
     }
 

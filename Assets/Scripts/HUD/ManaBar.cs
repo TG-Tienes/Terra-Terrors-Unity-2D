@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[DefaultExecutionOrder(-10)]
 public class ManaBar : MonoBehaviour
 {
     public static ManaBar instance { get; private set; }
@@ -16,7 +17,6 @@ public class ManaBar : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(this);
         }
         else
         {

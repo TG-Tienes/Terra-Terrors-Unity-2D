@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 [DefaultExecutionOrder(-50)]
-public class ShopManagerInGame : MonoBehaviour, IDataPersistence
+public class ShopManagerInGame : MonoBehaviour
 {
     Color colorRare(string rare)
     {
@@ -60,14 +60,6 @@ public class ShopManagerInGame : MonoBehaviour, IDataPersistence
     }
 
     #endregion Singleton
-    public void LoadData(GameData data)
-    {
-        this.coinCurrent = data.coin;
-    }
-    public void SaveData(ref GameData data)
-    {
-        data.coin = this.coinCurrent;
-    }
     private void Start()
     {
         coinUI = GameObject.Find("CoinPlayer").GetComponent<TMP_Text>();
