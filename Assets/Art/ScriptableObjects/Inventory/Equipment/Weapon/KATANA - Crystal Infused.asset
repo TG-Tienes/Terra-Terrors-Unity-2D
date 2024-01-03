@@ -10,22 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c0af41c0f9830c2499d262f0e779931d, type: 3}
-  m_Name: Golden Leggings
+  m_Name: KATANA - Crystal Infused
   m_EditorClassIdentifier: 
-  ID: 2002
-  name: Golden Leggings
-  quantity: 0
-  sprite: {fileID: -784294091, guid: 81fe1ddfc2cf6da4594e1909a1e183ae, type: 3}
-  spriteID: 15
-  bulletSprite: {fileID: 0}
-  bulletSpriteID: 0
+  ID: 40
+  name: Crystal Infused Katana
+  quantity: 1
+  sprite: {fileID: -1407747873, guid: bec99060a4a80f6428006e482d8e8e38, type: 3}
+  spriteID: 532
+  bulletSprite: {fileID: -1407747873, guid: bec99060a4a80f6428006e482d8e8e38, type: 3}
+  bulletSpriteID: 532
   description: 
-  rarity: 1
+  rarity: 4
   type: 1
-  price: 3000
-  equipType: 2
-  attackModifier: 0
-  defenseModifier: 30
+  price: 12500
+  equipType: 3
+  attackModifier: 60
+  defenseModifier: 0
   manaUsage: 0
-  fireRate: 0
-  criticalChance: 0
+  fireRate: 0.8
+  criticalChance: 0.2

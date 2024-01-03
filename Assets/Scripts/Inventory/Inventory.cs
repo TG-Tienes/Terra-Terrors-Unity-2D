@@ -119,7 +119,6 @@ public class Inventory : MonoBehaviour
         {
             Sprite healthPotionSprite = handle_4.Result;
             potionSprites.Add(healthPotionSprite);
-            Debug.Log("sprite load succeeded");
         }
         else
         {
@@ -162,7 +161,6 @@ public class Inventory : MonoBehaviour
                 }
                 case ItemType.CONSUMABLE:
                 {
-                    Debug.Log("switch type");
                     if (item.ID == 1000)
                     {
                         item.sprite = potionSprites[0];

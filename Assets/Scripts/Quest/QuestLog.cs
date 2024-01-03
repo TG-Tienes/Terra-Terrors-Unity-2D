@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [DefaultExecutionOrder(10)]
-public static class QuestLog 
+public static class QuestLog
 {
     private static List<Quest> questList;
     private static List<Quest> completedQuest;
@@ -11,20 +11,39 @@ public static class QuestLog
     public delegate void OnQuestChange(List<Quest> activeQuests, List<Quest> completedQuest);
     public static event OnQuestChange onQuestChange;
 
-    public static void Initialize() {
-
+    public static void Initialize()
+    {
         questList = new List<Quest>();
         completedQuest = new List<Quest>();
-        // QuestManager.instance.Reset(); 
+        // Initialize the event to an empty delegate if it's null
+        onQuestChange = onQuestChange ?? delegate { };
     }
 
-    public static void AddQuest(Quest quest) {
+    public static void AddQuest(Quest quest)
+    {
         questList.Add(quest);
         // HandleOwnedItems(quest);
-        onQuestChange.Invoke(questList, completedQuest);
+
+        // Use the null-conditional operator to check for null before invoking the event
+        onQuestChange?.Invoke(questList, completedQuest);
     }
 
-    public static void CheckQuestObjective(Quest.Objective.Type type, int quantity) {
+    // ... (similar check in other methods)
+
+    public static void CompleteQuest(Quest quest)
+    {
+        questList.Remove(quest);
+        completedQuest.Add(quest);
+        // Inventory.giveGold(quest.goldReward);
+        // Character.giveExp(quest.expReward);
+
+        // Use the null-conditional operator to check for null before invoking the event
+        onQuestChange?.Invoke(questList, completedQuest);
+    }
+    // ... (similar check in other methods)
+
+    public static void CheckQuestObjective(Quest.Objective.Type type, int quantity)
+    {
         List<Quest> questsToComplete = new List<Quest>();
         foreach (Quest quest in questList)
         {
@@ -50,15 +69,6 @@ public static class QuestLog
 
     }
 
-    public static void CompleteQuest(Quest quest) {
-        questList.Remove(quest);
-        completedQuest.Add(quest);
-        // Inventory.giveGold(quest.goldReward);
-        // Character.giveExp(quest.expReward);
-        onQuestChange.Invoke(questList, completedQuest);
-
-    }
-
     // private static void HandleOwnedItems(Quest quest) {
     //     if (quest.objective.type != Quest.Objective.Type.collect)
     //         return;
@@ -67,7 +77,8 @@ public static class QuestLog
     //         CompleteQuest(quest);
     // }
 
-    public static Quest getQuestNo(int index) {
+    public static Quest getQuestNo(int index)
+    {
         if (index < questList.Count)
             return questList[index];
         else

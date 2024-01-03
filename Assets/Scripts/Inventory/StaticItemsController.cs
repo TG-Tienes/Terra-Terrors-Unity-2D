@@ -8,21 +8,35 @@ using System;
 public class StaticItemsController : MonoBehaviour
 {
     public List<TextMeshProUGUI> fields;
- 
-    private void Awake()
+
+    #region Singleton
+    public static StaticItemsController instance;
+
+    void Awake()
     {
-        StatsManager.instance.onStatusChangedCallback += UpdateFields;
-        DontDestroyOnLoad(this);
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(this);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
+    #endregion
+ 
     private void Start()
     {
+        StatsManager.instance.onStatusChangedCallback += UpdateFields;
         UpdateFields();
     }
      
     void UpdateFields()
     {
         Type fieldsType = typeof(PlayerStats);
+        Debug.Log(fieldsType.ToString());
     
         foreach (TextMeshProUGUI field in fields)
         {
