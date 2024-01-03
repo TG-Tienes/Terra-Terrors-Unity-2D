@@ -100,6 +100,7 @@ public class PlayerControl : MonoBehaviour
         public int amount;
         public string imagePath;
     }
+    public GameObject _endLevelObject;
 
     private QuestInfo[] quests = {
        new QuestInfo { questType = 2, questName = "Collect Special Items", questDescription = "Find unique items scattered across the realm.", amount = 3, imagePath = "https://firebasestorage.googleapis.com/v0/b/chat-app-ee53e.appspot.com/o/BlueCrystalMoving1.png?alt=media&token=412896f0-8b84-4fac-a54f-731d9ff4c922"},
