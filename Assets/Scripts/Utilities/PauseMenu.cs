@@ -29,7 +29,7 @@ public class PauseMenu : MonoBehaviour
     {
         _buttonClickedAudio.Play();
         pauseMenu.SetActive(false);
-        SceneManager.LoadScene(6); 
+        SceneManager.LoadScene(4); 
         PauseMenuManager.unpauseGame();
     }
 }
