@@ -59,7 +59,7 @@ public class Shooting : MonoBehaviour
                 }
             }
 
-            if (Input.GetMouseButton(0) && canFire && !_isOpeningMenu)
+            if (Input.GetMouseButton(0) && canFire && !_isOpeningMenu && !_mainCharacter.GetComponent<PlayerControl>().isManaOut())
             {
                 _shootingAudio.Play();
                 canFire = false;

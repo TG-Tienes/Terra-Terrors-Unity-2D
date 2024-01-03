@@ -53,7 +53,7 @@ public class PlayerControl : MonoBehaviour
     //Handle Level
     private int level;
     private int[] levelList = { 50, 150, 250, 500, 1000, 2000 };
-    public float invincibleTime = 10.0f;
+    public float invincibleTime = 0.1f;
     private float currentTime;
 
     //Handle EXP Bar
@@ -171,7 +171,7 @@ private QuestInfo[] GetQuestsForMap()
         rotateShooting = transform.GetChild(0).gameObject;
         rotateWeapon = transform.GetChild(0).GetChild(0).gameObject;
 
-        currentTime = invincibleTime;
+        currentTime = 0;
 
         Debug.Log(level);
         coinText?.SetText(formatter.FormatNumber(coinCurrent));
@@ -189,6 +189,8 @@ private QuestInfo[] GetQuestsForMap()
     // Update is called once per frame
     void Update()
     {
+        currentTime += Time.deltaTime;
+
         directionX = Input.GetAxis("Horizontal");
         directionY = Input.GetAxis("Vertical");
 
@@ -393,13 +395,13 @@ private QuestInfo[] GetQuestsForMap()
     void recoverInTimeRange()
     {
         //Handle add exp in time range;
-        currentTime -= Time.deltaTime;
-        if (currentTime < 0 && manaCurrent < manaMax)
+        if (currentTime > invincibleTime && manaCurrent < manaMax)
         {
-            manaCurrent += 1;
-            if (manaCurrent <= manaMax)
-                ManaBar.instance.SetValue(manaCurrent / (float)manaMax);
-            currentTime = invincibleTime;
+            manaCurrent += 20;
+            if (manaCurrent >= manaMax)
+                manaCurrent = manaMax;
+            ManaBar.instance.SetValue((float)manaCurrent / manaMax);
+            currentTime = 0;
         }
     }
 
@@ -443,5 +445,10 @@ private QuestInfo[] GetQuestsForMap()
             consumableOnCooldown = false;
             consumableCooldownSlider.gameObject.SetActive(false);
         }
+    }
+
+    public bool isManaOut()
+    {
+        return mana <= 0 ? true : false;
     }
 }
