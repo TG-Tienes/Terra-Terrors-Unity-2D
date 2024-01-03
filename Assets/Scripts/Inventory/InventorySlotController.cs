@@ -10,14 +10,28 @@ public class InventorySlotController : MonoBehaviour
     public List<TextMeshProUGUI> quantityFields;
     public List<Image> rarityBackgroundFields;
 
-    private void Awake()
+    #region Singleton
+    public static InventorySlotController instance;
+    void Awake()
     {
-        Inventory.instance.onItemChangedCallback += UpdateAllSlots;
-        DontDestroyOnLoad(this);
+        if (instance is not null && instance != this)
+        {
+            Destroy(instance);
+            return;
+        }
+        instance = this;
     }
+    #endregion
+
+    // private void Awake()
+    // {
+    //     DontDestroyOnLoad(this);
+    // }
 
     private void Start()
     {
+        Debug.Log(spriteFields.Count + " " + quantityFields.Count + " " + rarityBackgroundFields.Count);
+        Inventory.instance.onItemChangedCallback += UpdateAllSlots;
         UpdateAllSlots();
     }
 
@@ -103,15 +117,20 @@ public class InventorySlotController : MonoBehaviour
     {
         foreach (Image spriteField in spriteFields)
         {
-            spriteField.enabled = false;
+            if (spriteField != null)
+            {
+                spriteField.enabled = false;
+            }
         }
         foreach (TextMeshProUGUI quantityField in quantityFields)
         {
-            quantityField.transform.parent.gameObject.SetActive(false);
+            if (quantityField != null)
+                quantityField.transform.parent.gameObject.SetActive(false);
         }
         foreach (Image rarityBackgroundField in rarityBackgroundFields)
         {
-            rarityBackgroundField.color = GlobalColor.color_SlotDefault;
+            if (rarityBackgroundField != null)
+                rarityBackgroundField.color = GlobalColor.color_SlotDefault;
         }
     }
 }

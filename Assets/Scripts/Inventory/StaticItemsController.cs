@@ -29,6 +29,7 @@ public class StaticItemsController : MonoBehaviour
  
     private void Start()
     {
+        Debug.Log("StaticItemController " + fields.Count);
         StatsManager.instance.onStatusChangedCallback += UpdateFields;
         UpdateFields();
     }
@@ -40,8 +41,11 @@ public class StaticItemsController : MonoBehaviour
     
         foreach (TextMeshProUGUI field in fields)
         {
-            string value = fieldsType.GetField(field.name).GetValue(StatsManager.instance.playerStats).ToString();
-            field.text = value;       
+            if (field != null)
+            {
+                string value = fieldsType.GetField(field.name).GetValue(StatsManager.instance.playerStats).ToString();
+                field.text = value;       
+            }
         }
     }
 }
