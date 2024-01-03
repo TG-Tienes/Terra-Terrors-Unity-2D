@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0af41c0f9830c2499d262f0e779931d, type: 3}
+  m_Name: LEGS - Golden
+  m_EditorClassIdentifier: 
+  ID: 2002
+  name: Golden Leggings
+  quantity: 1
+  sprite: {fileID: -784294091, guid: 81fe1ddfc2cf6da4594e1909a1e183ae, type: 3}
+  spriteID: 15
+  bulletSprite: {fileID: 0}
+  bulletSpriteID: 0
+  description: 
+  rarity: 3
+  type: 1
+  price: 3000
+  equipType: 2
+  attackModifier: 0
+  defenseModifier: 20
+  manaUsage: 0
+  fireRate: 0
+  criticalChance: 0

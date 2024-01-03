@@ -10,22 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c0af41c0f9830c2499d262f0e779931d, type: 3}
-  m_Name: STAFF - Poseidon Trident
+  m_Name: AXE - Mythril
   m_EditorClassIdentifier: 
-  ID: 31
-  name: Poseidon's Trident
+  ID: 43
+  name: Mythril Axe
   quantity: 1
-  sprite: {fileID: 486865963, guid: bec99060a4a80f6428006e482d8e8e38, type: 3}
-  spriteID: 749
-  bulletSprite: {fileID: 2000107484, guid: 577953ff403fe7b44bcfea38724816af, type: 3}
-  bulletSpriteID: 749
+  sprite: {fileID: -764220717, guid: bec99060a4a80f6428006e482d8e8e38, type: 3}
+  spriteID: 751
+  bulletSprite: {fileID: -764220717, guid: bec99060a4a80f6428006e482d8e8e38, type: 3}
+  bulletSpriteID: 751
   description: 
-  rarity: 4
+  rarity: 2
   type: 1
-  price: 1200
+  price: 0
   equipType: 3
-  attackModifier: 40
+  attackModifier: 30
   defenseModifier: 0
   manaUsage: 0
-  fireRate: 0.35
+  fireRate: 0.8
   criticalChance: 0.2
