@@ -11,7 +11,6 @@ public class QuestManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(this);
             Reset();
         }
         else
