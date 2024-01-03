@@ -3,35 +3,99 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System;
+using System.Linq;
 
-[DefaultExecutionOrder(-50)]
+[DefaultExecutionOrder(50)]
 public class EquipmentSlotController : MonoBehaviour
 {
     public int slotIndex;
     public List<Image> spriteFields;
     public List<Image> rarityBackgroundFields;
-
     public List<Image> weaponSpriteFields;
 
-    public void Awake()
+    #region Singleton
+    public static EquipmentSlotController instance;
+
+    void Awake()
     {
-        EquipmentManager.instance.onEquipmentChangedCallback += UpdateAllSlots;
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(this);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
+
+    #endregion
 
     public void Start()
     {
+        Debug.Log(spriteFields.Count + " " + rarityBackgroundFields.Count + " " + weaponSpriteFields.Count);
+        Debug.Log("get Equipment field");
+        GetFields();
+        Debug.Log(spriteFields.Count + " " + rarityBackgroundFields.Count + " " + weaponSpriteFields.Count);
+        EquipmentManager.instance.onEquipmentChangedCallback += UpdateAllSlots;
         UpdateAllSlots();
+    }
+
+    private void GetFields()
+    {
+        spriteFields.Clear();
+        int index = 0;
+        GameObject[] objects_1 = GameObject.FindGameObjectsWithTag("EquipmentSlotSpriteField");
+        List<GameObject> sorted_1 = objects_1.OrderBy(obj => obj.name).ToList();
+        foreach (GameObject obj in sorted_1)
+        {
+            Debug.Log(obj.name);
+            Image result = obj.GetComponent<Image>();
+            if (result != null)
+            {
+                Debug.Log(index++);
+                spriteFields.Add(result);
+            }
+        }
+
+        rarityBackgroundFields.Clear();
+        GameObject[] objects_2 = GameObject.FindGameObjectsWithTag("EquipmentSlotRarityBackground");
+        List<GameObject> sorted_2 = objects_2.OrderBy(obj => obj.name).ToList();
+        foreach (GameObject obj in sorted_2)
+        {
+            Image result = obj.GetComponent<Image>();
+            if (result != null)
+            {   
+                rarityBackgroundFields.Add(result);
+            }
+        }
+
+        weaponSpriteFields.Clear();
+        GameObject[] objects_3 = GameObject.FindGameObjectsWithTag("WeaponSlotSpriteField");
+        List<GameObject> sorted_3 = objects_3.OrderBy(obj => obj.name).ToList();
+        foreach (GameObject obj in sorted_3)
+        {
+            Image result = obj.GetComponent<Image>();
+            if (result != null)
+            {
+                weaponSpriteFields.Add(result);
+            }
+        }
     }
 
     public void UpdateWeaponSlot(int slotIndex, Sprite sprite)
     {
-        weaponSpriteFields[slotIndex].enabled = true;
+        weaponSpriteFields[slotIndex].color = new Color32(255,255,255,255);
         weaponSpriteFields[slotIndex].sprite = sprite;
     }
 
     public void UpdateSlot(int slotIndex, Sprite sprite, ItemRarity rarity)
     {
-        spriteFields[slotIndex].enabled = true;
+        if (spriteFields[slotIndex] == null)
+        {
+            Debug.Log(slotIndex + " is null");
+        }
+        spriteFields[slotIndex].color = new Color32(255,255,255,255);
         spriteFields[slotIndex].sprite = sprite;
 
         switch (rarity)
@@ -94,17 +158,13 @@ public class EquipmentSlotController : MonoBehaviour
             UpdateSlot(5, consumable.sprite, consumable.rarity);
             UpdateWeaponSlot(2, consumable.sprite);
         }
-        // else if (EquipmentManager.instance.currentConsumable == null)
-        // {
-        //     weaponSpriteFields[3].enabled = false;
-        // }
     }
 
     void ClearAllSlots()
     {
         foreach (Image spriteField in spriteFields)
         {
-            spriteField.enabled = false;
+            spriteField.color = new Color32(255,255,255,0);
         }
         foreach (Image rarityBackgroundField in rarityBackgroundFields)
         {
@@ -112,7 +172,7 @@ public class EquipmentSlotController : MonoBehaviour
         }
         foreach (Image weaponSpriteField in weaponSpriteFields)
         {
-            weaponSpriteField.enabled = false;
+            weaponSpriteField.color = new Color32(255,255,255,0);
         }
     }
 }

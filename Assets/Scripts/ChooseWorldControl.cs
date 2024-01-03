@@ -59,4 +59,10 @@ public class ChooseWorldControl : MonoBehaviour
         _chooseWorldAudio.Play();
         SceneManager.LoadScene("Choose Level World 1");
     }
+
+    public void GoToDungeon()
+    {
+        _chooseWorldAudio.Play();
+        SceneManager.LoadScene("Choose Level World 2");
+    }
 }
