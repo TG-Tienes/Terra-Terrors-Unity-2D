@@ -2,45 +2,91 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;  
+using System.Linq;
 
-[DefaultExecutionOrder(-50)]
+[DefaultExecutionOrder(50)]
 public class InventorySlotController : MonoBehaviour
 {
-    public List<Image> spriteFields;
-    public List<TextMeshProUGUI> quantityFields;
-    public List<Image> rarityBackgroundFields;
+    public List<Image> spriteFields = new List<Image>();
+    public List<TextMeshProUGUI> quantityFields = new List<TextMeshProUGUI>();
+    public List<Image> rarityBackgroundFields = new List<Image>();
 
     #region Singleton
     public static InventorySlotController instance;
     void Awake()
     {
-        if (instance is not null && instance != this)
+        if (instance == null)
         {
-            Destroy(instance);
-            return;
+            instance = this;
+            DontDestroyOnLoad(this);
         }
-        instance = this;
+        else
+        {
+            Destroy(gameObject);
+        }
     }
     #endregion
 
-    // private void Awake()
-    // {
-    //     DontDestroyOnLoad(this);
-    // }
-
-    private void Start()
-    {
+    public void Start()
+    {        
+        Debug.Log(spriteFields.Count + " " + quantityFields.Count + " " + rarityBackgroundFields.Count);
+        GetFields();
         Debug.Log(spriteFields.Count + " " + quantityFields.Count + " " + rarityBackgroundFields.Count);
         Inventory.instance.onItemChangedCallback += UpdateAllSlots;
         UpdateAllSlots();
     }
 
-    void SetActiveAndUpdateSlot(int index, Sprite sprite, int quantity, ItemRarity rarity)
+    public void GetFields()
     {
-        spriteFields[index].enabled = true;
+        int index = 0;
+        spriteFields.Clear();
+        GameObject[] objects_1 = GameObject.FindGameObjectsWithTag("InventorySlotSpriteField");
+        List<GameObject> sorted_1 = objects_1.OrderBy(obj => obj.name).ToList();
+        foreach (GameObject obj in sorted_1)
+        {
+            Image result = obj.GetComponent<Image>();
+            Debug.Log(index + " " + (result == null));
+            // if (result == null)
+            // {
+            // }
+            if (result != null)
+            {
+                spriteFields.Add(result);
+            }
+            index++;
+        }
+
+        quantityFields.Clear();
+        GameObject[] objects_2 = GameObject.FindGameObjectsWithTag("InventorySlotQuantityField");
+        List<GameObject> sorted_2 = objects_2.OrderBy(obj => obj.name).ToList();
+        foreach (GameObject obj in sorted_2)
+        {
+            TextMeshProUGUI result = obj.GetComponent<TextMeshProUGUI>();
+            if (result != null)
+            {   
+                quantityFields.Add(result);
+            }
+        }
+
+        rarityBackgroundFields.Clear();
+        GameObject[] objects_3 = GameObject.FindGameObjectsWithTag("InventorySlotRarityBackground");
+        List<GameObject> sorted_3 = objects_3.OrderBy(obj => obj.name).ToList();
+        foreach (GameObject obj in sorted_3)
+        {
+            Image result = obj.GetComponent<Image>();
+            if (result != null)
+            {
+                rarityBackgroundFields.Add(result);
+            }
+        }
+    }
+
+    public void SetActiveAndUpdateSlot(int index, Sprite sprite, int quantity, ItemRarity rarity)
+    {
+        spriteFields[index].color = new Color32(255,255,255,255);
         spriteFields[index].sprite = sprite;
 
-        quantityFields[index].transform.parent.gameObject.SetActive(true);
+        quantityFields[index].transform.parent.gameObject.GetComponent<Image>().enabled = true;
         quantityFields[index].text = quantity.ToString();
 
         switch (rarity)
@@ -80,52 +126,47 @@ public class InventorySlotController : MonoBehaviour
         };
     }
 
-    void UpdateAllSlots()
+    public void UpdateAllSlots()
     {
         ClearAllSlots();
 
-        int index = 0;
         foreach (Item item in Inventory.instance.items)
         {
-            if (item.quantity > Inventory.instance.stackSize)
-            {
-                for (int iteration = item.quantity / Inventory.instance.stackSize; iteration >= 0; iteration--)
-                {
-                    if (iteration > 0)
-                    {
-                        SetActiveAndUpdateSlot(index, item.sprite, Inventory.instance.stackSize, item.rarity);
-                    }
-                    else
-                    {
-                        if (item.quantity % Inventory.instance.stackSize != 0)
-                        {   
-                            SetActiveAndUpdateSlot(index, item.sprite, item.quantity % Inventory.instance.stackSize, item.rarity);
-                        }
-                    }
-                    index++;
-                }
-            }
-            else
-            {
-                SetActiveAndUpdateSlot(index, item.sprite, item.quantity, item.rarity);
-                index++;
-            }
+            // if (item.quantity > Inventory.instance.stackSize)
+            // {
+            //     for (int iteration = item.quantity / Inventory.instance.stackSize; iteration >= 0; iteration--)
+            //     {
+            //         if (iteration > 0)
+            //         {
+            //             SetActiveAndUpdateSlot(index, item.sprite, Inventory.instance.stackSize, item.rarity);
+            //         }
+            //         else
+            //         {
+            //             if (item.quantity % Inventory.instance.stackSize != 0)
+            //             {   
+            //                 SetActiveAndUpdateSlot(index, item.sprite, item.quantity % Inventory.instance.stackSize, item.rarity);
+            //             }
+            //         }
+            //         index++;
+            //     }
+            // }
+            SetActiveAndUpdateSlot(Inventory.instance.items.IndexOf(item), item.sprite, item.quantity, item.rarity);
         }
     }
 
-    void ClearAllSlots()
+    public void ClearAllSlots()
     {
+        Debug.Log(spriteFields.Count);
         foreach (Image spriteField in spriteFields)
         {
-            if (spriteField != null)
-            {
-                spriteField.enabled = false;
-            }
+            if (spriteField == null)
+                Debug.Log("is null");
+            spriteField.color = new Color32(255,255,255,0);
         }
         foreach (TextMeshProUGUI quantityField in quantityFields)
         {
-            if (quantityField != null)
-                quantityField.transform.parent.gameObject.SetActive(false);
+            quantityField.transform.parent.gameObject.GetComponent<Image>().enabled = false;
+            quantityField.text = "";
         }
         foreach (Image rarityBackgroundField in rarityBackgroundFields)
         {

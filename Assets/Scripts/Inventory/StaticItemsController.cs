@@ -26,10 +26,25 @@ public class StaticItemsController : MonoBehaviour
     }
 
     #endregion
+
+    private void GetFields()
+    {
+        fields.Clear();
+        GameObject[] taggedObjects = GameObject.FindGameObjectsWithTag("StaticItemText");
+        foreach (GameObject obj in taggedObjects)
+        {
+            TextMeshProUGUI textMeshPro = obj.GetComponent<TextMeshProUGUI>();
+            if (textMeshPro != null)
+            {
+                fields.Add(textMeshPro);
+            }
+        }
+    }
  
     private void Start()
     {
         Debug.Log("StaticItemController " + fields.Count);
+        GetFields();
         StatsManager.instance.onStatusChangedCallback += UpdateFields;
         UpdateFields();
     }

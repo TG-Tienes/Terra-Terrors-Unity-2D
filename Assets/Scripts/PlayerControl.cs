@@ -43,7 +43,7 @@ public class PlayerControl : MonoBehaviour
 
     public Canvas miniMapCanvas;
     public Canvas playerInventoryCanvas;
-    private bool playerInventoryCanvas_isActive;
+    private bool playerInventoryCanvas_isActive = false;
 
     public bool consumableOnCooldown = false;
     public Slider consumableCooldownSlider;
@@ -157,6 +157,8 @@ public class PlayerControl : MonoBehaviour
         ManaBar.instance.SetValue(1);
 
         // playerInventoryCanvas_isActive = playerInventoryCanvas.isActiveAndEnabled;
+        // playerInventoryCanvas.enabled = playerInventoryCanvas_isActive;
+
         StartCoroutine(AddQuest());
     }
 
@@ -193,6 +195,7 @@ public class PlayerControl : MonoBehaviour
                 _openInventoryAudio.Play();
             else
                 _closeInventoryAudio.Play();
+            // playerInventoryCanvas.enabled = playerInventoryCanvas_isActive;
             playerInventoryCanvas.gameObject.SetActive(playerInventoryCanvas_isActive);
             miniMapCanvas.gameObject.SetActive(!playerInventoryCanvas_isActive);
         }

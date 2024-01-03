@@ -10,6 +10,14 @@ TagManager:
   - Minimap Slider
   - Enemy Projectile
   - Pause Menu
+  - Player Inventory Canvas
+  - InventorySlotSpriteField
+  - InventorySlotQuantityField
+  - InventorySlotRarityBackground
+  - StaticItemText
+  - EquipmentSlotSpriteField
+  - EquipmentSlotRarityBackground
+  - WeaponSlotSpriteField
   layers:
   - Default
   - TransparentFX

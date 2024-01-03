@@ -627,6 +627,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Weapon Slot
       objectReference: {fileID: 0}
+    - target: {fileID: 3841815287777109306, guid: aafa545801f4044409531adaa9a85941, type: 3}
+      propertyPath: m_Name
+      value: Sprite 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8215599721876962288, guid: aafa545801f4044409531adaa9a85941, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -755,6 +759,10 @@ PrefabInstance:
     - target: {fileID: 973558998389278555, guid: aafa545801f4044409531adaa9a85941, type: 3}
       propertyPath: m_Name
       value: Weapon Slot
+      objectReference: {fileID: 0}
+    - target: {fileID: 3841815287777109306, guid: aafa545801f4044409531adaa9a85941, type: 3}
+      propertyPath: m_Name
+      value: Sprite 1
       objectReference: {fileID: 0}
     - target: {fileID: 7474269869846898489, guid: aafa545801f4044409531adaa9a85941, type: 3}
       propertyPath: slotIndex
@@ -887,7 +895,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 973558998389278555, guid: aafa545801f4044409531adaa9a85941, type: 3}
       propertyPath: m_Name
-      value: Weapon Slot (1)
+      value: Weapon Slot
+      objectReference: {fileID: 0}
+    - target: {fileID: 3841815287777109306, guid: aafa545801f4044409531adaa9a85941, type: 3}
+      propertyPath: m_Name
+      value: Sprite 2
       objectReference: {fileID: 0}
     - target: {fileID: 7474269869846898489, guid: aafa545801f4044409531adaa9a85941, type: 3}
       propertyPath: slotIndex

@@ -44,6 +44,8 @@ public class Inventory : MonoBehaviour
 
     public void OnDestroy()
     {
+        // Canvas playerInventory = GameObject.FindGameObjectWithTag("Player Inventory Canvas")?.GetComponent<Canvas>();
+        // playerInventory.gameObject.SetActive(true);
         SaveInventoryData();
     }
 
@@ -192,7 +194,7 @@ public class Inventory : MonoBehaviour
         Item existingItem = items.Find(_item => _item.ID == item.ID);
         if (existingItem != null)
         {
-            existingItem.quantity += 1;
+            items[items.IndexOf(existingItem)].quantity += 1;
         }
         else
         {
