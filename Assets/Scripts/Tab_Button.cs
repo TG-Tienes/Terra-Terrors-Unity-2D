@@ -42,16 +42,4 @@ public class Tab_Button : MonoBehaviour, IPointerEnterHandler, IPointerClickHand
     {
         tabGroup.OnTabExit(this);
     }
-
-    // public void Select()
-    // {
-    //     if (onTabSelect != null)
-    //         onTabSelect.Invoke();
-    // }
-
-    // public void Deselect()
-    // {
-    //     if (onTabDeselect != null)
-    //         onTabDeselect.Invoke();
-    // }
 }
