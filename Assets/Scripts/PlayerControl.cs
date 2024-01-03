@@ -104,7 +104,7 @@ public class PlayerControl : MonoBehaviour
     private QuestInfo[] quests = {
        new QuestInfo { questType = 2, questName = "Collect Special Items", questDescription = "Find unique items scattered across the realm.", amount = 3, imagePath = "https://firebasestorage.googleapis.com/v0/b/chat-app-ee53e.appspot.com/o/BlueCrystalMoving1.png?alt=media&token=412896f0-8b84-4fac-a54f-731d9ff4c922"},
         new QuestInfo { questType = 1, questName = "Kill Boss", questDescription = "Conquer level-specific mini-bosses guarding valuable treasures.", amount = 1, imagePath = "https://firebasestorage.googleapis.com/v0/b/chat-app-ee53e.appspot.com/o/Minotaur.png?alt=media&token=a4edc1b4-c1a6-4243-b5a7-b0c9488d8128"},
-        new QuestInfo { questType = 0, questName = "Kill 10 Monsters", questDescription = "Eliminate ten formidable creatures wandering the lands.", amount = 5, imagePath = "https://firebasestorage.googleapis.com/v0/b/chat-app-ee53e.appspot.com/o/gobin.png?alt=media&token=bad4e6bd-c593-4b63-bba7-f4fdf5e5b189"},
+        new QuestInfo { questType = 0, questName = "Kill Monsters", questDescription = "Eliminate ten formidable creatures wandering the lands.", amount = 3, imagePath = "https://firebasestorage.googleapis.com/v0/b/chat-app-ee53e.appspot.com/o/gobin.png?alt=media&token=bad4e6bd-c593-4b63-bba7-f4fdf5e5b189"},
         new QuestInfo { questType = 3, questName = "Talk to NPC", questDescription = "Engage in a conversation with an important character.", amount = 1, imagePath = "https://firebasestorage.googleapis.com/v0/b/chat-app-ee53e.appspot.com/o/Hera.png?alt=media&token=de2dcc53-fd03-4fb7-9ec1-982a4b466e07"},
     };
 
@@ -227,6 +227,12 @@ public class PlayerControl : MonoBehaviour
         if (consumableOnCooldown == true)
         {
             consumableCooldown();
+        }
+
+        if (QuestLog.isFinishedAllQuests())
+        {
+            _endLevelObject.SetActive(true);
+            PauseMenuManager.pauseGame();
         }
 
         recoverInTimeRange();

@@ -11,6 +11,8 @@ public static class QuestLog
     public delegate void OnQuestChange(List<Quest> activeQuests, List<Quest> completedQuest);
     public static event OnQuestChange onQuestChange;
 
+    static bool _isFinished = false;
+
     public static void Initialize()
     {
         questList = new List<Quest>();
@@ -34,6 +36,9 @@ public static class QuestLog
     {
         questList.Remove(quest);
         completedQuest.Add(quest);
+
+        if(questList.Count == 0)
+            _isFinished = true;
         // Inventory.giveGold(quest.goldReward);
         // Character.giveExp(quest.expReward);
 
@@ -85,5 +90,8 @@ public static class QuestLog
             return completedQuest[index - questList.Count];
     }
 
-
+    public static bool isFinishedAllQuests()
+    {
+        return _isFinished;
+    }
 }
