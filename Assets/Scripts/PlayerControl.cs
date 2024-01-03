@@ -52,7 +52,7 @@ public class PlayerControl : MonoBehaviour
 
     //Handle Level
     private int level;
-    private int[] levelList = { 40, 50, 50, 50, 50, 50 };
+    private int[] levelList = { 50, 150, 250, 500, 1000, 2000 };
     public float invincibleTime = 10.0f;
     private float currentTime;
 
@@ -197,6 +197,11 @@ public class PlayerControl : MonoBehaviour
             // playerInventoryCanvas.enabled = playerInventoryCanvas_isActive;
             playerInventoryCanvas.gameObject.SetActive(playerInventoryCanvas_isActive);
             miniMapCanvas.gameObject.SetActive(!playerInventoryCanvas_isActive);
+
+            if (playerInventoryCanvas_isActive)
+                PauseMenuManager.pauseGame();
+            else
+                PauseMenuManager.unpauseGame();
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
