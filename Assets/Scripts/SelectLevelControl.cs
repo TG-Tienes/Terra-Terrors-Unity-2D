@@ -41,14 +41,14 @@ public class SelectLevelControl : MonoBehaviour
         {
             fullPathLevel = "Scenes/World/World 1/Levels/Level 1/Level 1 Scene";
             mapLevel.sprite = mapLevel1World1;
+            world = 1;
         }
         if (currentScene.name == "Choose Level World 2")
         {
             fullPathLevel = "Scenes/World/World 2/Levels/Level 1/Level 1 Scene";
             mapLevel.sprite = mapLevel1World2;
+            world = 2;
         }
-
-        SetLevel(1);
 
         pressed = new Color(49 / 255f, 151 / 255f, 19 / 255f);
         normal = new Color(255 / 255f, 255 / 255f, 255 / 255f);
@@ -117,10 +117,5 @@ public class SelectLevelControl : MonoBehaviour
     private void changeColorButton(Button btn, Color newColor)
     {
         btn.GetComponent<Image>().color = newColor;
-    }
-
-    public void setWorld(int worldID)
-    {
-        world = worldID;
     }
 }
