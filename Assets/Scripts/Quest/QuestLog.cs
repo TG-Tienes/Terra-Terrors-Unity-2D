@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[DefaultExecutionOrder(10)]
 public static class QuestLog 
 {
     private static List<Quest> questList;

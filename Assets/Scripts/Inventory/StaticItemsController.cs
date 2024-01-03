@@ -12,6 +12,7 @@ public class StaticItemsController : MonoBehaviour
     private void Awake()
     {
         StatsManager.instance.onStatusChangedCallback += UpdateFields;
+        DontDestroyOnLoad(this);
     }
 
     private void Start()

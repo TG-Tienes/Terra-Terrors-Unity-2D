@@ -22,6 +22,7 @@ public class PlayerControl : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+
     }
     #endregion Singleton
 
@@ -154,9 +155,8 @@ public class PlayerControl : MonoBehaviour
         ManaBar.instance.SetValue(1);
 
         // playerInventoryCanvas_isActive = playerInventoryCanvas.isActiveAndEnabled;
-        AddQuest();
+        StartCoroutine(AddQuest());
     }
-
 
     // Update is called once per frame
     void Update()
@@ -254,11 +254,21 @@ public class PlayerControl : MonoBehaviour
         return q;
     }
 
-    private void AddQuest()
+    //private void AddQuest()
+    //{
+    //    Debug.Log("Quest QUant: " + quests.Length);
+    //    foreach (var quest in quests)
+    //    {
+    //        QuestLog.AddQuest(CreateQuest(quest.questName, quest.questDescription, quest.questType, quest.amount, quest.imagePath));
+    //    }
+    //}
+
+    private IEnumerator AddQuest()
     {
         foreach (var quest in quests)
         {
             QuestLog.AddQuest(CreateQuest(quest.questName, quest.questDescription, quest.questType, quest.amount, quest.imagePath));
+            yield return new WaitForSeconds(3f);
         }
     }
 

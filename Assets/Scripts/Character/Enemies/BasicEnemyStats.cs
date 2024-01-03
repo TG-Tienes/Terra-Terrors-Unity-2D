@@ -69,8 +69,12 @@ public class BasicEnemyStats : MonoBehaviour
                 // _mainCharacter.GetComponent<PlayerControl>().handleCoin(1500);
                 isDead = true;
             }
-            Destroy(gameObject);
             Debug.Log("dead");
+        }
+
+        if (_canDestroyGameObject)
+        {
+            Destroy(gameObject);
         }
     }
 

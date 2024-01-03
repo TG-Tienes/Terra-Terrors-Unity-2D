@@ -41,11 +41,14 @@ public class DontDestroyAudio : MonoBehaviour
             this.gameObject.transform.GetChild(0).GetComponent<AudioSource>().Stop();
             this.gameObject.transform.GetChild(1).GetComponent<AudioSource>().Play();
         }
-        
-        if((oldScene.buildIndex == 1 || oldScene.buildIndex == 2 || oldScene.buildIndex == 3) && (newScene.buildIndex == 0 || newScene.buildIndex == 6))
+
+        if (newScene.buildIndex == 0 || newScene.buildIndex == 6)
         {
-            this.gameObject.transform.GetChild(0).GetComponent<AudioSource>().Play();
-            this.gameObject.transform.GetChild(1).GetComponent<AudioSource>().Stop();
+            if (this.gameObject.transform.GetChild(1).GetComponent<AudioSource>() != null && this.gameObject.transform.GetChild(1).GetComponent<AudioSource>().isPlaying)
+            {
+                this.gameObject.transform.GetChild(0).GetComponent<AudioSource>().Play();
+                this.gameObject.transform.GetChild(1).GetComponent<AudioSource>().Stop();
+            }
         }
     }
 }

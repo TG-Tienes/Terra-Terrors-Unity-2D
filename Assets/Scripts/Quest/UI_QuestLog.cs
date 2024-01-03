@@ -19,7 +19,7 @@ public class UI_QuestLog : MonoBehaviour
     public RectTransform rewardsContent;
 
     private GameObject questLogObject;
-    private Button[] questButtons;
+    public Button[] questButtons;
     public Image questImage;
 
     private Quest currentQuest;
@@ -29,13 +29,15 @@ public class UI_QuestLog : MonoBehaviour
     private void Awake() {
         questLogObject = transform.GetChild(0).gameObject;
         questButtons = new Button[0];
-        QuestLog.Initialize();
-        QuestLog.onQuestChange += UpdateQuests;
+        
         UpdateQuests(new List<Quest>(), new List<Quest>());
+        DontDestroyOnLoad(this);
     }
 
     private void Start() {
         questLogObject.SetActive(!questLogObject.activeSelf);
+        QuestLog.Initialize();
+        QuestLog.onQuestChange += UpdateQuests;
     }
 
     private void Update() {
@@ -82,6 +84,7 @@ public class UI_QuestLog : MonoBehaviour
     private void UpdateSelectedQuest() {
         if (currentQuest == null)
             return;
+        Debug.Log("INdex: " + previousButtonIndex + ", quant: " + questButtons.Length);
         HighlightQuestButton(questButtons[previousButtonIndex], false);
         for (int i = 0; i < questButtons.Length; i++) {
             if(questButtons[i].GetComponentInChildren<TMP_Text>().text == currentQuest.questName) {

@@ -13,6 +13,7 @@ public class InventorySlotController : MonoBehaviour
     private void Awake()
     {
         Inventory.instance.onItemChangedCallback += UpdateAllSlots;
+        DontDestroyOnLoad(this);
     }
 
     private void Start()
