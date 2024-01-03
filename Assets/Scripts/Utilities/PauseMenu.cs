@@ -28,6 +28,7 @@ public class PauseMenu : MonoBehaviour
     public void ExitLevel()
     {
         _buttonClickedAudio.Play();
+        pauseMenu.SetActive(false);
         SceneManager.LoadScene(6); 
         PauseMenuManager.unpauseGame();
     }
