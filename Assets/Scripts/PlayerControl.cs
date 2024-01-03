@@ -108,6 +108,8 @@ public class PlayerControl : MonoBehaviour
         new QuestInfo { questType = 3, questName = "Talk to NPC", questDescription = "Engage in a conversation with an important character.", amount = 1, imagePath = "https://firebasestorage.googleapis.com/v0/b/chat-app-ee53e.appspot.com/o/Hera.png?alt=media&token=de2dcc53-fd03-4fb7-9ec1-982a4b466e07"},
     };
 
+    public GameObject _endLevelObject;
+
     private AudioSource _walkAudio;
     private AudioSource _shootingAudio;
     private AudioSource _openInventoryAudio;
@@ -315,6 +317,9 @@ public class PlayerControl : MonoBehaviour
         {
             BloodBar.instance.SetValue(0);
             animator.SetTrigger("Dead");
+
+            _endLevelObject.SetActive(true);
+            PauseMenuManager.pauseGame();
         }
 
         //Set data blood
