@@ -265,10 +265,11 @@ public class PlayerControl : MonoBehaviour
 
     private IEnumerator AddQuest()
     {
+        QuestLog.Initialize();
         foreach (var quest in quests)
         {
             QuestLog.AddQuest(CreateQuest(quest.questName, quest.questDescription, quest.questType, quest.amount, quest.imagePath));
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(0.1f);
         }
     }
 
@@ -338,6 +339,16 @@ public class PlayerControl : MonoBehaviour
         coinCurrent += dataCoin;
         StatsManager.instance.playerStats.coin = coinCurrent;
         coinText.SetText(formatter.FormatNumber(coinCurrent));
+    }
+
+    public void handleAttack(int dataAttack)
+    {
+        StatsManager.instance.playerStats.attack += dataAttack;
+    }
+
+    public void handleDefense(int dataDefense)
+    {
+        StatsManager.instance.playerStats.defense += dataDefense;
     }
 
     void recoverInTimeRange()
