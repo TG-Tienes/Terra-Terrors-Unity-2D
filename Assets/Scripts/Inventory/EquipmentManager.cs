@@ -8,7 +8,7 @@ using System.IO;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 
-[DefaultExecutionOrder(-100)]
+[DefaultExecutionOrder(-75)]
 public class EquipmentManager : MonoBehaviour
 {
     #region Singleton
@@ -177,7 +177,7 @@ public class EquipmentManager : MonoBehaviour
                 }
                 streamWriter.WriteLine(json);
             }
-            
+
             StatsManager.instance.SavePlayerData();
             if (currentConsumable != null)
             {
