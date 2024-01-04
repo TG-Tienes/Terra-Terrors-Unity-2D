@@ -115,7 +115,7 @@ public class PlayerControl : MonoBehaviour
                 return new QuestInfo[]
                 {
                     new QuestInfo { questType = 2, questName = "Collect Special Items", questDescription = "Find 4 Blue Crystal Movings", amount = 4, imagePath = "https://firebasestorage.googleapis.com/v0/b/chat-app-ee53e.appspot.com/o/BlueCrystalMoving1.png?alt=media&token=412896f0-8b84-4fac-a54f-731d9ff4c922"},
-                    new QuestInfo { questType = 1, questName = "Kill Boss", questDescription = "Conquer level-specific boss Minotaur guarding valuable treasures.", amount = 1, imagePath = "Conquer a level-specific Minotaur boss guarding valuable treasures."},
+                    new QuestInfo { questType = 1, questName = "Kill Boss", questDescription = "Conquer level-specific boss Minotaur guarding valuable treasures.", amount = UnityEngine.Random.Range(10,20), imagePath = "Conquer a level-specific Minotaur boss guarding valuable treasures."},
                     new QuestInfo { questType = 0, questName = "Kill Monsters", questDescription = "Defeat formidable goblin creatures wandering the lands.", amount = 1, imagePath = "https://firebasestorage.googleapis.com/v0/b/chat-app-ee53e.appspot.com/o/gobin.png?alt=media&token=bad4e6bd-c593-4b63-bba7-f4fdf5e5b189"},
                     new QuestInfo { questType = 3, questName = "Talk to NPC", questDescription = "Engage in a conversation with an important character. Press E to talk to NPC", amount = 1, imagePath = "https://firebasestorage.googleapis.com/v0/b/chat-app-ee53e.appspot.com/o/Hera.png?alt=media&token=c3e02820-fe61-4ff7-8974-e1cdb9e0a851"},
                         };
@@ -126,7 +126,7 @@ public class PlayerControl : MonoBehaviour
                 {
                     new QuestInfo { questType = 2, questName = "Collect Special Items", questDescription = "Find 4 keys ", amount = 4, imagePath = "https://firebasestorage.googleapis.com/v0/b/chat-app-ee53e.appspot.com/o/Props.png?alt=media&token=2b520c37-938f-46b1-9dfd-1e3baaa70d04"},
                     new QuestInfo { questType = 1, questName = "Kill Boss", questDescription = "Conquer a level-specific Bat boss guarding valuable treasures.", amount = 1, imagePath = "https://firebasestorage.googleapis.com/v0/b/chat-app-ee53e.appspot.com/o/bat_attack.png?alt=media&token=c564dc3f-14d1-4d3d-a9fe-cbc26785ab98"},
-                    new QuestInfo { questType = 0, questName = "Kill Monsters", questDescription = "Defeat formidable goblin creatures wandering the lands.", amount =  1, imagePath = "https://firebasestorage.googleapis.com/v0/b/chat-app-ee53e.appspot.com/o/gobin.png?alt=media&token=bad4e6bd-c593-4b63-bba7-f4fdf5e5b189"},
+                    new QuestInfo { questType = 0, questName = "Kill Monsters", questDescription = "Defeat formidable goblin creatures wandering the lands.", amount =  UnityEngine.Random.Range(10,20), imagePath = "https://firebasestorage.googleapis.com/v0/b/chat-app-ee53e.appspot.com/o/gobin.png?alt=media&token=bad4e6bd-c593-4b63-bba7-f4fdf5e5b189"},
                     new QuestInfo { questType = 3, questName = "Talk to NPC", questDescription = "Engage in a conversation with an important character. Press E to interact with the NPC.", amount = 1, imagePath = "https://firebasestorage.googleapis.com/v0/b/chat-app-ee53e.appspot.com/o/Hera.png?alt=media&token=c3e02820-fe61-4ff7-8974-e1cdb9e0a851"},
                     };
         }
