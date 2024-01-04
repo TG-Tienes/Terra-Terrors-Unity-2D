@@ -177,6 +177,8 @@ public class EquipmentManager : MonoBehaviour
                 }
                 streamWriter.WriteLine(json);
             }
+            
+            StatsManager.instance.SavePlayerData();
             if (currentConsumable != null)
             {
                 string json = JsonUtility.ToJson(currentConsumable);
