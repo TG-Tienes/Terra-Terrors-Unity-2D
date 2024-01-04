@@ -35,4 +35,9 @@ public class MainMenuController : MonoBehaviour
         _buttonClicked.Play();
         Application.Quit();
     }
+
+    public void buttonSound()
+    {
+        _buttonClicked.Play();
+    }
 }

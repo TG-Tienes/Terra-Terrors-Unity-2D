@@ -42,7 +42,7 @@ public class DontDestroyAudio : MonoBehaviour
             this.gameObject.transform.GetChild(1).GetComponent<AudioSource>().Play();
         }
 
-        if (newScene.buildIndex == 0 || newScene.buildIndex == 6)
+        if (newScene.buildIndex == 0 || newScene.buildIndex == 4)
         {
             if (this.gameObject.transform.GetChild(1).GetComponent<AudioSource>() != null && this.gameObject.transform.GetChild(1).GetComponent<AudioSource>().isPlaying)
             {
