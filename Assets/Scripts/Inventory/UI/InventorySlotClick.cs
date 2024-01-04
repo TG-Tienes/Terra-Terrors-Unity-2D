@@ -27,18 +27,21 @@ public class InventorySlotClick : MonoBehaviour
         float currentTime = Time.time;
         if (currentTime - lastClickTime < doubleClickThreshold)
         {
-            Item itemToBeUsed = Inventory.instance.items[slotIndex];
-            if (itemToBeUsed != null)
+            if (slotIndex < Inventory.instance.items.Count)
             {
-                if (itemToBeUsed.type == ItemType.EQUIPMENT)
+                Item itemToBeUsed = Inventory.instance.items[slotIndex];
+                if (itemToBeUsed != null)
                 {
-                    EquipmentManager.instance.Equip((Equipment) itemToBeUsed);
-                    Inventory.instance.RemoveItem(itemToBeUsed);
-                }
-                else if (itemToBeUsed.type == ItemType.CONSUMABLE)
-                {
-                    EquipmentManager.instance.EquipConsumable((Consumable) itemToBeUsed);
-                    Inventory.instance.RemoveItem(itemToBeUsed);
+                    if (itemToBeUsed.type == ItemType.EQUIPMENT)
+                    {
+                        EquipmentManager.instance.Equip((Equipment) itemToBeUsed);
+                        Inventory.instance.RemoveItem(itemToBeUsed);
+                    }
+                    else if (itemToBeUsed.type == ItemType.CONSUMABLE)
+                    {
+                        EquipmentManager.instance.EquipConsumable((Consumable) itemToBeUsed);
+                        Inventory.instance.RemoveItem(itemToBeUsed);
+                    }
                 }
             }
         }

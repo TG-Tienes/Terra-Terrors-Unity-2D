@@ -191,16 +191,19 @@ public class Inventory : MonoBehaviour
  
     public void AddItem(Item item)
     {
-        Item existingItem = items.Find(_item => _item.ID == item.ID);
-        if (existingItem != null)
+        if (item != null)
         {
-            items[items.IndexOf(existingItem)].quantity += 1;
+            Item existingItem = items.Find(_item => _item.ID == item.ID);
+            if (existingItem != null)
+            {
+                items[items.IndexOf(existingItem)].quantity += 1;
+            }
+            else
+            {
+                items.Add(item);
+            }
+            onItemChangedCallback?.Invoke();
         }
-        else
-        {
-            items.Add(item);
-        }
-        onItemChangedCallback?.Invoke();
     }
  
     public void RemoveItem(Item item)
