@@ -67,6 +67,7 @@ public class ShopManagerInGame : MonoBehaviour
 
         PlayerPrefs.SetInt("idWeapon", -1);
         PlayerPrefs.SetInt("idArmor", -1);
+        PlayerPrefs.SetInt("idConsumable", -1);
         PlayerPrefs.Save();
         LoadRandomItems();
     }
@@ -104,42 +105,42 @@ public class ShopManagerInGame : MonoBehaviour
         int idArmor = PlayerPrefs.GetInt("idArmor", -1);
         if (idArmor == -1)
         {
-            idArmor = UnityEngine.Random.Range(0, armorListItem.Count);
+            idArmor = UnityEngine.Random.Range(2000, 2000 + armorListItem.Count);
 
-            while (armorListItem[idArmor].quantity == 0)
-                idArmor = UnityEngine.Random.Range(0, armorListItem.Count);
+            while (armorListItem[idArmor - 2000].quantity == 0)
+                idArmor = UnityEngine.Random.Range(2000, 2000 + armorListItem.Count);
 
             PlayerPrefs.SetInt("idArmor", idArmor);
         }
 
-        if (armorListItem[idArmor].quantity == 0)
+        if (armorListItem[idArmor - 2000].quantity == 0)
             shopPanelsItem[1].SetActive(false);
         else
         {
             shopPanelsItem[1].SetActive(true);
 
-            shopPanels[1].rareItem.color = colorRare(armorListItem[idArmor].rarity.ToString());
-            shopPanels[1].nameItem.text = armorListItem[idArmor].name;
-            shopPanels[1].imgItem.sprite = armorListItem[idArmor].sprite;
-            shopPanels[1].attackData.text = "Attack: +" + armorListItem[idArmor].attackModifier.ToString();
-            shopPanels[1].defendData.text = "Defense: +" + armorListItem[idArmor].defenseModifier.ToString();
-            shopPanels[1].priceItem.text = formatter.FormatNumber(armorListItem[idArmor].price);
+            shopPanels[1].rareItem.color = colorRare(armorListItem[idArmor - 2000].rarity.ToString());
+            shopPanels[1].nameItem.text = armorListItem[idArmor - 2000].name;
+            shopPanels[1].imgItem.sprite = armorListItem[idArmor - 2000].sprite;
+            shopPanels[1].attackData.text = "Attack: +" + armorListItem[idArmor - 2000].attackModifier.ToString();
+            shopPanels[1].defendData.text = "Defense: +" + armorListItem[idArmor - 2000].defenseModifier.ToString();
+            shopPanels[1].priceItem.text = formatter.FormatNumber(armorListItem[idArmor - 2000].price);
         }
 
         //Random Consumable
         int idConsumable = PlayerPrefs.GetInt("idConsumable", -1);
         if (idConsumable == -1)
         {
-            idConsumable = UnityEngine.Random.Range(0, consumableListItem.Count);
+            idConsumable = UnityEngine.Random.Range(1000, 1000 + consumableListItem.Count);
             PlayerPrefs.SetInt("idConsumable", idConsumable);
         }
 
         shopPanelsItem[2].SetActive(true);
-        shopPanels[2].rareItem.color = colorRare(consumableListItem[idConsumable].rarity.ToString());
-        shopPanels[2].nameItem.text = consumableListItem[idConsumable].name;
-        shopPanels[2].imgItem.sprite = consumableListItem[idConsumable].sprite;
-        shopPanels[2].attackData.text = "Modificafication: +" + consumableListItem[idConsumable].healthBoost.ToString();
-        shopPanels[2].priceItem.text = formatter.FormatNumber(consumableListItem[idConsumable].price);
+        shopPanels[2].rareItem.color = colorRare(consumableListItem[idConsumable - 1000].rarity.ToString());
+        shopPanels[2].nameItem.text = consumableListItem[idConsumable - 1000].name;
+        shopPanels[2].imgItem.sprite = consumableListItem[idConsumable - 1000].sprite;
+        shopPanels[2].attackData.text = "Modificafication: +" + consumableListItem[idConsumable - 1000].healthBoost.ToString();
+        shopPanels[2].priceItem.text = formatter.FormatNumber(consumableListItem[idConsumable - 1000].price);
         PlayerPrefs.Save();
 
     }
@@ -166,6 +167,7 @@ public class ShopManagerInGame : MonoBehaviour
             notEnoughCoinBox.SetActive(true);
 
             Item itemCopy = Instantiate(currentItem);
+            Debug.Log(itemCopy.ID);
             Inventory.instance.AddItem(itemCopy);
 
             //Update money
@@ -175,11 +177,13 @@ public class ShopManagerInGame : MonoBehaviour
             //Remove Item
             if (typeItem == "WEAPON")
             {
+                currentItem.quantity -= 1;
                 weaponListItem[idItem].quantity -= 1;
                 shopPanelsItem[0].SetActive(false);
             }
             if (typeItem == "ARMOR")
             {
+                currentItem.quantity -= 1;
                 armorListItem[idItem - 2000].quantity -= 1;
                 shopPanelsItem[1].SetActive(false);
             }

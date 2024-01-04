@@ -37,7 +37,7 @@ public class StatsManager : MonoBehaviour
 
     public void OnDestroy()
     {
-        SavePlayerData();
+        //SavePlayerData();
     }
 
     public void UpdateCharacterStatus(Equipment newItem, Equipment oldItem)
