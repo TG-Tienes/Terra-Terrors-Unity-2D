@@ -61,13 +61,13 @@ public class BoxConfirm : MonoBehaviour
         if (slotIndex == 1)
         {
             int idArmor = PlayerPrefs.GetInt("idArmor", -1);
-            currentItem = ShopManagerInGame.instance.armorListItem[idArmor];
+            currentItem = ShopManagerInGame.instance.armorListItem[idArmor - 2000];
             itemType = ShopItemType.ARMOR;
         }
         if (slotIndex == 2)
         {
             int idConsumable = PlayerPrefs.GetInt("idConsumable", -1);
-            currentItem = ShopManagerInGame.instance.consumableListItem[idConsumable];
+            currentItem = ShopManagerInGame.instance.consumableListItem[idConsumable - 1000];
             itemType = ShopItemType.CONSUMABLE;
         }
 
