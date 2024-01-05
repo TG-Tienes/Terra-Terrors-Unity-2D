@@ -42,7 +42,6 @@ public class StatsManager : MonoBehaviour
 
     public void UpdateCharacterStatus(Equipment newItem, Equipment oldItem)
     {
-        Debug.Log("atk = " + newItem.attackModifier + " ,def = " + newItem.defenseModifier);
         if (oldItem != null)
         {
             playerStats.attack -= oldItem.attackModifier;

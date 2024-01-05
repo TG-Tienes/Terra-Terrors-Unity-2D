@@ -29,31 +29,31 @@ public class InventorySlotController : MonoBehaviour
 
     public void Start()
     {        
-        Debug.Log(spriteFields.Count + " " + quantityFields.Count + " " + rarityBackgroundFields.Count);
         GetFields();
-        Debug.Log(spriteFields.Count + " " + quantityFields.Count + " " + rarityBackgroundFields.Count);
         Inventory.instance.onItemChangedCallback += UpdateAllSlots;
         UpdateAllSlots();
     }
 
+    public void OnDestroy()
+    {
+        if (Inventory.instance != null)
+        {
+            Inventory.instance.onItemChangedCallback -= UpdateAllSlots;
+        }
+    }
+
     public void GetFields()
     {
-        int index = 0;
         spriteFields.Clear();
         GameObject[] objects_1 = GameObject.FindGameObjectsWithTag("InventorySlotSpriteField");
         List<GameObject> sorted_1 = objects_1.OrderBy(obj => obj.name).ToList();
         foreach (GameObject obj in sorted_1)
         {
             Image result = obj.GetComponent<Image>();
-            Debug.Log(index + " " + (result == null));
-            // if (result == null)
-            // {
-            // }
             if (result != null)
             {
                 spriteFields.Add(result);
             }
-            index++;
         }
 
         quantityFields.Clear();
@@ -156,11 +156,8 @@ public class InventorySlotController : MonoBehaviour
 
     public void ClearAllSlots()
     {
-        Debug.Log(spriteFields.Count);
         foreach (Image spriteField in spriteFields)
         {
-            if (spriteField == null)
-                Debug.Log("is null");
             spriteField.color = new Color32(255,255,255,0);
         }
         foreach (TextMeshProUGUI quantityField in quantityFields)

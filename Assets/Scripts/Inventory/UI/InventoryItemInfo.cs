@@ -38,6 +38,14 @@ public class InventoryItemInfo : MonoBehaviour
         instance.onSelectedItemChangedCallback += UpdateItemInfo;
     }
 
+    public void OnDestroy()
+    {
+        if (instance != null)
+        {
+            instance.onSelectedItemChangedCallback -= UpdateItemInfo;
+        }
+    }
+
     public void UpdateItemInfo()
     {
         if (slotIndex < Inventory.instance.items.Count)

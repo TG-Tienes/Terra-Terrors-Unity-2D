@@ -43,16 +43,22 @@ public class StaticItemsController : MonoBehaviour
  
     private void Start()
     {
-        Debug.Log("StaticItemController " + fields.Count);
         GetFields();
         StatsManager.instance.onStatusChangedCallback += UpdateFields;
         UpdateFields();
+    }
+
+    public void OnDestroy()
+    {
+        if (StatsManager.instance != null)
+        {
+            StatsManager.instance.onStatusChangedCallback -= UpdateFields;
+        }
     }
      
     void UpdateFields()
     {
         Type fieldsType = typeof(PlayerStats);
-        Debug.Log(fieldsType.ToString());
     
         foreach (TextMeshProUGUI field in fields)
         {

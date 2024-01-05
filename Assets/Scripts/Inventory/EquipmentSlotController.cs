@@ -33,27 +33,29 @@ public class EquipmentSlotController : MonoBehaviour
 
     public void Start()
     {
-        Debug.Log(spriteFields.Count + " " + rarityBackgroundFields.Count + " " + weaponSpriteFields.Count);
-        Debug.Log("get Equipment field");
         GetFields();
-        Debug.Log(spriteFields.Count + " " + rarityBackgroundFields.Count + " " + weaponSpriteFields.Count);
         EquipmentManager.instance.onEquipmentChangedCallback += UpdateAllSlots;
         UpdateAllSlots();
+    }
+
+    public void OnDestroy()
+    {
+        if (EquipmentManager.instance != null)
+        {
+            EquipmentManager.instance.onEquipmentChangedCallback -= UpdateAllSlots;
+        }
     }
 
     private void GetFields()
     {
         spriteFields.Clear();
-        int index = 0;
         GameObject[] objects_1 = GameObject.FindGameObjectsWithTag("EquipmentSlotSpriteField");
         List<GameObject> sorted_1 = objects_1.OrderBy(obj => obj.name).ToList();
         foreach (GameObject obj in sorted_1)
         {
-            Debug.Log(obj.name);
             Image result = obj.GetComponent<Image>();
             if (result != null)
             {
-                Debug.Log(index++);
                 spriteFields.Add(result);
             }
         }
@@ -91,10 +93,6 @@ public class EquipmentSlotController : MonoBehaviour
 
     public void UpdateSlot(int slotIndex, Sprite sprite, ItemRarity rarity)
     {
-        if (spriteFields[slotIndex] == null)
-        {
-            Debug.Log(slotIndex + " is null");
-        }
         spriteFields[slotIndex].color = new Color32(255,255,255,255);
         spriteFields[slotIndex].sprite = sprite;
 

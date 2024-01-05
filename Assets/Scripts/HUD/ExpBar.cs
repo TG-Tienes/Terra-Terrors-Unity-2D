@@ -34,7 +34,6 @@ public class ExpBar : MonoBehaviour
     {
         originalSize = mask.rectTransform.rect.width;
         levelTitle = GameObject.Find("LevelTitle").GetComponent<TMP_Text>();
-        Debug.Log(levelTitle);
     }
 
     public void SetValue(float value)
