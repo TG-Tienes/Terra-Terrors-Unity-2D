@@ -11,7 +11,7 @@ public class NPC : MonoBehaviour {
    private int index;
 
    public float wordSpeed;
-   public bool playerIsClose;
+   public bool playerIsClose = false;
    public GameObject contButton;
    bool isTalk;
 
@@ -71,14 +71,14 @@ public class NPC : MonoBehaviour {
     }
   }
 
-  private void OnTriggerEnter2D(Collider2D other) {
-    if (other.CompareTag("Main Character")) {
+  private void OnTriggerEnter2D(Collider2D collision) {
+    if (collision.gameObject.tag.Equals("Main Character")) {
       playerIsClose = true;
     }
   }
 
-  private void OnTriggerExit2D(Collider2D other) {
-    if(other.CompareTag("Main Character")) {
+  private void OnTriggerExit2D(Collider2D collision) {
+    if(collision.gameObject.tag.Equals("Main Character")) {
       playerIsClose = false;
       zeroText();
     }
