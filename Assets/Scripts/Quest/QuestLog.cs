@@ -92,6 +92,17 @@ public static class QuestLog
 
     public static bool isFinishedAllQuests()
     {
+        // questList.Clear();
+        // completedQuest.Clear();
+        // onQuestChange?.Invoke(questList, completedQuest);
         return _isFinished;
+    }
+
+    public static void ResetQuestLog()
+    {
+        questList.Clear();
+        completedQuest.Clear();
+        _isFinished = false;
+        onQuestChange?.Invoke(questList, completedQuest);
     }
 }
