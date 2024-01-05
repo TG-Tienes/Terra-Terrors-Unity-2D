@@ -360,6 +360,8 @@ public class PlayerControl : MonoBehaviour
             animator.SetTrigger("Dead");
 
             _endLevelObject.SetActive(true);
+            QuestLog.ResetQuestLog();
+            QuestManager.instance.Reset();
             PauseMenuManager.unpauseGame();
 
         }

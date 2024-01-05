@@ -97,7 +97,11 @@ public class UI_QuestLog : MonoBehaviour
     {
         if (currentQuest == null)
             return;
+        
         Debug.Log("INdex: " + previousButtonIndex + ", quant: " + questButtons.Length);
+        if(questButtons.Length < 0) {
+            return;
+        }
         HighlightQuestButton(questButtons[previousButtonIndex], false);
         for (int i = 0; i < questButtons.Length; i++)
         {
