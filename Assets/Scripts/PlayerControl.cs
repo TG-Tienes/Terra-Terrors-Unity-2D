@@ -115,7 +115,7 @@ public class PlayerControl : MonoBehaviour
                 return new QuestInfo[]
                 {
                     new QuestInfo { questType = 2, questName = "Collect Special Items", questDescription = "Find 4 Blue Crystal Movings", amount = 4, imagePath = "https://firebasestorage.googleapis.com/v0/b/chat-app-ee53e.appspot.com/o/BlueCrystalMoving1.png?alt=media&token=412896f0-8b84-4fac-a54f-731d9ff4c922"},
-                    new QuestInfo { questType = 1, questName = "Kill Boss", questDescription = "Conquer level-specific boss Minotaur guarding valuable treasures.", amount = 1, imagePath = "Conquer a level-specific Minotaur boss guarding valuable treasures."},
+                    new QuestInfo { questType = 1, questName = "Kill Boss", questDescription = "Conquer level-specific boss Minotaur guarding valuable treasures.", amount = 1, imagePath = "https://firebasestorage.googleapis.com/v0/b/chat-app-ee53e.appspot.com/o/Minotaur.png?alt=media&token=a4edc1b4-c1a6-4243-b5a7-b0c9488d8128"},
                     new QuestInfo { questType = 0, questName = "Kill Monsters", questDescription = "Defeat formidable goblin creatures wandering the lands.", amount = UnityEngine.Random.Range(10,20), imagePath = "https://firebasestorage.googleapis.com/v0/b/chat-app-ee53e.appspot.com/o/gobin.png?alt=media&token=bad4e6bd-c593-4b63-bba7-f4fdf5e5b189"},
                     new QuestInfo { questType = 3, questName = "Talk to NPC", questDescription = "Engage in a conversation with an important character. Press E to talk to NPC", amount = 1, imagePath = "https://firebasestorage.googleapis.com/v0/b/chat-app-ee53e.appspot.com/o/Hera.png?alt=media&token=c3e02820-fe61-4ff7-8974-e1cdb9e0a851"},
                         };

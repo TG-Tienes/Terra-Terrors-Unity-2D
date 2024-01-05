@@ -11,7 +11,7 @@ public class NPC : MonoBehaviour {
    private int index;
 
    public float wordSpeed;
-   public bool playerIsClose;
+   public bool playerIsClose = false;
    public GameObject contButton;
    bool isTalk;
 

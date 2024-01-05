@@ -1,5 +1,6 @@
-
-
-
-
-
+{"ID":2000,"name":"Golden Helmet","quantity":1,"sprite":{"instanceID":45894},"spriteID":10,"bulletSprite":{"instanceID":0},"bulletSpriteID":0,"description":"","rarity":3,"type":1,"price":2500,"equipType":0,"attackModifier":0,"defenseModifier":20,"manaUsage":0,"fireRate":0.0,"criticalChance":0.0}
+{"ID":2001,"name":"Golden Chestplate","quantity":1,"sprite":{"instanceID":45900},"spriteID":31,"bulletSprite":{"instanceID":0},"bulletSpriteID":0,"description":"","rarity":3,"type":1,"price":5000,"equipType":1,"attackModifier":0,"defenseModifier":30,"manaUsage":0,"fireRate":0.0,"criticalChance":0.0}
+{"ID":2002,"name":"Golden Leggings","quantity":1,"sprite":{"instanceID":45912},"spriteID":15,"bulletSprite":{"instanceID":0},"bulletSpriteID":0,"description":"","rarity":3,"type":1,"price":3000,"equipType":2,"attackModifier":0,"defenseModifier":20,"manaUsage":0,"fireRate":0.0,"criticalChance":0.0}
+{"ID":30,"name":"Neptune's Trident","quantity":1,"sprite":{"instanceID":47446},"spriteID":539,"bulletSprite":{"instanceID":48504},"bulletSpriteID":539,"description":"","rarity":5,"type":1,"price":0,"equipType":3,"attackModifier":50,"defenseModifier":0,"manaUsage":0,"fireRate":0.3499999940395355,"criticalChance":0.20000000298023225}
+{"ID":5,"name":"Witch Wrath","quantity":1,"sprite":{"instanceID":47300},"spriteID":492,"bulletSprite":{"instanceID":48960},"bulletSpriteID":226,"description":"","rarity":1,"type":1,"price":5400,"equipType":3,"attackModifier":8,"defenseModifier":0,"manaUsage":0,"fireRate":0.30000001192092898,"criticalChance":0.20000000298023225}
+{"ID":1000,"name":"Health Potion","quantity":33,"sprite":{"instanceID":49206},"spriteID":0,"bulletSprite":{"instanceID":0},"bulletSpriteID":0,"description":"","rarity":2,"type":0,"price":1000,"healthBoost":20,"manaBoost":0}
