@@ -26,7 +26,7 @@ public class Inventory : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(this);
+            //DontDestroyOnLoad(this);
             Reset();
         }
         else
@@ -212,7 +212,8 @@ public class Inventory : MonoBehaviour
         onItemChangedCallback?.Invoke();
     }
 
-    private const string path = "Assets/GameData/inventoryData.json";
+    private static string folderPath = Path.Combine(Application.dataPath, "GameData");
+    private static string path = Path.Combine(folderPath, "inventoryData.json");
 
     public void SaveInventoryData()
     {
@@ -228,31 +229,33 @@ public class Inventory : MonoBehaviour
 
     public void LoadInventoryData()
     {
-        if (File.Exists(path))
+        if (!Directory.Exists(folderPath))
         {
-            // Clear existing data in the list
-            instance.items.Clear();
+            Directory.CreateDirectory(folderPath);
+        }
 
-            using (StreamReader streamReader = new StreamReader(path))
+        if (!File.Exists(path))
+        {
+            File.WriteAllText(path, "");
+        }
+        // Clear existing data in the list
+        instance.items.Clear();
+
+        using (StreamReader streamReader = new StreamReader(path))
+        {
+            while (!streamReader.EndOfStream)
             {
-                while (!streamReader.EndOfStream)
-                {
-                    // Read a line from the file
-                    string json = streamReader.ReadLine();
+                // Read a line from the file
+                string json = streamReader.ReadLine();
 
-                    Item item;
-                    item = Item.LoadFromJson(json);
-                    instance.items.Add(item);
-                }
+                Item item;
+                item = Item.LoadFromJson(json);
+                instance.items.Add(item);
             }
-
-            LoadSprite();
-
-            Debug.Log("Player Inventory loaded from JSON file.");
         }
-        else
-        {
-            Debug.LogWarning("JSON file not found.");
-        }
+
+        LoadSprite();
+
+        Debug.Log("Player Inventory loaded from JSON file.");
     }
 }

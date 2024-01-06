@@ -20,7 +20,7 @@ public class StatsManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(this);
+            //DontDestroyOnLoad(this);
         }
         else
         {
@@ -37,27 +37,30 @@ public class StatsManager : MonoBehaviour
 
     public void OnDestroy()
     {
-        //SavePlayerData();
+        SavePlayerData();
     }
 
     public void UpdateCharacterStatus(Equipment newItem, Equipment oldItem)
     {
         if (oldItem != null)
         {
-            playerStats.attack -= oldItem.attackModifier;
-            playerStats.defense -= oldItem.defenseModifier;
+            Debug.Log("- " + oldItem.attackModifier + " : " + oldItem.defenseModifier);
+            instance.playerStats.attack -= oldItem.attackModifier;
+            instance.playerStats.defense -= oldItem.defenseModifier;
         }
 
         if (newItem != null)
         {
-            playerStats.attack += newItem.attackModifier;
-            playerStats.defense += newItem.defenseModifier;
+            Debug.Log("+ " + newItem.attackModifier + " : " + newItem.defenseModifier);
+            instance.playerStats.attack += newItem.attackModifier;
+            instance.playerStats.defense += newItem.defenseModifier;
         }
 
-        onStatusChangedCallback?.Invoke();
+        instance.onStatusChangedCallback?.Invoke();
     }
 
-    private const string path = "Assets/GameData/playerData.json";
+    private static string folderPath = Path.Combine(Application.dataPath, "GameData");
+    private static string path = Path.Combine(folderPath, "playerData.json");
 
     public void SavePlayerData()
     {
@@ -67,16 +70,18 @@ public class StatsManager : MonoBehaviour
 
     public static void LoadPlayerData()
     {
-        if (File.Exists(path))
+        if (!Directory.Exists(folderPath))
         {
-            string json = File.ReadAllText(path);
-            instance.playerStats = PlayerStats.LoadFromJson(json, instance.playerStats);
+            Directory.CreateDirectory(folderPath);
+        }
 
-            Debug.Log("Player Stats loaded from JSON file.");
-        }
-        else
+        if (!File.Exists(path))
         {
-            Debug.LogWarning("Player data not found. Using default player stats.");
+            File.WriteAllText(path, "");
         }
+        string json = File.ReadAllText(path);
+        instance.playerStats = PlayerStats.LoadFromJson(json, instance.playerStats);
+
+        Debug.Log("Player Stats loaded from JSON file.");
     }
 }

@@ -1110,7 +1110,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1278888198}
   - component: {fileID: 1278888197}
-  - component: {fileID: 1278888196}
+  - component: {fileID: 1278888199}
   - component: {fileID: 1278888195}
   m_Layer: 0
   m_Name: GameManager
@@ -1132,21 +1132,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerStats: {fileID: 0}
---- !u!114 &1278888196
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1278888194}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fccb315e91077c44fb593127a110d480, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentConsumable: {fileID: 0}
-  currentWeapon: {fileID: 0}
-  currentEquipment: []
 --- !u!114 &1278888197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1184,6 +1169,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1278888199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1278888194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fccb315e91077c44fb593127a110d480, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentConsumable: {fileID: 0}
+  currentWeapon: {fileID: 0}
+  currentEquipment: []
 --- !u!1 &1317535159
 GameObject:
   m_ObjectHideFlags: 0

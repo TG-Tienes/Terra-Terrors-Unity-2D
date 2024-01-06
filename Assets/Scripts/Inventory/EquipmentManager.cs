@@ -19,7 +19,7 @@ public class EquipmentManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(this);
+            //DontDestroyOnLoad(this);
         }
         else
         {
@@ -57,7 +57,20 @@ public class EquipmentManager : MonoBehaviour
 
     public void OnDestroy()
     {
+        ResetStats();
         SaveEquipmentData();
+    }
+
+    public void ResetStats()
+    {
+        foreach (Equipment equipment in instance.currentEquipment)
+        {
+            if (equipment != null)
+            {
+                StatsManager.instance.playerStats.attack -= equipment.attackModifier;
+                StatsManager.instance.playerStats.defense -= equipment.defenseModifier;
+            }
+        }
     }
 
     public void PrintList()
@@ -136,6 +149,7 @@ public class EquipmentManager : MonoBehaviour
     {
         // Update player stats
         StatsManager.instance.UpdateCharacterStatus(newEquipment, null);
+        Debug.Log("Attack= " + StatsManager.instance.playerStats.attack + " ; Defense= " + StatsManager.instance.playerStats.defense); 
         // Add new equipment to the list
         currentEquipment[slotIndex] = newEquipment;
     }
@@ -161,7 +175,8 @@ public class EquipmentManager : MonoBehaviour
         onEquipmentChangedCallback?.Invoke();
     }
 
-    private const string path = "Assets/GameData/equipmentData.json";
+    private static string folderPath = Path.Combine(Application.dataPath, "GameData");
+    private static string path = Path.Combine(folderPath, "equipmentData.json");
 
     public void SaveEquipmentData()
     {
@@ -170,15 +185,10 @@ public class EquipmentManager : MonoBehaviour
             foreach (Equipment equipment in instance.currentEquipment)
             {
                 string json = JsonUtility.ToJson(equipment);
-                if (equipment != null)
-                {
-                    StatsManager.instance.playerStats.attack -= equipment.attackModifier;
-                    StatsManager.instance.playerStats.defense -= equipment.defenseModifier;
-                }
                 streamWriter.WriteLine(json);
             }
 
-            StatsManager.instance.SavePlayerData();
+            //StatsManager.instance.SavePlayerData();
             if (currentConsumable != null)
             {
                 string json = JsonUtility.ToJson(currentConsumable);
@@ -189,48 +199,52 @@ public class EquipmentManager : MonoBehaviour
 
     public void LoadEquipmentData()
     {
-        if (File.Exists(path))
+        if (!Directory.Exists(folderPath))
         {
-            using (StreamReader streamReader = new StreamReader(path))
-            {
-                int index = 0;
-                while (!streamReader.EndOfStream)
-                {
-                    // Read a line from the file
-                    string json = streamReader.ReadLine();
+            Directory.CreateDirectory(folderPath);
+        }
 
-                    if (!string.IsNullOrEmpty(json))
+        if (!File.Exists(path))
+        {
+            File.WriteAllText(path, "");
+        }
+        using (StreamReader streamReader = new StreamReader(path))
+        {
+            int index = 0;
+            while (!streamReader.EndOfStream)
+            {
+                // Read a line from the file
+                string json = streamReader.ReadLine();
+
+                if (!string.IsNullOrEmpty(json))
+                {
+                    Item item = Item.LoadFromJson(json);
+                    if (item != null)
                     {
-                        Item item = Item.LoadFromJson(json);
-                        if (item != null)
+                        switch (item.type)
                         {
-                            switch (item.type)
+                            case ItemType.EQUIPMENT:
                             {
-                                case ItemType.EQUIPMENT:
-                                {
-                                    instance.Equip((Equipment) item);
-                                    break;
-                                }
-                                case ItemType.CONSUMABLE:
-                                {
-                                    instance.EquipConsumable((Consumable) item);
-                                    break;
-                                }
-                                default:
-                                    break;
+                                instance.Equip((Equipment) item);
+                                break;
                             }
+                            case ItemType.CONSUMABLE:
+                            {
+                                instance.EquipConsumable((Consumable) item);
+                                break;
+                            }
+                            default:
+                                break;
                         }
                     }
-                    index++;
                 }
+                index++;
             }
-            LoadSprite();
-            Debug.Log("Player Equipment loaded from JSON file.");
         }
-        else
-        {
-            Debug.LogWarning("JSON file not found.");
-        }
+
+        LoadSprite();
+
+        Debug.Log("Player Equipment loaded from JSON file.");
     }
 
     public async void LoadSprite()
