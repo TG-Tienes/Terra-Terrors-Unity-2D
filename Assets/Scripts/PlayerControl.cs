@@ -55,7 +55,7 @@ public class PlayerControl : MonoBehaviour
 
     //Handle Level
     private int level;
-    private int[] levelList = { 50, 150, 250, 500, 1000, 2000 };
+    private int[] levelList = { 50, 150, 250, 500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3500, 4000, 5000, 7000, 10000, 15000, 20000, 300000, 500000 };
     public float invincibleTime = 0.1f;
     private float currentTime;
 

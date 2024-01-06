@@ -1,5 +1,5 @@
+{"ID":1,"name":"Golden Helmet","quantity":2,"sprite":{"instanceID":43716},"spriteID":10,"bulletSprite":{"instanceID":0},"bulletSpriteID":0,"description":"","rarity":3,"type":1,"price":2500,"equipType":0,"attackModifier":0,"defenseModifier":20,"manaUsage":0,"fireRate":0.0,"criticalChance":0.0}
 
 
-
-
+{"ID":5,"name":"Golden Shower","quantity":1,"sprite":{"instanceID":43660},"spriteID":490,"bulletSprite":{"instanceID":43662},"bulletSpriteID":726,"description":"","rarity":3,"type":1,"price":8500,"equipType":3,"attackModifier":5,"defenseModifier":0,"manaUsage":0,"fireRate":0.10000000149011612,"criticalChance":0.20000000298023225}
 
